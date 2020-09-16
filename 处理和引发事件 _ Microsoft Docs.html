@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN -->
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus js-focus-visible theme-light mathjax-complete" lang="zh-cn" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="处理和引发事件">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://docs.microsoft.com/zh-cn/dotnet/standard/events/">
+			<meta property="og:description" content="了解如何处理并引发基于委托模型的 .NET 事件。 此模型允许订阅者向提供商注册或接收通知。">
+		<meta property="og:image" content="https://docs.microsoft.com/en-us/media/logos/logo-ms-social.png">
+		<meta property="og:image:alt" content="Microsoft Logo">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@docsmsft">
+
+
+	<meta name="apiPlatform" content="dotnet">
+<meta name="author" content="IEvangelist">
+<meta name="bilingual_type" content="hover over">
+<meta name="breadcrumb_path" content="/dotnet/breadcrumb/toc.json">
+<meta name="depot_name" content="VS.core-docs">
+<meta name="description" content="了解如何处理并引发基于委托模型的 .NET 事件。 此模型允许订阅者向提供商注册或接收通知。">
+<meta name="document_id" content="caf84f7a-743b-867a-2ac5-2ab815f10c45">
+<meta name="document_version_independent_id" content="9b1d1a8a-5151-8e4d-2365-7c859e1bacd8">
+<meta name="enable_loc_sxs" content="true">
+<meta name="gitcommit" content="https://github.com/dotnet/docs.zh-cn/blob/8f84b63f87b722d307a5be50891bd1444c30b998/docs/standard/events/index.md">
+<meta name="locale" content="zh-cn">
+<meta name="ms.assetid" content="b6f65241-e0ad-4590-a99f-200ce741bb1f">
+<meta name="ms.author" content="dapine">
+<meta name="ms.contentlocale" content="zh-CN">
+<meta name="ms.date" content="03/30/2017">
+<meta name="ms.devlang" content="dotnet">
+<meta name="ms.lasthandoff" content="06/05/2020">
+<meta name="ms.locfileid" content="84447103">
+<meta name="ms.openlocfilehash" content="8cf0ff323e9bf7305e3d9cbb6dabd8f685059e97">
+<meta name="ms.prod" content="dotnet">
+<meta name="ms.sourcegitcommit" content="b16c00371ea06398859ecd157defc81301c9070f">
+<meta name="ms.technology" content="dotnet-standard">
+<meta name="ms.topic" content="conceptual">
+<meta name="ms.translationtype" content="HT">
+<meta name="original_content_git_url" content="https://github.com/dotnet/docs.zh-cn/blob/live-sxs/docs/standard/events/index.md">
+<meta name="search.ms_docsetname" content="core-docs">
+<meta name="search.ms_product" content="VS">
+<meta name="search.ms_sitename" content="Docs">
+<meta name="show_latex" content="true">
+<meta name="site_name" content="Docs">
+<meta name="uhfHeaderId" content="MSDocsHeader-DotNet">
+<meta name="updated_at" content="2020-06-08 11:59 AM">
+<meta name="page_type" content="conceptual">
+<meta name="toc_rel" content="../../fundamentals/toc.json">
+<meta name="pdf_url_template" content="https://docs.microsoft.com/pdfstore/zh-cn/VS.core-docs/{branchName}{pdfName}">
+<meta name="search.mshattr.devlang" content="csharp vb">
+<meta name="word_count" content="3805">
+
+
+	<meta name="scope" content=".NET">
+<link href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/" rel="canonical">
+	<title>处理和引发事件 | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="./处理和引发事件 _ Microsoft Docs_files/8e21bad7.site-ltr.css">
+
+	<link rel="stylesheet" href="./处理和引发事件 _ Microsoft Docs_files/2e5ce4ab.conceptual.css">
+
+
+	<script async="" defer="" crossorigin="anonymous" src="./处理和引发事件 _ Microsoft Docs_files/lux.js.下载"></script><script async="" src="./处理和引发事件 _ Microsoft Docs_files/analytics.js.下载"></script><script>
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'zh-cn',
+			contentDir: 'ltr',
+			userLocale: 'zh-cn',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasBinaryRating: true,
+			hasGithubIssues: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'dotnet/docs.zh-cn',
+			feedbackProductUrl: 'https://developercommunity.visualstudio.com/spaces/61/index.html',
+			contentGitUrl: 'https://github.com/dotnet/docs.zh-cn/blob/live/docs/standard/events/index.md',
+			extendBreadcrumb: false,
+			isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasBookmark: true,
+			hasShare: true
+		},
+		functions:{}
+	};
+	</script>
+	<script nomodule="" src="./处理和引发事件 _ Microsoft Docs_files/bluebird.min.js.下载" integrity="sha384-aD4BDeDGeLXLpPK4yKeqtZQa9dv4a/7mQ+4L5vwshIYH1Mc2BrXvHd32iHzYCQy5" crossorigin="anonymous"></script>
+	<script nomodule="" src="./处理和引发事件 _ Microsoft Docs_files/fetch.umd.min.js.下载" integrity="sha384-EQIXrC5K2+7X8nGgLkB995I0/6jfAvvyG1ieZ+WYGxgJHFMD/alsG9fSDWvzb5Y1" crossorigin="anonymous"></script>
+	<script nomodule="" src="./处理和引发事件 _ Microsoft Docs_files/template.min.js.下载" integrity="sha384-1zKzI6ldTVHMU7n0W2HpE/lhHI+UG4D9IIaxbj3kT2UhCWicdTuJkTtnKuu0CQzN" crossorigin="anonymous"></script>
+	<script nomodule="" src="./处理和引发事件 _ Microsoft Docs_files/url.min.js.下载" integrity="sha384-vn7xBMtpSTfzaTRWxj0kVq0UcsbBrTOgZ/M1ISHqe1V358elYva+lfiEC+T8jLPc" crossorigin="anonymous"></script>
+	<script src="./处理和引发事件 _ Microsoft Docs_files/7501e2bd.index-polyfills.js.下载"></script>
+		<script src="./处理和引发事件 _ Microsoft Docs_files/qrious.min.js.下载" integrity="sha384-h/SmU/qxwYnRlzklg9PKWpDwyma9UmKuOB//Pz6Cov5KkEqcaFF0vod43/XhoeyJ" crossorigin="anonymous"></script>
+		<script src="./处理和引发事件 _ Microsoft Docs_files/a05ac726.index-docs.js.下载"></script><style></style><script src="./处理和引发事件 _ Microsoft Docs_files/jsll-4.js.下载" async="" defer=""></script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><script async="" src="./处理和引发事件 _ Microsoft Docs_files/t.js.下载"></script><style type="text/css" media="print">.usabilla_live_button_container { display: none; }</style><script async="" src="./处理和引发事件 _ Microsoft Docs_files/t.js(1).下载"></script><script async="" src="./处理和引发事件 _ Microsoft Docs_files/t.js(2).下载"></script><script async="" src="./处理和引发事件 _ Microsoft Docs_files/t.js(3).下载"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.ContentUpdate%27&amp;time=%272020-09-16T06%3A51%3A20.117Z%27&amp;os=%27Windows%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%27785998fb-3027-4cbb-9316-a8ff47eee5d9%27&amp;-pageName=%27caf84f7a-743b-867a-2ac5-2ab815f10c45%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fdotnet%2Fstandard%2Fevents%2F%3Fredirectedfrom%3DMSDN%27&amp;-market=%27zh-cn%27&amp;-pageTags=%27%7B%22author%22%3A%22IEvangelist%22%2C%22depotname%22%3A%22VS.core-docs%22%2C%22document_version_independent_id%22%3A%229b1d1a8a-5151-8e4d-2365-7c859e1bacd8%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs.zh-cn%2Fblob%2F8f84b63f87b722d307a5be50891bd1444c30b998%2Fdocs%2Fstandard%2Fevents%2Findex.md%22%2C%22asst%22%3A%22b6f65241-e0ad-4590-a99f-200ce741bb1f%22%2C%22pgauth%22%3A%22dapine%22%2C%22date%22%3A%2203%2F30%2F2017%22%2C%22pgdevlng%22%3A%22dotnet%22%2C%22lasthandoff%22%3A%2206%2F05%2F2020%22%2C%22locfileid%22%3A%2284447103%22%2C%22product%22%3A%22dotnet%22%2C%22technology%22%3A%22dotnet-standard%22%2C%22pgtop%22%3A%22conceptual%22%2C%22translationtype%22%3A%22HT%22%2C%22giturl%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs.zh-cn%2Fblob%2Flive-sxs%2Fdocs%2Fstandard%2Fevents%2Findex.md%22%2C%22publishtime%22%3A%222020-06-08%2011%3A59%20AM%22%2C%22contentlocale%22%3A%22zh-cn%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-pageHeight=4197&amp;-vpHeight=944&amp;-vpWidth=2133&amp;-actionType=%27R%27&amp;-behavior=0&amp;-vScrollOffset=0&amp;-hScrollOffset=0&amp;-contentVer=%272.0%27&amp;-content=%27%5B%5D%27&amp;*baseType=%27Ms.Content.ContentUpdate%27&amp;*title=%27%E5%A4%84%E7%90%86%E5%92%8C%E5%BC%95%E5%8F%91%E4%BA%8B%E4%BB%B6%20%7C%20Microsoft%20Docs%27&amp;*cookieEnabled=true&amp;*isJs=true&amp;*isDomComplete=false&amp;*isLoggedIn=false&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.2.14%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D13f1e1c9a4704e3f8b2f55889223dd97%26HASH%3D13f1%26LV%3D202006%26V%3D4%26LU%3D1591089184343%27&amp;ext-javascript-userConsent=false&amp;ext-user-localId=%27t%3A1168D781D90E6B741D75DB1ED8206AEF%27&amp;$mscomCookies=false"></script></head>
+
+<body lang="zh-cn" dir="ltr"><div style="display: none;" id="lightningjs-usabilla_live"><div><iframe frameborder="0" id="lightningjs-frame-usabilla_live" src="./处理和引发事件 _ Microsoft Docs_files/saved_resource.html"></iframe></div></div><div id="MathJax_Message" style="display: none;"></div>
+<div class="header-holder has-default-focus">
+	<a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused is-fixed has-inner-focus focus-visible has-top-zero has-left-zero has-right-zero has-padding-medium has-text-centered has-body-background-medium" tabindex="1">跳转至主内容</a>
+		<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization"><!----> <div class="nav-bar"><!---->  <div class="nav-bar-brand">
+		<a class="nav-bar-button" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft">
+			<div class="nav-bar-logo" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope">
+				<svg xmlns="http://www.w3.org/2000/svg" width="108" height="23" viewBox="72 72 337 74" preserveAspectRatio="xMidYMin slice">
+					<g data-name="MS-symbol">
+						<clippath id="a">
+							<path transform="matrix(1 0 0 -1 0 216)" d="M0 216h482V0H0z"></path>
+						</clippath>
+						<g clip-path="url(#a)">
+							<path class="has-fill-current-color has-text-subtle" d="M394.942 104.59h-10.858v25.003h-7.38V104.59h-5.182v-5.965h5.182v-4.308c0-3.254 1.06-5.92 3.178-7.998 2.12-2.079 4.835-3.118 8.15-3.118.882 0 1.666.045 2.35.135a9.37 9.37 0 011.806.407v6.296c-.24-.14-.663-.31-1.265-.512-.603-.2-1.296-.3-2.078-.3-1.528 0-2.702.476-3.526 1.43-.824.954-1.235 2.365-1.235 4.232v3.736h10.858v-6.959l7.321-2.229v9.188h7.381v5.965h-7.38v14.49c0 1.91.345 3.254 1.038 4.037.693.783 1.782 1.175 3.27 1.175.42 0 .927-.1 1.52-.3a7.178 7.178 0 001.552-.724v6.025c-.463.261-1.23.502-2.305.723a15.742 15.742 0 01-3.178.331c-3.073 0-5.378-.817-6.914-2.455-1.537-1.637-2.305-4.102-2.305-7.396zm-48.407 9.73c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.45-2.545-6.04-2.545-2.67 0-4.745.888-6.22 2.666-1.477 1.777-2.215 4.313-2.215 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.892-2.993 6.91-4.489 12.05-4.489 4.841 0 8.621 1.441 11.343 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.447 9.018-4.338 11.99-2.892 2.973-6.829 4.458-11.81 4.458-4.8 0-8.61-1.41-11.432-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-16.417-7.802c0 1.045.331 1.863.994 2.456.662.592 2.128 1.34 4.398 2.243 2.912 1.166 4.956 2.476 6.131 3.932 1.175 1.456 1.762 3.22 1.762 5.287 0 2.912-1.12 5.252-3.359 7.02-2.24 1.767-5.267 2.65-9.083 2.65-1.285 0-2.706-.155-4.263-.467-1.556-.31-2.877-.707-3.96-1.19v-7.169a17.945 17.945 0 004.277 2.198c1.526.543 2.911.814 4.157.814 1.647 0 2.862-.23 3.645-.693.784-.46 1.175-1.235 1.175-2.319 0-1.005-.406-1.853-1.22-2.546-.813-.693-2.355-1.492-4.624-2.395-2.69-1.125-4.599-2.39-5.724-3.796-1.125-1.406-1.687-3.193-1.687-5.362 0-2.792 1.11-5.086 3.33-6.884 2.217-1.797 5.095-2.696 8.63-2.696 1.084 0 2.3.12 3.645.361 1.346.242 2.47.553 3.374.934v6.93c-.964-.644-2.089-1.195-3.374-1.658-1.286-.462-2.56-.693-3.826-.693-1.386 0-2.465.271-3.238.813-.774.543-1.16 1.286-1.16 2.23m-35.066 7.562c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.449-2.545-6.039-2.545-2.672 0-4.745.888-6.222 2.666-1.476 1.777-2.214 4.313-2.214 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.893-2.993 6.91-4.489 12.051-4.489 4.84 0 8.621 1.441 11.342 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.446 9.018-4.338 11.99-2.892 2.973-6.828 4.458-11.809 4.458-4.8 0-8.61-1.41-11.433-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-3.136-16.448c.582 0 1.105.041 1.567.121.462.08.853.18 1.175.301v7.38c-.382-.28-.939-.546-1.672-.798-.733-.25-1.622-.376-2.666-.376-1.788 0-3.299.753-4.534 2.26-1.235 1.505-1.853 3.825-1.853 6.958v15.635h-7.29V98.624h7.29v4.88h.12c.663-1.687 1.667-3.007 3.013-3.96 1.346-.954 2.962-1.432 4.85-1.432m-27.956 26.18c1.084 0 2.28-.25 3.585-.754a15.06 15.06 0 003.615-1.988v6.778c-1.165.663-2.485 1.165-3.962 1.506-1.475.342-3.098.512-4.865.512-4.559 0-8.265-1.44-11.116-4.323-2.852-2.88-4.278-6.562-4.278-11.04 0-4.98 1.456-9.083 4.37-12.307 2.91-3.224 7.037-4.835 12.38-4.835 1.366 0 2.746.176 4.143.527 1.395.352 2.504.758 3.328 1.22v6.99c-1.125-.824-2.274-1.462-3.45-1.914a9.966 9.966 0 00-3.599-.678c-2.872 0-5.192.934-6.959 2.802-1.768 1.868-2.652 4.388-2.652 7.562 0 3.132.85 5.573 2.546 7.32 1.697 1.748 4.002 2.621 6.914 2.621m-22.112 5.302h-7.29V98.624h7.29zm-8.044-39.916c0-1.205.437-2.214 1.311-3.028.874-.813 1.913-1.22 3.118-1.22 1.285 0 2.35.417 3.193 1.25.844.834 1.266 1.833 1.266 2.998 0 1.185-.432 2.18-1.296 2.982-.864.804-1.918 1.205-3.163 1.205-1.246 0-2.295-.406-3.148-1.219-.854-.815-1.28-1.803-1.28-2.968m-6.274-3.284v43.2h-7.5v-33.86h-.12l-13.408 33.86h-4.97l-13.738-33.86h-.09v33.86h-6.929v-43.2h10.755l12.412 32.024h.18l13.105-32.024z"></path>
+							<path d="M106.214 106.214H71.996V71.996h34.218z" fill="#f25022"></path>
+							<path d="M143.993 106.214h-34.218V71.996h34.218z" fill="#7fba00"></path>
+							<path d="M106.214 143.993H71.996v-34.218h34.218z" fill="#00a4ef"></path>
+							<path d="M143.993 143.993h-34.218v-34.218h34.218z" fill="#ffb900"></path>
+						</g>
+					</g>
+				</svg>
+			</div>
+		</a>
+	</div> 
+			
+		<div class="nav-bar-item is-hidden-tablet">
+			<div class="nav-bar-menu">
+				<button class="nav-bar-button is-title" title="全球导航" aria-expanded="false">
+					<span class="nav-bar-menu-title"><!---->文档<!----></span>
+					<div class="nav-bar-burger">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span class="nav-bar-burger-label"><!---->全球导航<!----></span>
+					</div>
+				</button>
+			</div>
+		</div>
+	
+			
+		<nav class="nav-bar-nav" role="navigation" aria-label="全球">
+			<ul class="nav-bar-nav-list">
+				
+		<li class="nav-bar-item is-category">
+			<a class="nav-bar-button is-title has-hover-underline" itemprop="url" href="https://docs.microsoft.com/zh-cn/">
+				<span><!---->Docs<!----></span>
+			</a>
+		</li>
+	
+				<!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline is-active" href="https://docs.microsoft.com/zh-cn/">
+					<span><!---->文档<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/zh-cn/learn/">
+					<span><!---->Learn<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/zh-cn/answers/products/">
+					<span><!---->Q&amp;A<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/zh-cn/samples/browse/">
+					<span><!---->代码示例<!----></span>
+				</a>
+		  </li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-116">
+			<span><!---->更多<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-116" aria-label="更多">
+			<!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/"><!---->文档<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/learn/"><!---->Learn<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/answers/products/"><!---->Q&amp;A<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/samples/browse/"><!---->代码示例<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+			<span class="nav-bar-spacer"></span>
+			
+		<div class="nav-bar-search " id="ax-117" hidden="">
+			
+		<form class="nav-bar-search-form" method="GET" name="searchForm" role="search" id="searchForm" aria-label="搜索" aria-expanded="false" action="https://docs.microsoft.com/zh-cn/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-search-input" class="autocomplete-input input   is-small" type="search" name="search" aria-expanded="false" aria-owns="ax-118-listbox" aria-activedescendant="" aria-label="搜索" placeholder="搜索">
+
+				<span aria-hidden="true" class="icon is-small is-left" hidden="">
+					<span class="has-text-primary docon docon-undefined"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-118-listbox" aria-label="site-search-input-suggestions" hidden="">
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="scope" hidden="" value=".NET">
+			
+			
+		</form>
+	
+		</div>
+		
+					<div class="nav-bar-search">
+						<!-- hidden when the width drops to tablet -->
+						
+		<form class="nav-bar-search-form" method="GET" name="searchForm" role="search" id="searchFormDesktop" aria-label="搜索" aria-expanded="false" action="https://docs.microsoft.com/zh-cn/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-119" class="autocomplete-input input control has-icons-left  is-small" type="search" name="search" aria-expanded="false" aria-owns="ax-120-listbox" aria-activedescendant="" aria-label="搜索" placeholder="搜索">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-search"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-120-listbox" aria-label="ax-119-suggestions" hidden="">
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			<input name="scope" hidden="" value=".NET">
+			
+			
+		</form>
+	
+					</div>
+			  
+		<div class="nav-bar-search " hidden="">
+			<div class="nav-bar-search-form-expander">
+				<button id="form-expander" class="nav-bar-button has-hover-underline " title="搜索" aria-expanded="false" aria-controls="ax-117">
+					
+		<span class="is-visually-hidden-mobile"><!---->搜索<!----></span>
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-search"></span>
+		</span>
+	
+				</button>
+			</div>
+		</div>
+	
+			
+		<div class="nav-bar-profile">
+			
+		<a class="docs-sign-in auth-status-determined not-authenticated" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#">
+			登录
+		</a>
+	 
+		<div class="dropdown has-caret auth-status-determined authenticated">
+			<button class="dropdown-trigger button-reset" aria-controls="user-menu" aria-expanded="false" aria-label="你的帐户">
+				<figure class="image is-36x36">
+					<img class="has-body-background-medium is-rounded" alt="" data-profile-property="avatarUrl">
+				</figure>
+			</button>
+			<div class="dropdown-menu box has-flex-justify-content-start has-body-background" id="user-menu" role="menu">
+				<div class="media is-user-dir">
+					<div class="media-left">
+						<figure class="image is-48x48" aria-hidden="true">
+							<img class="has-body-background-medium is-rounded" aria-labelledby="displayName" data-profile-property="avatarUrl">
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-size-large">
+							<span id="displayName" class="is-inline-truncated has-max-width-200" data-profile-property="displayName"></span>
+						</p>
+						<p class="subtitle is-size-small has-margin-bottom-none">
+							<span class="is-inline-truncated has-max-width-200" data-profile-property="upn"></span>
+						</p>
+					</div>
+				</div>
+				<ul class="has-padding-top-small has-padding-bottom-medium">
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="profileUrl"><!---->配置文件<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="bookmarksUrl"><!---->书签<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="collectionsUrl"><!---->集合<!----></a>
+					</li>
+				</ul>
+				<div class="has-border-top has-padding-top-medium">
+					<a class="docs-sign-out" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#"><!---->注销<!----></a>
+				</div>
+			</div>
+		</div>
+	
+		</div>
+	
+		 <!----></div> <div class="nav-bar has-border-top is-hidden-mobile"><!----> 
+		<a class="nav-bar-button is-title has-hover-underline" itemprop="url" href="https://docs.microsoft.com/dotnet/">
+			<span>
+				.NET
+				
+			</span>
+		</a>
+	 
+		
+		<nav class="nav-bar-nav" role="navigation" aria-label="站点">
+			<ul class="nav-bar-nav-list">
+				
+				<!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-121">
+			<span><!---->语言<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-121" aria-label="语言">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/csharp/"><!---->C#<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/fsharp/"><!---->F#<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/"><!---->Visual Basic<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-122">
+			<span><!---->工作负载<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-122" aria-label="工作负载">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/aspnet/core/"><!---->Web<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/xamarin/"><!---->移动<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/azure/"><!---->云<!----></a>
+				</li>
+		  <!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-123">
+			<span><!---->桌面<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-123" aria-label="桌面">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/desktop-wpf/"><!---->Windows Presentation Foundation<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/"><!---->Windows 窗体<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/windows/uwp/"><!---->通用 Windows 应用<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-124">
+			<span><!---->机器学习和数据<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-124" aria-label="机器学习和数据">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/machine-learning/"><!---->ML.NET<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/spark/"><!---->.NET for Apache Spark<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/ef/"><!---->实体框架<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-125">
+			<span><!---->API<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-125" aria-label="API">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=netcore-3.1"><!---->.NET Core<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=netframework-4.8"><!---->.NET Framework<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=aspnetcore-3.1"><!---->ASP.NET<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=ml-dotnet"><!---->ML.NET<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-126">
+			<span><!---->资源<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-126" aria-label="资源">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet"><!---->什么是 .NET？<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn/dotnet/architecture-guides"><!---->.NET 体系结构指南<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn"><!---->学习材料<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/download"><!---->下载<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/platform/community"><!---->社区<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/platform/support"><!---->支持<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://devblogs.microsoft.com/dotnet/"><!---->博客<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-127">
+			<span><!---->更多<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-127" aria-label="更多">
+			<!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-128">
+			<span><!---->语言<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-128" aria-label="语言">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/csharp/"><!---->C#<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/fsharp/"><!---->F#<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/"><!---->Visual Basic<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-129">
+			<span><!---->工作负载<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-129" aria-label="工作负载">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/aspnet/core/"><!---->Web<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/xamarin/"><!---->移动<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/azure/"><!---->云<!----></a>
+				</li>
+		  <!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-130">
+			<span><!---->桌面<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-130" aria-label="桌面">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/desktop-wpf/"><!---->Windows Presentation Foundation<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/framework/winforms/"><!---->Windows 窗体<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/windows/uwp/"><!---->通用 Windows 应用<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-131">
+			<span><!---->机器学习和数据<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-131" aria-label="机器学习和数据">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/machine-learning/"><!---->ML.NET<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/spark/"><!---->.NET for Apache Spark<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/ef/"><!---->实体框架<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-132">
+			<span><!---->API<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-132" aria-label="API">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=netcore-3.1"><!---->.NET Core<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=netframework-4.8"><!---->.NET Framework<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=aspnetcore-3.1"><!---->ASP.NET<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/zh-cn/dotnet/api/?view=ml-dotnet"><!---->ML.NET<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  " aria-controls="ax-133">
+			<span><!---->资源<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-right-light "></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-133" aria-label="资源">
+			<!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn/dotnet/what-is-dotnet"><!---->什么是 .NET？<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn/dotnet/architecture-guides"><!---->.NET 体系结构指南<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/learn"><!---->学习材料<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/download"><!---->下载<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/platform/community"><!---->社区<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://dotnet.microsoft.com/platform/support"><!---->支持<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item">
+					<a class="nav-bar-button " href="https://devblogs.microsoft.com/dotnet/"><!---->博客<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+		<span class="nav-bar-spacer"></span>
+		
+		<ol class="nav-bar-list">
+			 
+		<li class="nav-bar-item ">
+			<a class="button is-small is-primary " href="https://dotnet.microsoft.com/download">
+				下载 .NET
+			</a>
+		</li>
+	
+		</ol>
+	 
+	 <!----></div> <!----></header>		</div>
+
+				<div class="content-header uhf-container has-padding has-default-focus has-border-bottom-none" data-bi-name="content-header">
+				<nav class="has-padding-none has-padding-left-medium-tablet has-padding-right-medium-tablet has-padding-left-none-uhf-tablet has-padding-left-none-uhf-tablet has-padding-none-desktop has-flex-grow" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="痕迹">
+					<ul id="page-breadcrumbs" class="breadcrumbs"><!---->
+			<!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/zh-cn/">
+								<span itemprop="name">
+									Docs
+								</span>
+						  </a>
+					<meta itemprop="position" content="1">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/zh-cn/dotnet/">
+								<span itemprop="name">
+									.NET
+								</span>
+						  </a>
+					<meta itemprop="position" content="2">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/zh-cn/dotnet/fundamentals/">
+								<span itemprop="name">
+									.NET 基础知识
+								</span>
+						  </a>
+					<meta itemprop="position" content="3">
+				</li><!---->
+		<!----></ul>
+				</nav>
+			<div class="content-header-controls">
+				<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true">
+					<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+					<span class="contents-expand-title">目录</span>
+				</button>
+				<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+					<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+					<span>退出焦点模式</span>
+				</button>
+			</div>
+			<div class="has-padding-none-tablet has-padding-medium is-size-small is-flex-touch has-flex-justify-content-space-between-touch has-flex-grow">
+				<ul class="is-hidden-mobile action-list has-flex-justify-content-start has-flex-justify-content-end-tablet is-flex is-flex-row has-flex-wrap has-flex-grow is-unstyled">
+					<li>
+
+<div class="language dropdown has-caret is-inline-block has-border-mobile">
+	<button class="dropdown-trigger button is-text is-small" aria-controls="language-menu" aria-expanded="false" title="语言" data-bi-name="language">
+		<span class="icon is-hidden-desktop has-margin-none">
+			<span class="docon docon-code-lang" aria-hidden="true"></span>
+		</span>
+		<span id="lang-title" class="is-visually-hidden-touch has-flex-align-self-start is-hidden-portrait" dir="ltr">C#</span>
+		<span class="icon is-hidden-mobile is-hidden-tablet-only" aria-hidden="true">
+			<span class="docon docon-chevron-down-light expanded-indicator"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" name="language-selector" id="language-selector" role="menu">
+		<ul data-bi-name="language-links" dir="ltr">
+			<li>
+				<a class="button is-text is-small is-fullwidth has-flex-justify-content-start" data-bi-name="lang-csharp" tabindex="0" aria-selected="true">C#</a>
+			</li>
+			<li>
+				<a class="button is-text is-small is-fullwidth has-flex-justify-content-start" data-bi-name="lang-vb" tabindex="0" aria-selected="false">VB</a>
+			</li>
+		</ul>
+	</div>
+</div>					</li>
+					<li>
+						<button type="button" class="bookmark button is-text has-inner-focus is-small is-icon-only-touch" data-list-type="bookmarks" data-bi-name="bookmark" title="添加 处理和引发事件 | Microsoft Docs 的书签" aria-pressed="false">
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-single-bookmark"></span>
+							</span>
+							<span class="bookmark-status is-visually-hidden-touch is-hidden-portrait">书签</span>
+						</button>
+					</li>
+						<li id="feedback-section-link">
+							<a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#feedback" class="button is-text has-inner-focus is-small is-icon-only-touch" data-bi-name="comments" title="发送有关此页面的反馈">
+								<span class="icon" aria-hidden="true">
+									<span class="docon docon-comment-lines"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">反馈</span>
+							</a>
+						</li>
+							<li id="contenteditbtn">
+								<a href="https://github.com/dotnet/docs.zh-cn/blob/live/docs/standard/events/index.md" class="button is-text has-inner-focus is-icon-only-touch is-small" title="编辑本文" data-bi-name="edit" data-original_content_git_url="https://github.com/dotnet/docs.zh-cn/blob/live-sxs/docs/standard/events/index.md" data-original_content_git_url_template="{repo}/blob/{branch}/docs/standard/events/index.md" data-pr_repo="" data-pr_branch="">
+								<span class="icon" aria-hidden="true">
+									<span class="docon docon-edit-outline"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">编辑</span>
+							</a>
+						</li>
+					<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small is-icon-only-touch" aria-controls="sharing-menu" aria-expanded="false" title="共享本文" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">共享</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-twitter" data-bi-name="twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fdotnet%2Fstandard%2Fevents%2F%3Fredirectedfrom%3DMSDN%26WT.mc_id%3Dtwitter&amp;text=%E5%A4%84%E7%90%86%E5%92%8C%E5%BC%95%E5%8F%91%E4%BA%8B%E4%BB%B6%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fdotnet%2Fstandard%2Fevents%2F%3Fredirectedfrom%3DMSDN%26WT.mc_id%3Dtwitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-linkedin" data-bi-name="linkedin" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fdotnet%2Fstandard%2Fevents%2F%3Fredirectedfrom%3DMSDN%26WT.mc_id%3Dlinkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-facebook" data-bi-name="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fdotnet%2Fstandard%2Fevents%2F%3Fredirectedfrom%3DMSDN%26WT.mc_id%3Dfacebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-email" data-bi-name="email" href="mailto:?subject=%5B%E5%85%B1%E4%BA%AB%E6%96%87%E7%AB%A0%5D%20%E5%A4%84%E7%90%86%E5%92%8C%E5%BC%95%E5%8F%91%E4%BA%8B%E4%BB%B6%20%7C%20Microsoft%20Docs&amp;body=%E5%A4%84%E7%90%86%E5%92%8C%E5%BC%95%E5%8F%91%E4%BA%8B%E4%BB%B6%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fdotnet%2Fstandard%2Fevents%2F%3Fredirectedfrom%3DMSDN%26WT.mc_id%3Demail">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>电子邮件</span>
+				</a>
+			</li>
+			<li>
+				<span class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-wechat has-padding-top-extra-small has-padding-left-medium has-padding-right-medium">
+					<span class="icon">
+						<span class="docon docon-wechat has-text-primary" data-bi-name="wechat" aria-hidden="true"></span>
+					</span>
+					<span>微信</span>
+				</span>
+			</li>
+			<li>
+				<canvas class="qr-code" height="96" width="96"></canvas>
+			</li>
+		</ul>
+	</div>
+</div>					</li>
+					<li>
+
+<div class="lang-toggle-container" style="display: flex;">
+	<label for="language-toggle" aria-hidden="true" tabindex="-1">使用英语阅读</label>
+	<div class="checkbox-toggle-wrapper">
+		<input type="checkbox" id="language-toggle" aria-label="使用英语阅读" data-m="{&quot;cN&quot;:&quot;language-toggle&quot;,&quot;value&quot;:&quot;off&quot;}">
+		<label for="language-toggle" class="switch"></label>
+	</div>
+</div>					</li>
+				</ul>
+				<button type="button" class="has-border contents-button button is-small is-text is-hidden-tablet has-inner-focus" aria-label="目录" data-bi-name="contents-expand">
+					<span class="icon">
+						<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+					</span>
+					<span class="contents-expand-title">目录</span>
+				</button>
+				<div class="is-invisible"></div>
+				<div class="is-hidden-tablet level-item is-flexible level-right">
+
+<div class="language dropdown has-caret is-inline-block has-border-mobile">
+	<button class="dropdown-trigger button is-text is-small" aria-controls="language-menu" aria-expanded="false" title="语言" data-bi-name="language">
+		<span class="icon is-hidden-desktop has-margin-none">
+			<span class="docon docon-code-lang" aria-hidden="true"></span>
+		</span>
+		<span id="lang-title" class="is-visually-hidden-touch has-flex-align-self-start is-hidden-portrait" dir="ltr">语言</span>
+		<span class="icon is-hidden-mobile is-hidden-tablet-only" aria-hidden="true">
+			<span class="docon docon-chevron-down-light expanded-indicator"></span>
+		</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" name="language-selector" id="language-selector" role="menu">
+		<ul data-bi-name="language-links" dir="ltr">
+			<li>
+				<a class="button is-text is-small is-fullwidth has-flex-justify-content-start" data-bi-name="lang-csharp" tabindex="0" aria-selected="false">C#</a>
+			</li>
+			<li>
+				<a class="button is-text is-small is-fullwidth has-flex-justify-content-start" data-bi-name="lang-vb" tabindex="0" aria-selected="false">VB</a>
+			</li>
+		</ul>
+	</div>
+</div>					<button type="button" class="page-actions-button button is-small is-text is-hidden-tablet has-inner-focus has-border is-full-height  has-margin-left-small" aria-label="页面操作" data-bi-name="pageactions">
+						<span class="icon">
+							<span class="docon docon-more-vertical" aria-hidden="true"></span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+
+
+	<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus"></div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="is-fixed is-flex is-flex-column" role="navigation" aria-label="主要" data-bi-name="left toc" style="width: 364px; top: 166.667px; bottom: 24px;"><form action="javascript:" role="search" aria-label="搜索" class="has-margin-bottom-small"><label class="visually-hidden" for="ax-0">搜索</label><div class="autocomplete is-block" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-0" class="autocomplete-input input control has-icons-left is-full-width is-small" type="text" aria-expanded="false" aria-owns="ax-1-listbox" aria-activedescendant="" placeholder="按标题筛选">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-filter-settings"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-1-listbox" aria-label="ax-0-suggestions" hidden="">
+				
+			</ul><!----></div></form><ul class="tree is-vertically-scrollable has-flex-grow has-flex-shrink" role="tree" aria-label="目录" data-bi-name="tree" data-is-collapsible="true"><li role="none"><a aria-setsize="15" aria-level="1" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/fundamentals/">.NET 文档</a></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="2" role="treeitem" tabindex="-1" id="title-2-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>入门（第 1 天）</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="3" role="treeitem" tabindex="-1" id="title-3-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>概述（第 1 周）</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="4" role="treeitem" tabindex="-1" id="title-4-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>新增功能</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="5" role="treeitem" tabindex="-1" id="title-5-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>环境和运行时组件</span></li><li class="tree-item is-expanded" aria-setsize="15" aria-level="1" aria-posinset="6" role="treeitem" tabindex="-1" id="title-6-1" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>基本编码组件</span><ul class="tree-group" role="group"><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="1" role="treeitem" tabindex="-1" id="title-6-1_1-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>基类型概述</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="2" role="treeitem" tabindex="-1" id="title-6-1_2-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>泛型类型</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="3" role="treeitem" tabindex="-1" id="title-6-1_3-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>集合和数据结构</span></li><li role="none"><a aria-setsize="13" aria-level="2" aria-posinset="4" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/standard/delegates-lambdas">委托和 lambda</a></li><li class="tree-item is-expanded" aria-setsize="13" aria-level="2" aria-posinset="5" role="treeitem" tabindex="-1" id="title-6-1_5-2" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>事件</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="4" aria-level="3" aria-posinset="1" role="treeitem" tabindex="0" class="tree-item is-leaf is-selected" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/" aria-current="page">概述</a></li><li role="none"><a aria-setsize="4" aria-level="3" aria-posinset="2" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/how-to-raise-and-consume-events">引发和使用事件</a></li><li role="none"><a aria-setsize="4" aria-level="3" aria-posinset="3" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/how-to-handle-multiple-events-using-event-properties">使用事件属性处理多个事件</a></li><li class="tree-item" aria-setsize="4" aria-level="3" aria-posinset="4" role="treeitem" tabindex="-1" id="title-6-1_5-2_4-3" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>监视程序设计模式</span></li></ul></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="6" role="treeitem" tabindex="-1" id="title-6-1_6-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>例外</span></li><li role="none"><a aria-setsize="13" aria-level="2" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/standard/numerics">数字类型</a></li><li role="none"><a aria-setsize="13" aria-level="2" aria-posinset="8" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/standard/datetime/">日期、时间和时区</a></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="9" role="treeitem" tabindex="-1" id="title-6-1_9-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>设置数字、日期和其他类型的格式</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="10" role="treeitem" tabindex="-1" id="title-6-1_10-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>操作字符串</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="11" role="treeitem" tabindex="-1" id="title-6-1_11-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>分析字符串</span></li><li class="tree-item" aria-setsize="13" aria-level="2" aria-posinset="12" role="treeitem" tabindex="-1" id="title-6-1_12-2" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>属性</span></li><li role="none"><a aria-setsize="13" aria-level="2" aria-posinset="13" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/choosing-between-anonymous-and-tuple">在匿名类型和元组类型之间进行选择</a></li></ul></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="7" role="treeitem" tabindex="-1" id="title-7-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Microsoft 扩展</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="8" role="treeitem" tabindex="-1" id="title-8-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>数据访问</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="9" role="treeitem" tabindex="-1" id="title-9-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>并行处理、并发和异步</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="10" role="treeitem" tabindex="-1" id="title-10-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>序列化</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="11" role="treeitem" tabindex="-1" id="title-11-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>文件和流 I/O</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="12" role="treeitem" tabindex="-1" id="title-12-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>单元测试</span></li><li role="none"><a aria-setsize="15" aria-level="1" aria-posinset="13" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/zh-cn/dotnet/standard/security/">安全性</a></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="14" role="treeitem" tabindex="-1" id="title-14-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>高级主题</span></li><li class="tree-item" aria-setsize="15" aria-level="1" aria-posinset="15" role="treeitem" tabindex="-1" id="title-15-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>迁移指南</span></li></ul><a class="button is-small is-text has-flex-justify-content-start has-inner-focus has-margin-top-small has-border-top has-border-bottom has-flex-shrink-none" href="https://docs.microsoft.com/zh-cn/dotnet/opbuildpdf/fundamentals/toc.pdf?branch=live" data-bi-name="downloadPdf" rel="nofollow"><!----> <span class="icon is-size-extra-small has-text-subtle">
+				<span aria-hidden="true" class="docon docon-dictionary-download"></span>
+			</span>
+			<span><!---->下载 PDF<!----></span><!----></a></nav>
+			</div>
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+				<div id="main-column" class="column  is-full is-four-fifths-desktop ">
+
+					<main id="main" role="main" class="content " data-bi-name="content" lang="zh-cn" dir="ltr">
+
+
+
+						<h1 id="handling-and-raising-events"><span data-ttu-id="cac6c-104">处理和引发事件</span><span class="sxs-lookup"><span data-stu-id="cac6c-104">Handling and raising events</span></span></h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="zh-cn" dir="ltr">
+							<li>
+								<time class="" data-article-date="" aria-label="文章评审日期" datetime="2017-03-30T00:00:00.000Z" data-article-date-source="ms.date">2017/03/30</time>
+							</li>
+								<li class="contributors-holder">
+										<a href="https://github.com/dotnet/docs.zh-cn/blob/live/docs/standard/events/index.md" title="3 作者" aria-label="3 作者">
+									<ul class="contributors" data-bi-name="contributors" aria-hidden="true">
+												<li><img src="./处理和引发事件 _ Microsoft Docs_files/IEvangelist.png" data-src="https://github.com/IEvangelist.png?size=32" role="presentation"></li>
+												<li><img src="./处理和引发事件 _ Microsoft Docs_files/olprod.png" data-src="https://github.com/olprod.png?size=32" role="presentation"></li>
+												<li><img src="./处理和引发事件 _ Microsoft Docs_files/OpenLocalizationService.png" data-src="https://github.com/OpenLocalizationService.png?size=32" role="presentation"></li>
+									</ul>
+										</a>
+								</li>
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="文章大纲">
+							<h3>本文内容</h3>
+						<ol><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#events">事件</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#delegates">委托</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#event-data">事件数据</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#event-handlers">事件处理程序</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#static-and-dynamic-event-handlers">静态和动态事件处理程序</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#raising-multiple-events">引发多个事件</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#related-topics">相关主题</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#see-also">请参阅</a></li></ol></nav>
+
+						<!-- <content> -->
+							<p><span data-ttu-id="cac6c-105">.NET 中的事件基于委托模型。</span><span class="sxs-lookup"><span data-stu-id="cac6c-105">Events in .NET are based on the delegate model.</span></span> <span data-ttu-id="cac6c-106">委托模型遵循<a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/observer-design-pattern" data-linktype="relative-path">观察者设计模式</a>，使订阅者能够向提供方注册并接收相关通知。</span><span class="sxs-lookup"><span data-stu-id="cac6c-106">The delegate model follows the <a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/observer-design-pattern" data-linktype="relative-path">observer design pattern</a>, which enables a subscriber to register with and receive notifications from a provider.</span></span> <span data-ttu-id="cac6c-107">事件发送方推送事件发生的通知，事件接收器接收该通知并定义对它的响应。</span><span class="sxs-lookup"><span data-stu-id="cac6c-107">An event sender pushes a notification that an event has happened, and an event receiver receives that notification and defines a response to it.</span></span> <span data-ttu-id="cac6c-108">本文介绍委托模型的主要组件、如何在应用程序中使用事件以及如何在你的代码中实现事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-108">This article describes the major components of the delegate model, how to consume events in applications, and how to implement events in your code.</span></span></p>
+<p><span data-ttu-id="cac6c-109">有关在 Windows 8.x Store 应用中处理事件的信息，请参阅<a href="https://docs.microsoft.com/zh-cn/previous-versions/windows/apps/hh758286(v=win.10)" data-linktype="absolute-path">事件和路由事件概述</a>。</span><span class="sxs-lookup"><span data-stu-id="cac6c-109">For information about handling events in Windows 8.x Store apps, see <a href="https://docs.microsoft.com/zh-cn/previous-versions/windows/apps/hh758286(v=win.10)" data-linktype="absolute-path">Events and routed events overview</a>.</span></span></p>
+<h2 id="events" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#events" aria-labelledby="events"></a><span data-ttu-id="cac6c-110">事件</span><span class="sxs-lookup"><span data-stu-id="cac6c-110">Events</span></span></h2>
+<p><span data-ttu-id="cac6c-111">事件是由对象发送的用于发出操作信号的消息。</span><span class="sxs-lookup"><span data-stu-id="cac6c-111">An event is a message sent by an object to signal the occurrence of an action.</span></span> <span data-ttu-id="cac6c-112">该操作可能是由用户交互引起，例如单击按钮；也可能是由某些其他程序的逻辑导致，例如更改属性值。</span><span class="sxs-lookup"><span data-stu-id="cac6c-112">The action can be caused by user interaction, such as a button click, or it can result from some other program logic, such as changing a property’s value.</span></span> <span data-ttu-id="cac6c-113">引发事件的对象称为“事件发送方”。</span><span class="sxs-lookup"><span data-stu-id="cac6c-113">The object that raises the event is called the <em>event sender</em>.</span></span> <span data-ttu-id="cac6c-114">事件发送方不知道哪个对象或方法将接收（处理）它引发的事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-114">The event sender doesn't know which object or method will receive (handle) the events it raises.</span></span> <span data-ttu-id="cac6c-115">事件通常是事件发送方的成员，例如 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.web.ui.webcontrols.button.click" data-linktype="absolute-path">Click</a> 事件是 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.web.ui.webcontrols.button" data-linktype="absolute-path">Button</a> 类的成员，<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged" data-linktype="absolute-path">PropertyChanged</a> 事件是实现  <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.componentmodel.inotifypropertychanged" data-linktype="absolute-path">INotifyPropertyChanged</a> 接口的类的成员。</span><span class="sxs-lookup"><span data-stu-id="cac6c-115">The event is typically a member of the event sender; for example, the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.web.ui.webcontrols.button.click" data-linktype="absolute-path">Click</a> event is a member of the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.web.ui.webcontrols.button" data-linktype="absolute-path">Button</a> class, and the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged" data-linktype="absolute-path">PropertyChanged</a> event is a member of the class that implements the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.componentmodel.inotifypropertychanged" data-linktype="absolute-path">INotifyPropertyChanged</a> interface.</span></span></p>
+<p><span data-ttu-id="cac6c-116">若要定义一个事件，可以在事件类签名中使用 <a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/event" data-linktype="relative-path"><code>event</code></a>（在 C# 中）或 <a href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/language-reference/statements/event-statement" data-linktype="relative-path"><code>Event</code></a>（在 Visual Basic 中）关键字，并指定事件的委托类型。</span><span class="sxs-lookup"><span data-stu-id="cac6c-116">To define an event, you use the C# <a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/event" data-linktype="relative-path"><code>event</code></a> or the Visual Basic <a href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/language-reference/statements/event-statement" data-linktype="relative-path"><code>Event</code></a> keyword in the signature of your event class, and specify the type of delegate for the event.</span></span> <span data-ttu-id="cac6c-117">委托在下一节中介绍。</span><span class="sxs-lookup"><span data-stu-id="cac6c-117">Delegates are described in the next section.</span></span></p>
+<p><span data-ttu-id="cac6c-118">通常，为了引发事件，您可以在 C# 中添加一个标记为 <code>protected</code> 和 <code>virtual</code> 或在 Visual Basic 中标记为 <code>Protected</code> 和 <code>Overridable</code> 的方法。</span><span class="sxs-lookup"><span data-stu-id="cac6c-118">Typically, to raise an event, you add a method that is marked as <code>protected</code> and <code>virtual</code> (in C#) or <code>Protected</code> and <code>Overridable</code> (in Visual Basic).</span></span> <span data-ttu-id="cac6c-119">将此方法命名为 <code>On</code><em>EventName</em>；例如，<code>OnDataReceived</code>。</span><span class="sxs-lookup"><span data-stu-id="cac6c-119">Name this method <code>On</code><em>EventName</em>; for example, <code>OnDataReceived</code>.</span></span> <span data-ttu-id="cac6c-120">此方法应接受一个指定事件数据对象（<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> 类型或派生类型）的参数。</span><span class="sxs-lookup"><span data-stu-id="cac6c-120">The method should take one parameter that specifies an event data object, which is an object of type <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> or a derived type.</span></span> <span data-ttu-id="cac6c-121">您提供此方法以允许派生类重写引发事件的逻辑。</span><span class="sxs-lookup"><span data-stu-id="cac6c-121">You provide this method to enable derived classes to override the logic for raising the event.</span></span> <span data-ttu-id="cac6c-122">派生类应始终调用基类的 <code>On</code><em>EventName</em> 方法，以确保注册的委托接收事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-122">A derived class should always call the <code>On</code><em>EventName</em> method of the base class to ensure that registered delegates receive the event.</span></span></p>
+<p><span data-ttu-id="cac6c-123">下面的示例显示如何声明名为 <code>ThresholdReached</code> 事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-123">The following example shows how to declare an event named <code>ThresholdReached</code>.</span></span> <span data-ttu-id="cac6c-124">该事件与 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> 委托相关联并且由 <code>OnThresholdReached</code> 方法引发。</span><span class="sxs-lookup"><span data-stu-id="cac6c-124">The event is associated with the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> delegate and raised in a method named <code>OnThresholdReached</code>.</span></span></p>
+<div class="codeHeader" id="code-try-0" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="复制代码">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>复制</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="EventsOverview#1" data-author-content="class Counter
+{
+    public event EventHandler ThresholdReached;
+
+    protected virtual void OnThresholdReached(EventArgs e)
+    {
+        EventHandler handler = ThresholdReached;
+        handler?.Invoke(this, e);
+    }
+
+    // provide remaining implementation for the class
+}
+"><span><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">event</span> EventHandler ThresholdReached;
+
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnThresholdReached</span>(<span class="hljs-params">EventArgs e</span>)</span>
+    {
+        EventHandler handler = ThresholdReached;
+        handler?.Invoke(<span class="hljs-keyword">this</span>, e);
+    }
+
+    <span class="hljs-comment">// provide remaining implementation for the class</span>
+}
+</span></code></pre><pre tabindex="0" class="has-inner-focus" hidden=""><code class="lang-vb" name="EventsOverview#1" data-author-content="Public Class Counter
+    Public Event ThresholdReached As EventHandler
+
+    Protected Overridable Sub OnThresholdReached(e As EventArgs)
+        RaiseEvent ThresholdReached(Me, e)
+    End Sub
+
+    &#39; provide remaining implementation for the class
+End Class
+">Public Class Counter
+    Public Event ThresholdReached As EventHandler
+
+    Protected Overridable Sub OnThresholdReached(e As EventArgs)
+        RaiseEvent ThresholdReached(Me, e)
+    End Sub
+
+    ' provide remaining implementation for the class
+End Class
+</code></pre><h2 id="delegates" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#delegates" aria-labelledby="delegates"></a><span data-ttu-id="cac6c-125">委托</span><span class="sxs-lookup"><span data-stu-id="cac6c-125">Delegates</span></span></h2>
+<p><span data-ttu-id="cac6c-126">委托是一种保存对方法的引用的类型。</span><span class="sxs-lookup"><span data-stu-id="cac6c-126">A delegate is a type that holds a reference to a method.</span></span> <span data-ttu-id="cac6c-127">委托是通过显示所引用方法的返回类型和参数的签名来声明的，并可以仅保存与其签名匹配的方法的引用。</span><span class="sxs-lookup"><span data-stu-id="cac6c-127">A delegate is declared with a signature that shows the return type and parameters for the methods it references, and it can hold references only to methods that match its signature.</span></span> <span data-ttu-id="cac6c-128">因此，委托等同于类型安全函数指针或回叫。</span><span class="sxs-lookup"><span data-stu-id="cac6c-128">A delegate is thus equivalent to a type-safe function pointer or a callback.</span></span> <span data-ttu-id="cac6c-129">委托声明足以定义委托类。</span><span class="sxs-lookup"><span data-stu-id="cac6c-129">A delegate declaration is sufficient to define a delegate class.</span></span></p>
+<p><span data-ttu-id="cac6c-130">委托在 .NET 中有许多用途。</span><span class="sxs-lookup"><span data-stu-id="cac6c-130">Delegates have many uses in .NET.</span></span> <span data-ttu-id="cac6c-131">在事件上下文中，委托是事件源和处理事件的代码之间的媒介（或类似指针的机制）。</span><span class="sxs-lookup"><span data-stu-id="cac6c-131">In the context of events, a delegate is an intermediary (or pointer-like mechanism) between the event source and the code that handles the event.</span></span> <span data-ttu-id="cac6c-132">如上一节的例子所示，可以通过在事件声明中包括委托类型来将委托和事件相关联。</span><span class="sxs-lookup"><span data-stu-id="cac6c-132">You associate a delegate with an event by including the delegate type in the event declaration, as shown in the example in the previous section.</span></span> <span data-ttu-id="cac6c-133">有关委托的详细信息，请参阅 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.delegate" data-linktype="absolute-path">Delegate</a> 类。</span><span class="sxs-lookup"><span data-stu-id="cac6c-133">For more information about delegates, see the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.delegate" data-linktype="absolute-path">Delegate</a> class.</span></span></p>
+<p><span data-ttu-id="cac6c-134">.NET 提供了 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> 和 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler-1" data-linktype="absolute-path">EventHandler&lt;TEventArgs&gt;</a> 委托来支持大部分事件场景。</span><span class="sxs-lookup"><span data-stu-id="cac6c-134">.NET provides the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> and <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler-1" data-linktype="absolute-path">EventHandler&lt;TEventArgs&gt;</a> delegates to support most event scenarios.</span></span> <span data-ttu-id="cac6c-135">使用 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> 委托处理不包含事件数据的所有事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-135">Use the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> delegate for all events that do not include event data.</span></span> <span data-ttu-id="cac6c-136">使用 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler-1" data-linktype="absolute-path">EventHandler&lt;TEventArgs&gt;</a> 委托处理包含事件相关数据的事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-136">Use the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler-1" data-linktype="absolute-path">EventHandler&lt;TEventArgs&gt;</a> delegate for events that include data about the event.</span></span> <span data-ttu-id="cac6c-137">这些委托没有返回类型值，并且接受两个参数（事件源的对象和事件数据的对象）。</span><span class="sxs-lookup"><span data-stu-id="cac6c-137">These delegates have no return type value and take two parameters (an object for the source of the event, and an object for event data).</span></span></p>
+<p><span data-ttu-id="cac6c-138">委托是<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.multicastdelegate" data-linktype="absolute-path">多播</a>，这意味着它们可以保存对多个事件处理方法的引用。</span><span class="sxs-lookup"><span data-stu-id="cac6c-138">Delegates are <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.multicastdelegate" data-linktype="absolute-path">multicast</a>, which means that they can hold references to more than one event-handling method.</span></span> <span data-ttu-id="cac6c-139">有关详细信息，请参阅 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.delegate" data-linktype="absolute-path">Delegate</a> 参考页。</span><span class="sxs-lookup"><span data-stu-id="cac6c-139">For details, see the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.delegate" data-linktype="absolute-path">Delegate</a> reference page.</span></span> <span data-ttu-id="cac6c-140">委托提供了事件处理中的灵活性和精确控制。</span><span class="sxs-lookup"><span data-stu-id="cac6c-140">Delegates provide flexibility and fine-grained control in event handling.</span></span> <span data-ttu-id="cac6c-141">委托人通过维护事件的已注册事件处理程序列表来充当引发事件的类的事件调度程序。</span><span class="sxs-lookup"><span data-stu-id="cac6c-141">A delegate acts as an event dispatcher for the class that raises the event by maintaining a list of registered event handlers for the event.</span></span></p>
+<p><span data-ttu-id="cac6c-142">在 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> 和 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler-1" data-linktype="absolute-path">EventHandler&lt;TEventArgs&gt;</a> 委托不可用的场景下，您可以定义一个委托。</span><span class="sxs-lookup"><span data-stu-id="cac6c-142">For scenarios where the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> and <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler-1" data-linktype="absolute-path">EventHandler&lt;TEventArgs&gt;</a> delegates do not work, you can define a delegate.</span></span> <span data-ttu-id="cac6c-143">要求你定义委托的场景非常少见的，例如，当你必须处理无法识别泛型的代码时。</span><span class="sxs-lookup"><span data-stu-id="cac6c-143">Scenarios that require you to define a delegate are very rare, such as when you must work with code that does not recognize generics.</span></span> <span data-ttu-id="cac6c-144">在声明中使用 <a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/builtin-types/reference-types#the-delegate-type" data-linktype="relative-path"><code>delegate</code></a>（在 C# 中）和 <a href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/language-reference/statements/delegate-statement" data-linktype="relative-path"><code>Delegate</code></a>（在 Visual Basic 中）关键字标记委托。</span><span class="sxs-lookup"><span data-stu-id="cac6c-144">You mark a delegate with the C# <a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/builtin-types/reference-types#the-delegate-type" data-linktype="relative-path"><code>delegate</code></a> and Visual Basic <a href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/language-reference/statements/delegate-statement" data-linktype="relative-path"><code>Delegate</code></a> keyword in the declaration.</span></span> <span data-ttu-id="cac6c-145">下面的示例说明如何声明 <code>ThresholdReachedEventHandler</code> 委托。</span><span class="sxs-lookup"><span data-stu-id="cac6c-145">The following example shows how to declare a delegate named <code>ThresholdReachedEventHandler</code>.</span></span></p>
+<div class="codeHeader" id="code-try-1" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="复制代码">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>复制</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="EventsOverview#4" data-author-content="public delegate void ThresholdReachedEventHandler(object sender, ThresholdReachedEventArgs e);
+"><span><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">delegate</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ThresholdReachedEventHandler</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, ThresholdReachedEventArgs e</span>)</span>;
+</span></code></pre><pre tabindex="0" class="has-inner-focus" hidden=""><code class="lang-vb" name="EventsOverview#4" data-author-content="Public Delegate Sub ThresholdReachedEventHandler(sender As Object, e As ThresholdReachedEventArgs)
+">Public Delegate Sub ThresholdReachedEventHandler(sender As Object, e As ThresholdReachedEventArgs)
+</code></pre><h2 id="event-data" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#event-data" aria-labelledby="event-data"></a><span data-ttu-id="cac6c-146">事件数据</span><span class="sxs-lookup"><span data-stu-id="cac6c-146">Event data</span></span></h2>
+<p><span data-ttu-id="cac6c-147">与事件相关的数据可以通过事件数据类提供。</span><span class="sxs-lookup"><span data-stu-id="cac6c-147">Data that is associated with an event can be provided through an event data class.</span></span> <span data-ttu-id="cac6c-148">.NET 提供了许多事件数据类，用户可以在自己的应用程序中使用它们。</span><span class="sxs-lookup"><span data-stu-id="cac6c-148">.NET provides many event data classes that you can use in your applications.</span></span> <span data-ttu-id="cac6c-149">例如，<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.io.ports.serialdatareceivedeventargs" data-linktype="absolute-path">SerialDataReceivedEventArgs</a> 类是 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.io.ports.serialport.datareceived" data-linktype="absolute-path">SerialPort.DataReceived</a> 事件的事件数据类。</span><span class="sxs-lookup"><span data-stu-id="cac6c-149">For example, the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.io.ports.serialdatareceivedeventargs" data-linktype="absolute-path">SerialDataReceivedEventArgs</a> class is the event data class for the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.io.ports.serialport.datareceived" data-linktype="absolute-path">SerialPort.DataReceived</a> event.</span></span> <span data-ttu-id="cac6c-150">.NET 遵循所有事件数据类以 <code>EventArgs</code> 结尾的命名模式。</span><span class="sxs-lookup"><span data-stu-id="cac6c-150">.NET follows a naming pattern of ending all event data classes with <code>EventArgs</code>.</span></span> <span data-ttu-id="cac6c-151">您通过查看事件的委托来确定哪个事件数据类与事件相关联。</span><span class="sxs-lookup"><span data-stu-id="cac6c-151">You determine which event data class is associated with an event by looking at the delegate for the event.</span></span> <span data-ttu-id="cac6c-152">例如，<a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.io.ports.serialdatareceivedeventhandler" data-linktype="absolute-path">SerialDataReceivedEventHandler</a> 委托包含 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.io.ports.serialdatareceivedeventargs" data-linktype="absolute-path">SerialDataReceivedEventArgs</a> 类作为它的一个参数。</span><span class="sxs-lookup"><span data-stu-id="cac6c-152">For example, the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.io.ports.serialdatareceivedeventhandler" data-linktype="absolute-path">SerialDataReceivedEventHandler</a> delegate includes the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.io.ports.serialdatareceivedeventargs" data-linktype="absolute-path">SerialDataReceivedEventArgs</a> class as one of its parameters.</span></span></p>
+<p><span data-ttu-id="cac6c-153"><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> 类是所有事件数据类的基类型。</span><span class="sxs-lookup"><span data-stu-id="cac6c-153">The <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> class is the base type for all event data classes.</span></span> <span data-ttu-id="cac6c-154">当一个事件没有任何与其相关联的数据时，您也会用到 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> 类。</span><span class="sxs-lookup"><span data-stu-id="cac6c-154"><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> is also the class you use when an event does not have any data associated with it.</span></span> <span data-ttu-id="cac6c-155">当您创建一个事件仅用来通知其他类出问题了，不需要传递任何数据时，请包括 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> 类作为委托中的第二个参数。</span><span class="sxs-lookup"><span data-stu-id="cac6c-155">When you create an event that is only meant to notify other classes that something happened and does not need to pass any data, include the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> class as the second parameter in the delegate.</span></span> <span data-ttu-id="cac6c-156">当没有数据提供时，您可以传递 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs.empty" data-linktype="absolute-path">EventArgs.Empty</a> 值。</span><span class="sxs-lookup"><span data-stu-id="cac6c-156">You can pass the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs.empty" data-linktype="absolute-path">EventArgs.Empty</a> value when no data is provided.</span></span> <span data-ttu-id="cac6c-157"><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> 委托包括 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> 类作为一个参数。</span><span class="sxs-lookup"><span data-stu-id="cac6c-157">The <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> delegate includes the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> class as a parameter.</span></span></p>
+<p><span data-ttu-id="cac6c-158">当您想创建一个自定义的事件数据类时，请创建一个派生自 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a> 的类，然后提供所需的所有成员，来传递与该事件相关的数据。</span><span class="sxs-lookup"><span data-stu-id="cac6c-158">When you want to create a customized event data class, create a class that derives from <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a>, and then provide any members needed to pass data that is related to the event.</span></span> <span data-ttu-id="cac6c-159">通常，应使用与 .NET 相同的命名模式，并且事件数据类名称应以 <code>EventArgs</code> 结尾。</span><span class="sxs-lookup"><span data-stu-id="cac6c-159">Typically, you should use the same naming pattern as .NET and end your event data class name with <code>EventArgs</code>.</span></span></p>
+<p><span data-ttu-id="cac6c-160">下面的示例演示了一个名为 <code>ThresholdReachedEventArgs</code> 的事件数据类。</span><span class="sxs-lookup"><span data-stu-id="cac6c-160">The following example shows an event data class named <code>ThresholdReachedEventArgs</code>.</span></span> <span data-ttu-id="cac6c-161">它包含特定于引发事件的属性。</span><span class="sxs-lookup"><span data-stu-id="cac6c-161">It contains properties that are specific to the event being raised.</span></span></p>
+<div class="codeHeader" id="code-try-2" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="复制代码">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>复制</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="EventsOverview#3" data-author-content="public class ThresholdReachedEventArgs : EventArgs
+{
+    public int Threshold { get; set; }
+    public DateTime TimeReached { get; set; }
+}
+"><span><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">ThresholdReachedEventArgs</span> : <span class="hljs-title">EventArgs</span>
+{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> Threshold { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    <span class="hljs-keyword">public</span> DateTime TimeReached { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+}
+</span></code></pre><pre tabindex="0" class="has-inner-focus" hidden=""><code class="lang-vb" name="EventsOverview#3" data-author-content="Public Class ThresholdReachedEventArgs
+    Inherits EventArgs
+
+    Public Property Threshold As Integer
+    Public Property TimeReached As DateTime
+End Class
+">Public Class ThresholdReachedEventArgs
+    Inherits EventArgs
+
+    Public Property Threshold As Integer
+    Public Property TimeReached As DateTime
+End Class
+</code></pre><h2 id="event-handlers" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#event-handlers" aria-labelledby="event-handlers"></a><span data-ttu-id="cac6c-162">事件处理程序</span><span class="sxs-lookup"><span data-stu-id="cac6c-162">Event handlers</span></span></h2>
+<p><span data-ttu-id="cac6c-163">若要响应事件，您需要在事件接收器中定义一个事件处理程序方法。</span><span class="sxs-lookup"><span data-stu-id="cac6c-163">To respond to an event, you define an event handler method in the event receiver.</span></span> <span data-ttu-id="cac6c-164">此方法必须与您正处理的事件的委托签名匹配。</span><span class="sxs-lookup"><span data-stu-id="cac6c-164">This method must match the signature of the delegate for the event you are handling.</span></span> <span data-ttu-id="cac6c-165">在事件处理程序中，当事件引发时会执行所需操作，例如在用户单击按钮之后收集用户输入。</span><span class="sxs-lookup"><span data-stu-id="cac6c-165">In the event handler, you perform the actions that are required when the event is raised, such as collecting user input after the user clicks a button.</span></span> <span data-ttu-id="cac6c-166">若当事件发生时收到通知，您的事件处理程序方法必须订阅该事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-166">To receive notifications when the event occurs, your event handler method must subscribe to the event.</span></span></p>
+<p><span data-ttu-id="cac6c-167">下面的示例演示与 <code>c_ThresholdReached</code> 委托的签名匹配的 <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> 事件处理程序方法。</span><span class="sxs-lookup"><span data-stu-id="cac6c-167">The following example shows an event handler method named <code>c_ThresholdReached</code> that matches the signature for the <a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a> delegate.</span></span> <span data-ttu-id="cac6c-168">该方法订阅 <code>ThresholdReached</code> 事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-168">The method subscribes to the <code>ThresholdReached</code> event.</span></span></p>
+<div class="codeHeader" id="code-try-3" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="复制代码">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>复制</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" name="EventsOverview#2" data-author-content="class Program
+{
+    static void Main()
+    {
+        var c = new Counter();
+        c.ThresholdReached += c_ThresholdReached;
+
+        // provide remaining implementation for the class
+    }
+
+    static void c_ThresholdReached(object sender, EventArgs e)
+    {
+        Console.WriteLine(&quot;The threshold was reached.&quot;);
+    }
+}
+"><span><span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"></span>)</span>
+    {
+        <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> Counter();
+        c.ThresholdReached += c_ThresholdReached;
+
+        <span class="hljs-comment">// provide remaining implementation for the class</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">c_ThresholdReached</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, EventArgs e</span>)</span>
+    {
+        Console.WriteLine(<span class="hljs-string">"The threshold was reached."</span>);
+    }
+}
+</span></code></pre><pre tabindex="0" class="has-inner-focus" hidden=""><code class="lang-vb" name="EventsOverview#2" data-author-content="Module Module1
+
+    Sub Main()
+        Dim c As New Counter()
+        AddHandler c.ThresholdReached, AddressOf c_ThresholdReached
+
+        &#39; provide remaining implementation for the class
+    End Sub
+
+    Sub c_ThresholdReached(sender As Object, e As EventArgs)
+        Console.WriteLine(&quot;The threshold was reached.&quot;)
+    End Sub
+End Module
+">Module Module1
+
+    Sub Main()
+        Dim c As New Counter()
+        AddHandler c.ThresholdReached, AddressOf c_ThresholdReached
+
+        ' provide remaining implementation for the class
+    End Sub
+
+    Sub c_ThresholdReached(sender As Object, e As EventArgs)
+        Console.WriteLine("The threshold was reached.")
+    End Sub
+End Module
+</code></pre><h2 id="static-and-dynamic-event-handlers" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#static-and-dynamic-event-handlers" aria-labelledby="static-and-dynamic-event-handlers"></a><span data-ttu-id="cac6c-169">静态和动态事件处理程序</span><span class="sxs-lookup"><span data-stu-id="cac6c-169">Static and dynamic event handlers</span></span></h2>
+<p><span data-ttu-id="cac6c-170">借助 .NET，订阅者可以进行静态或动态注册以获得事件通知。</span><span class="sxs-lookup"><span data-stu-id="cac6c-170">.NET allows subscribers to register for event notifications either statically or dynamically.</span></span> <span data-ttu-id="cac6c-171">对于其事件由静态事件处理程序进行处理的类，静态事件处理程序对其整个生命周期有效。</span><span class="sxs-lookup"><span data-stu-id="cac6c-171">Static event handlers are in effect for the entire life of the class whose events they handle.</span></span> <span data-ttu-id="cac6c-172">通常为响应某些条件程序逻辑，会在程序执行期间显式激活和停用动态事件处理程序。</span><span class="sxs-lookup"><span data-stu-id="cac6c-172">Dynamic event handlers are explicitly activated and deactivated during program execution, usually in response to some conditional program logic.</span></span> <span data-ttu-id="cac6c-173">例如，如果仅在特定条件下需要事件通知，或如果应用程序提供多个事件处理程序且由运行时条件定义要使用的适当事件处理程序，则可以使用动态事件处理程序。</span><span class="sxs-lookup"><span data-stu-id="cac6c-173">For example, they can be used if event notifications are needed only under certain conditions or if an application provides multiple event handlers and run-time conditions define the appropriate one to use.</span></span> <span data-ttu-id="cac6c-174">上一节中的示例演示如何动态添加事件处理程序。</span><span class="sxs-lookup"><span data-stu-id="cac6c-174">The example in the previous section shows how to dynamically add an event handler.</span></span> <span data-ttu-id="cac6c-175">有关详细信息，请查看 Visual Basic 中的<a href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/programming-guide/language-features/events/" data-linktype="relative-path">事件</a>和 C# 中的<a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/events/" data-linktype="relative-path">事件</a>。</span><span class="sxs-lookup"><span data-stu-id="cac6c-175">For more information, see <a href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/programming-guide/language-features/events/" data-linktype="relative-path">Events</a> (in Visual Basic) and <a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/events/" data-linktype="relative-path">Events</a> (in C#).</span></span></p>
+<h2 id="raising-multiple-events" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#raising-multiple-events" aria-labelledby="raising-multiple-events"></a><span data-ttu-id="cac6c-176">引发多个事件</span><span class="sxs-lookup"><span data-stu-id="cac6c-176">Raising multiple events</span></span></h2>
+<p><span data-ttu-id="cac6c-177">如果您的类引发多个事件，编译器会为每一个事件委托实例生成一个字段。</span><span class="sxs-lookup"><span data-stu-id="cac6c-177">If your class raises multiple events, the compiler generates one field per event delegate instance.</span></span> <span data-ttu-id="cac6c-178">如果事件数量很大，则可能无法接受按一个委托计算一个字段的存储成本。</span><span class="sxs-lookup"><span data-stu-id="cac6c-178">If the number of events is large, the storage cost of one field per delegate may not be acceptable.</span></span> <span data-ttu-id="cac6c-179">对于这些情况，.NET 提供一个事件属性，可以将其与选择的另一数据结构一起用于存储事件委托。</span><span class="sxs-lookup"><span data-stu-id="cac6c-179">For those situations, .NET provides event properties that you can use with another data structure of your choice to store event delegates.</span></span></p>
+<p><span data-ttu-id="cac6c-180">事件属性由事件声明和事件访问器组成。</span><span class="sxs-lookup"><span data-stu-id="cac6c-180">Event properties consist of event declarations accompanied by event accessors.</span></span> <span data-ttu-id="cac6c-181">事件访问器是您定义的方法，用来从存储数据结构添加和移除事件委托实例。</span><span class="sxs-lookup"><span data-stu-id="cac6c-181">Event accessors are methods that you define to add or remove event delegate instances from the storage data structure.</span></span> <span data-ttu-id="cac6c-182">请注意，事件属性要比事件字段慢，这是因为必须先检索每个事件委托，然后才能调用它。</span><span class="sxs-lookup"><span data-stu-id="cac6c-182">Note that event properties are slower than event fields, because each event delegate must be retrieved before it can be invoked.</span></span> <span data-ttu-id="cac6c-183">需在内存和速度之间进行权衡。</span><span class="sxs-lookup"><span data-stu-id="cac6c-183">The trade-off is between memory and speed.</span></span> <span data-ttu-id="cac6c-184">如果类定义许多不常引发的事件，那么需要实现事件属性。</span><span class="sxs-lookup"><span data-stu-id="cac6c-184">If your class defines many events that are infrequently raised, you will want to implement event properties.</span></span> <span data-ttu-id="cac6c-185">有关详细信息，请参阅<a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/how-to-handle-multiple-events-using-event-properties" data-linktype="relative-path">如何：使用事件属性处理多个事件</a>。</span><span class="sxs-lookup"><span data-stu-id="cac6c-185">For more information, see <a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/how-to-handle-multiple-events-using-event-properties" data-linktype="relative-path">How to: Handle Multiple Events Using Event Properties</a>.</span></span></p>
+<h2 id="related-topics" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#related-topics" aria-labelledby="related-topics"></a><span data-ttu-id="cac6c-186">相关主题</span><span class="sxs-lookup"><span data-stu-id="cac6c-186">Related topics</span></span></h2>
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">相关主题</caption>
+<thead>
+<tr>
+<th><span data-ttu-id="cac6c-187">Title</span><span class="sxs-lookup"><span data-stu-id="cac6c-187">Title</span></span></th>
+<th><span data-ttu-id="cac6c-188">描述</span><span class="sxs-lookup"><span data-stu-id="cac6c-188">Description</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/how-to-raise-and-consume-events" data-linktype="relative-path"><span data-ttu-id="cac6c-189">如何：抛出和使用事件</span><span class="sxs-lookup"><span data-stu-id="cac6c-189">How to: Raise and Consume Events</span></span></a></td>
+<td><span data-ttu-id="cac6c-190">包含引发和使用事件的示例。</span><span class="sxs-lookup"><span data-stu-id="cac6c-190">Contains examples of raising and consuming events.</span></span></td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/how-to-handle-multiple-events-using-event-properties" data-linktype="relative-path"><span data-ttu-id="cac6c-191">如何：使用事件属性处理多个事件</span><span class="sxs-lookup"><span data-stu-id="cac6c-191">How to: Handle Multiple Events Using Event Properties</span></span></a></td>
+<td><span data-ttu-id="cac6c-192">演示如何使用事件属性处理多个事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-192">Shows how to use event properties to handle multiple events.</span></span></td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/observer-design-pattern" data-linktype="relative-path"><span data-ttu-id="cac6c-193">观察程序设计模式</span><span class="sxs-lookup"><span data-stu-id="cac6c-193">Observer Design Pattern</span></span></a></td>
+<td><span data-ttu-id="cac6c-194">描述允许订阅者向提供方注册和接收通知的设计模式。</span><span class="sxs-lookup"><span data-stu-id="cac6c-194">Describes the design pattern that enables a subscriber to register with, and receive notifications from, a provider.</span></span></td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/how-to-consume-events-in-a-web-forms-application" data-linktype="relative-path"><span data-ttu-id="cac6c-195">如何：在 Web 窗体应用程序中使用事件</span><span class="sxs-lookup"><span data-stu-id="cac6c-195">How to: Consume Events in a Web Forms Application</span></span></a></td>
+<td><span data-ttu-id="cac6c-196">演示如何处理 Web 窗体控件引发的事件。</span><span class="sxs-lookup"><span data-stu-id="cac6c-196">Shows how to handle an event that is raised by a Web Forms control.</span></span></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="see-also" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#see-also" aria-labelledby="see-also"></a><span data-ttu-id="cac6c-197">请参阅</span><span class="sxs-lookup"><span data-stu-id="cac6c-197">See also</span></span></h2>
+<ul>
+<li><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler" data-linktype="absolute-path">EventHandler</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventhandler-1" data-linktype="absolute-path">EventHandler&lt;TEventArgs&gt;</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.eventargs" data-linktype="absolute-path">EventArgs</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/dotnet/api/system.delegate" data-linktype="absolute-path">Delegate</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/dotnet/visual-basic/programming-guide/language-features/events/" data-linktype="relative-path"><span data-ttu-id="cac6c-198">事件 (Visual Basic)</span><span class="sxs-lookup"><span data-stu-id="cac6c-198">Events (Visual Basic)</span></span></a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/events/" data-linktype="relative-path"><span data-ttu-id="cac6c-199">事件（C# 编程指南）</span><span class="sxs-lookup"><span data-stu-id="cac6c-199">Events (C# Programming Guide)</span></span></a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/windows/uwp/xaml-platform/events-and-routed-events-overview" data-linktype="absolute-path"><span data-ttu-id="cac6c-200">事件和路由事件概述（UWP 应用）</span><span class="sxs-lookup"><span data-stu-id="cac6c-200">Events and routed events overview (UWP apps)</span></span></a></li>
+</ul>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+								<div class="is-hidden-desktop has-border-top has-margin-top-large has-padding-top-small">
+									
+									
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">此页面有帮助吗?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="是" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>是</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="否" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>否</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-mobile">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-extra-small">
+                <label for="rating-textarea-mobile" class="visually-hidden">还有其他反馈吗？</label>
+                <textarea id="rating-textarea-mobile" rows="4" maxlength="999" placeholder="还有其他反馈吗？" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-transparent has-text-primary is-small has-border-none" type="button">跳过</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">提交</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>谢谢。</p>
+    </div>
+</div>								</div>
+						<!-- end page rating section -->
+
+
+						<!-- feedback section -->
+<section class="feedback-section is-relative" data-bi-name="feedback-section">
+
+    <h2 id="feedback" class="title is-3 has-margin-top-large">反馈</h2>
+
+    <div class="alert choose-feedback-type">
+        <p aria-hidden="true" id="send-feedback-about">提交和查看相关反馈</p>
+
+        <div class="choose-feedback-buttons has-margin-top-medium">
+                <a class="button feedback-type-product has-margin-bottom-small" aria-label="发送有关此产品的反馈" href="https://developercommunity.visualstudio.com/spaces/61/index.html" data-bi-name="product-feedback">
+                    <span>此产品</span>
+                    <span aria-hidden="true" class="icon docon docon-navigate-external is-size-h4 has-margin-left-none"></span>
+                </a>
+
+			<a class="button feedback-type-product has-margin-bottom-small github-link" aria-label="发送有关此页面的反馈" data-bi-name="create-issue-on-github" href="https://github.com/dotnet/docs.zh-cn/issues/new?title=&amp;body=%0A%0A%5B%E5%9C%A8%E6%AD%A4%E5%A4%84%E8%BE%93%E5%85%A5%E5%8F%8D%E9%A6%88%5D%0A%0A%0A---%0A%23%23%23%23%20%E6%96%87%E6%A1%A3%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF%0A%0A%E2%9A%A0%20*%E8%AF%B7%E5%8B%BF%E7%BC%96%E8%BE%91%E6%AD%A4%E9%83%A8%E5%88%86%E3%80%82%20docs.microsoft.com%20%E2%9E%9F%20GitHub%20%E9%97%AE%E9%A2%98%E9%93%BE%E6%8E%A5%E5%BF%85%E9%A1%BB%E5%85%B7%E6%9C%89%E6%AD%A4%E9%83%A8%E5%88%86%E3%80%82*%0A%0A*%20ID%3A%20caf84f7a-743b-867a-2ac5-2ab815f10c45%0A*%20Version%20Independent%20ID%3A%209b1d1a8a-5151-8e4d-2365-7c859e1bacd8%0A*%20Content%3A%20%5B%E5%A4%84%E7%90%86%E5%92%8C%E5%BC%95%E5%8F%91%E4%BA%8B%E4%BB%B6%5D(https%3A%2F%2Fdocs.microsoft.com%2Fzh-cn%2Fdotnet%2Fstandard%2Fevents%2F%3Fredirectedfrom%3DMSDN)%0A*%20Content%20Source%3A%20%5Bdocs%2Fstandard%2Fevents%2Findex.md%5D(https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs.zh-cn%2Fblob%2Flive%2Fdocs%2Fstandard%2Fevents%2Findex.md)%0A*%20Product%3A%20**dotnet**%0A*%20Technology%3A%20**dotnet-standard**%0A*%20GitHub%20Login%3A%20%40IEvangelist%0A*%20Microsoft%20Alias%3A%20**dapine**">
+				<span aria-hidden="true" class="docon docon-brand-github has-padding-right-extra-small"></span>
+				<span>此页面</span>
+			</a>
+        </div>
+    </div>
+
+    <div class="action-container is-flex has-flex-justify-content-end has-margin-top-small has-margin-bottom-small">
+        <a class="view-on-github" data-bi-name="view-on-github" href="https://github.com/dotnet/docs.zh-cn/issues?utf8=%E2%9C%93&amp;q=%229b1d1a8a-5151-8e4d-2365-7c859e1bacd8%22&amp;in=body">
+            <span aria-hidden="true" class="docon docon-brand-github"></span>
+            <span>查看所有页面反馈</span>
+            <span aria-hidden="true" class="icon docon docon-navigate-external is-size-h5"></span>
+        </a>
+    </div>
+</section>
+
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						<div class="footerContainer is-visible-interactive has-default-focus ">
+
+
+
+	<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/zh-cn/locale?target=https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN" data-bi-name="select-locale"><span class="icon docon docon-world is-size-large has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">中文 (简体)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu-interactive" aria-expanded="false" title="主题" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>主题</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+亮					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+暗					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+高对比度					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/zh-cn/previous-versions/" data-bi-name="archivelink">旧版文档</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/zh-cn/teamblog" data-bi-name="bloglink">博客</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/zh-cn/contribute" data-bi-name="contributorGuide">参与</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">隐私和 Cookie</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/zh-cn/legal/termsofuse" data-bi-name="termsofuse">使用条款</a></li>
+				<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">网站反馈</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">商标</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+						</div>
+					</div>
+
+					<div class="is-size-small right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="页面操作">
+						<div id="affixed-right-container" class="doc-outline is-fixed is-vertically-scrollable" style="width: 199.188px; top: 166.667px; bottom: 24px;">
+								
+								
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">此页面有帮助吗?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="是" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>是</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="否" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>否</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-desktop">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-extra-small">
+                <label for="rating-textarea-desktop" class="visually-hidden">还有其他反馈吗？</label>
+                <textarea id="rating-textarea-desktop" rows="4" maxlength="999" placeholder="还有其他反馈吗？" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-transparent has-text-primary is-small has-border-none" type="button">跳过</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">提交</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>谢谢。</p>
+    </div>
+</div>							<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="文章大纲">
+								<h3>本文内容</h3>
+							<ol><li class="selected"><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#events">事件</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#delegates">委托</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#event-data">事件数据</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#event-handlers">事件处理程序</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#static-and-dynamic-event-handlers">静态和动态事件处理程序</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#raising-multiple-events">引发多个事件</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#related-topics">相关主题</a></li><li><a href="https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN#see-also">请参阅</a></li></ol></nav>
+						</div>
+					</div>
+
+					<!--end of div.columns -->
+				</div>
+
+			<!--end of .primary-holder -->
+			</section>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container"></div>
+
+	<div class="footerContainer has-default-focus is-hidden-interactive ">
+
+
+
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/zh-cn/locale?target=https://docs.microsoft.com/zh-cn/dotnet/standard/events/?redirectedfrom=MSDN" data-bi-name="select-locale"><span class="icon docon docon-world is-size-large has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">中文 (简体)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="主题" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>主题</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+亮					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+暗					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+高对比度					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/zh-cn/previous-versions/" data-bi-name="archivelink">旧版文档</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/zh-cn/teamblog" data-bi-name="bloglink">博客</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/zh-cn/contribute" data-bi-name="contributorGuide">参与</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">隐私和 Cookie</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/zh-cn/legal/termsofuse" data-bi-name="termsofuse">使用条款</a></li>
+				<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">网站反馈</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">商标</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+	</div>
+
+		<script type="text/x-mathjax-config;executed=true">
+			MathJax.Hub.Config({
+				showMathMenu: false,
+				showMathMenuMSIE: false,
+				tex2jax: {
+					inlineMath: [['$','$'], ['\\(','\\)']],
+					processEscapes: true
+				}
+			});
+			MathJax.Hub.Register.StartupHook("End", function () {
+				document.documentElement.classList.add('mathjax-complete');
+			});
+		</script>
+		<script src="./处理和引发事件 _ Microsoft Docs_files/MathJax.js.下载" integrity="sha384-RLsAi7wiVvnmHrRjlVvUjU45C0bfsIBg6Gsxue6azjJi+lA5q5uK+XbGzO3yn5g1" crossorigin="anonymous"></script>
+	<div id="action-panel" role="region" aria-label="操作面板" class="action-panel has-default-focus" tabindex="-1"></div>
+	<span id="adobe-target-experiment-container" hidden=""></span>
+
+
+<div class="usabilla_live_button_container" role="button" tabindex="0" style="z-index: 99999990; right: 0px; top: 50%; margin-top: 0px; position: fixed; width: 0px; height: 0px; display: none;" aria-label="Usabilla Feedback Button"><iframe src="./处理和引发事件 _ Microsoft Docs_files/saved_resource(1).html" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" data-tags="right" title="Usabilla Feedback Button" style="width: 0px; height: 0px; margin: 0px; padding: 0px; border: 0px; overflow: hidden; z-index: 9998; position: absolute; left: 0px; top: 0px; box-shadow: 0px 0px 0px; background-color: transparent;"></iframe></div></body></html>
