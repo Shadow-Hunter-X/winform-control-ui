@@ -1,0 +1,11 @@
+E:\winform-ui-control\ctlClockLib\Test\bin\Debug\Test.exe.config
+E:\winform-ui-control\ctlClockLib\Test\bin\Debug\Test.exe
+E:\winform-ui-control\ctlClockLib\Test\bin\Debug\Test.pdb
+E:\winform-ui-control\ctlClockLib\Test\bin\Debug\ctlClockLib.dll
+E:\winform-ui-control\ctlClockLib\Test\bin\Debug\ctlClockLib.pdb
+E:\winform-ui-control\ctlClockLib\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+E:\winform-ui-control\ctlClockLib\Test\obj\Debug\Test.Properties.Resources.resources
+E:\winform-ui-control\ctlClockLib\Test\obj\Debug\Test.csproj.GenerateResource.Cache
+E:\winform-ui-control\ctlClockLib\Test\obj\Debug\Test.exe
+E:\winform-ui-control\ctlClockLib\Test\obj\Debug\Test.pdb
+E:\winform-ui-control\ctlClockLib\Test\obj\Debug\Test.Form1.resources

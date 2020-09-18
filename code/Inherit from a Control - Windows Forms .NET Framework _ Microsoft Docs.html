@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<!-- saved from url=(0165)https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8 -->
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus js-focus-visible theme-light" lang="en-us" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Inherit from a Control - Windows Forms .NET Framework">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@docsmsft">
+
+
+	<meta name="author" content="jillre">
+<meta name="breadcrumb_path" content="/dotnet/desktop/breadcrumb/toc.json">
+<meta name="depot_name" content="MSDN.dotnet-desktop-guide">
+<meta name="document_id" content="a9b75489-26a9-4e72-ed54-2545a414be16">
+<meta name="document_version_independent_id" content="4912568f-8f2c-45bd-50d3-f8e190c06f59">
+<meta name="gitcommit" content="https://github.com/dotnet/docs-desktop/blob/c0ba2844738c5694b52ce5dc2a0f7b6c43d97168/dotnet-desktop-guide/framework/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md">
+<meta name="locale" content="en-us">
+<meta name="manager" content="jillfra">
+<meta name="monikers" content="netframeworkdesktop-4.8">
+<meta name="ms.assetid" content="09476da0-8d4c-4a4c-b969-649519dfb438">
+<meta name="ms.author" content="jillfra">
+<meta name="ms.date" content="03/30/2017">
+<meta name="ms.prod" content="dotnet-framework">
+<meta name="ms.technology" content="dotnet-winforms">
+<meta name="original_content_git_url" content="https://github.com/dotnet/docs-desktop/blob/live/dotnet-desktop-guide/framework/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md">
+<meta name="search.ms_docsetname" content="dotnet-desktop-guide">
+<meta name="search.ms_product" content="MSDN">
+<meta name="search.ms_sitename" content="Docs">
+<meta name="site_name" content="Docs">
+<meta name="updated_at" content="2020-09-01 11:51 PM">
+<meta name="page_type" content="conceptual">
+<meta name="toc_rel" content="toc.json">
+<meta name="pdf_url_template" content="https://docs.microsoft.com/pdfstore/en-us/MSDN.dotnet-desktop-guide/{branchName}{pdfName}">
+<meta name="word_count" content="990">
+
+
+<link href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp" rel="canonical">
+	<title>Inherit from a Control - Windows Forms .NET Framework | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/d6c593e3.site-ltr.css">
+
+	<link rel="stylesheet" href="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/2e5ce4ab.conceptual.css">
+
+
+	<script async="" defer="" crossorigin="anonymous" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/lux.js.下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/analytics.js.下载"></script><script>
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasBinaryRating: true,
+			hasGithubIssues: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'dotnet/docs-desktop',
+			feedbackProductUrl: 'https://developercommunity.visualstudio.com/spaces/61/index.html',
+			contentGitUrl: 'https://github.com/dotnet/docs-desktop/blob/live/dotnet-desktop-guide/framework/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md',
+			extendBreadcrumb: false,
+			isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasBookmark: true,
+			hasShare: true
+		},
+		functions:{}
+	};
+	</script>
+	<script nomodule="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/bluebird.min.js.下载" integrity="sha384-aD4BDeDGeLXLpPK4yKeqtZQa9dv4a/7mQ+4L5vwshIYH1Mc2BrXvHd32iHzYCQy5" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/fetch.umd.min.js.下载" integrity="sha384-EQIXrC5K2+7X8nGgLkB995I0/6jfAvvyG1ieZ+WYGxgJHFMD/alsG9fSDWvzb5Y1" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/template.min.js.下载" integrity="sha384-1zKzI6ldTVHMU7n0W2HpE/lhHI+UG4D9IIaxbj3kT2UhCWicdTuJkTtnKuu0CQzN" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/url.min.js.下载" integrity="sha384-vn7xBMtpSTfzaTRWxj0kVq0UcsbBrTOgZ/M1ISHqe1V358elYva+lfiEC+T8jLPc" crossorigin="anonymous"></script>
+	<script src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/7501e2bd.index-polyfills.js.下载"></script>
+		<script src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/b44ee89d.index-docs.js.下载"></script><style>
+		[data-moniker]:not([data-moniker~='netframeworkdesktop-4.8']) {
+			display: none !important;
+		}
+	</style><script src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/jsll-4.js.下载" async="" defer=""></script>
+<script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js.下载"></script><style type="text/css" media="print">.usabilla_live_button_container { display: none; }</style><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(1).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(2).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(3).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(4).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(5).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(6).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(7).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(8).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(9).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(10).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(11).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(12).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(13).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(14).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(15).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(16).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(17).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(18).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(19).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(20).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(21).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(22).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(23).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(24).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(25).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(26).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(27).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(28).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(29).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(30).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(31).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(32).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(33).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(34).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(35).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(36).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(37).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(38).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(39).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(40).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(41).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(42).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(43).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(44).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(45).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(46).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(47).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(48).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(49).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(50).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(51).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(52).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(53).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(54).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(51).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(53).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(49).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(52).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(54).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(55).下载"></script><script async="" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(56).下载"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.ContentUpdate%27&amp;time=%272020-09-18T08%3A48%3A31.042Z%27&amp;os=%27Windows%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%2722fcbf7b-6aa6-407a-8488-74fb4f6455a2%27&amp;-pageName=%27a9b75489-26a9-4e72-ed54-2545a414be16%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%27&amp;-market=%27en-us%27&amp;-pageTags=%27%7B%22author%22%3A%22jillre%22%2C%22depotname%22%3A%22MSDN.dotnet-desktop-guide%22%2C%22document_version_independent_id%22%3A%224912568f-8f2c-45bd-50d3-f8e190c06f59%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Fc0ba2844738c5694b52ce5dc2a0f7b6c43d97168%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md%22%2C%22manager%22%3A%22jillfra%22%2C%22asst%22%3A%2209476da0-8d4c-4a4c-b969-649519dfb438%22%2C%22pgauth%22%3A%22jillfra%22%2C%22date%22%3A%2203%2F30%2F2017%22%2C%22product%22%3A%22dotnet-framework%22%2C%22technology%22%3A%22dotnet-winforms%22%2C%22giturl%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Flive%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md%22%2C%22publishtime%22%3A%222020-09-01%2011%3A51%20PM%22%2C%22contentlocale%22%3A%22en-us%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-pageHeight=4265&amp;-vpHeight=944&amp;-vpWidth=2133&amp;-actionType=%27S%27&amp;-behavior=0&amp;-vScrollOffset=849&amp;-hScrollOffset=0&amp;-contentVer=%272.0%27&amp;-content=%27%5B%5D%27&amp;*baseType=%27Ms.Content.ContentUpdate%27&amp;*title=%27Inherit%20from%20a%20Control%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs%27&amp;*cookieEnabled=true&amp;*isJs=true&amp;*isDomComplete=false&amp;*isLoggedIn=false&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.2.14%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D13f1e1c9a4704e3f8b2f55889223dd97%26HASH%3D13f1%26LV%3D202006%26V%3D4%26LU%3D1591089184343%27&amp;ext-javascript-userConsent=false&amp;ext-user-localId=%27t%3A1168D781D90E6B741D75DB1ED8206AEF%27&amp;$mscomCookies=false"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.ContentUpdate%27&amp;time=%272020-09-18T08%3A48%3A32.176Z%27&amp;os=%27Windows%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%2722fcbf7b-6aa6-407a-8488-74fb4f6455a2%27&amp;-pageName=%27a9b75489-26a9-4e72-ed54-2545a414be16%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%27&amp;-market=%27en-us%27&amp;-pageTags=%27%7B%22author%22%3A%22jillre%22%2C%22depotname%22%3A%22MSDN.dotnet-desktop-guide%22%2C%22document_version_independent_id%22%3A%224912568f-8f2c-45bd-50d3-f8e190c06f59%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Fc0ba2844738c5694b52ce5dc2a0f7b6c43d97168%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md%22%2C%22manager%22%3A%22jillfra%22%2C%22asst%22%3A%2209476da0-8d4c-4a4c-b969-649519dfb438%22%2C%22pgauth%22%3A%22jillfra%22%2C%22date%22%3A%2203%2F30%2F2017%22%2C%22product%22%3A%22dotnet-framework%22%2C%22technology%22%3A%22dotnet-winforms%22%2C%22giturl%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Flive%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md%22%2C%22publishtime%22%3A%222020-09-01%2011%3A51%20PM%22%2C%22contentlocale%22%3A%22en-us%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-pageHeight=4265&amp;-vpHeight=944&amp;-vpWidth=2133&amp;-actionType=%27S%27&amp;-behavior=0&amp;-vScrollOffset=1133&amp;-hScrollOffset=0&amp;-contentVer=%272.0%27&amp;-content=%27%5B%5D%27&amp;*baseType=%27Ms.Content.ContentUpdate%27&amp;*title=%27Inherit%20from%20a%20Control%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs%27&amp;*cookieEnabled=true&amp;*isJs=true&amp;*isDomComplete=false&amp;*isLoggedIn=false&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.2.14%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D13f1e1c9a4704e3f8b2f55889223dd97%26HASH%3D13f1%26LV%3D202006%26V%3D4%26LU%3D1591089184343%27&amp;ext-javascript-userConsent=false&amp;ext-user-localId=%27t%3A1168D781D90E6B741D75DB1ED8206AEF%27&amp;$mscomCookies=false"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.ContentUpdate%27&amp;time=%272020-09-18T08%3A48%3A34.658Z%27&amp;os=%27Windows%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%2722fcbf7b-6aa6-407a-8488-74fb4f6455a2%27&amp;-pageName=%27a9b75489-26a9-4e72-ed54-2545a414be16%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%27&amp;-market=%27en-us%27&amp;-pageTags=%27%7B%22author%22%3A%22jillre%22%2C%22depotname%22%3A%22MSDN.dotnet-desktop-guide%22%2C%22document_version_independent_id%22%3A%224912568f-8f2c-45bd-50d3-f8e190c06f59%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Fc0ba2844738c5694b52ce5dc2a0f7b6c43d97168%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md%22%2C%22manager%22%3A%22jillfra%22%2C%22asst%22%3A%2209476da0-8d4c-4a4c-b969-649519dfb438%22%2C%22pgauth%22%3A%22jillfra%22%2C%22date%22%3A%2203%2F30%2F2017%22%2C%22product%22%3A%22dotnet-framework%22%2C%22technology%22%3A%22dotnet-winforms%22%2C%22giturl%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Flive%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md%22%2C%22publishtime%22%3A%222020-09-01%2011%3A51%20PM%22%2C%22contentlocale%22%3A%22en-us%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-pageHeight=4265&amp;-vpHeight=944&amp;-vpWidth=2133&amp;-actionType=%27S%27&amp;-behavior=0&amp;-vScrollOffset=566&amp;-hScrollOffset=0&amp;-contentVer=%272.0%27&amp;-content=%27%5B%5D%27&amp;*baseType=%27Ms.Content.ContentUpdate%27&amp;*title=%27Inherit%20from%20a%20Control%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs%27&amp;*cookieEnabled=true&amp;*isJs=true&amp;*isDomComplete=false&amp;*isLoggedIn=false&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.2.14%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D13f1e1c9a4704e3f8b2f55889223dd97%26HASH%3D13f1%26LV%3D202006%26V%3D4%26LU%3D1591089184343%27&amp;ext-javascript-userConsent=false&amp;ext-user-localId=%27t%3A1168D781D90E6B741D75DB1ED8206AEF%27&amp;$mscomCookies=false"></script></head>
+
+<body lang="en-us" dir="ltr"><div style="display: none;" id="lightningjs-usabilla_live"><div><iframe frameborder="0" id="lightningjs-frame-usabilla_live" src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/saved_resource.html"></iframe></div></div>
+<div class="header-holder has-default-focus">
+	<a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused is-fixed has-inner-focus focus-visible has-top-zero has-left-zero has-right-zero has-padding-medium has-text-centered has-body-background-medium" tabindex="1">Skip to main content</a>
+	
+	<div id="ignite-banner-holder" class="has-default-focus has-overflow-hidden"><!---->
+		<section id="ignite-banner" data-bi-name="ignite-banner" data-dismissable="disappearing" class="uhf-container ignite-banner has-padding has-padding-top-medium has-padding-bottom-medium is-banner">
+			<div class="columns is-relative is-gapless-mobile">
+				<div class="column is-4 is-3-desktop">
+					<span class="is-size-h3 has-text-weight-semibold is-block has-margin-bottom-extra-small">
+						Microsoft Ignite
+					</span>
+					<span class="is-size-small is-block">
+						September 22–24, 2020 | Free digital event
+					</span>
+				</div>
+				<div class="column is-3 is-hidden-touch is-flex has-flex-align-self-center">
+					<span class="is-size-h5 is-block has-margin-left-large has-margin-right-large">
+						Learn. Connect. Explore.
+					</span>
+				</div>
+				<div class="column is-flex has-flex-align-self-center">
+					<a id="ignite-banner-anchor" class="button is-small has-margin-top-small has-margin-none-tablet" data-bi-name="CTA" href="https://myignite.microsoft.com/?wt.mc_id=ignite_bn_oo_docs__home_">
+						<span>
+							Register now
+						</span>
+						<span class="icon">
+							<span class="docon docon-chevron-right-light" aria-hidden="true"></span>
+						</span>
+					</a>
+				</div>
+				<button type="button" data-dismiss="" data-bi-name="close" class="is-tertiary button has-inner-focus delete is-large is-absolute has-top-zero has-right-zero has-margin-small">
+					<span class="visually-hidden"><!---->Dismiss alert<!----></span>
+				</button>
+			</div>
+		</section>
+	<!----></div>
+
+	<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization"><!----> <div class="nav-bar"><!---->  <div class="nav-bar-brand">
+		<a class="nav-bar-button" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft">
+			<div class="nav-bar-logo" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope">
+				<svg xmlns="http://www.w3.org/2000/svg" width="108" height="23" viewBox="72 72 337 74" preserveAspectRatio="xMidYMin slice">
+					<g data-name="MS-symbol">
+						<clippath id="a">
+							<path transform="matrix(1 0 0 -1 0 216)" d="M0 216h482V0H0z"></path>
+						</clippath>
+						<g clip-path="url(#a)">
+							<path class="has-fill-current-color has-text-subtle" d="M394.942 104.59h-10.858v25.003h-7.38V104.59h-5.182v-5.965h5.182v-4.308c0-3.254 1.06-5.92 3.178-7.998 2.12-2.079 4.835-3.118 8.15-3.118.882 0 1.666.045 2.35.135a9.37 9.37 0 011.806.407v6.296c-.24-.14-.663-.31-1.265-.512-.603-.2-1.296-.3-2.078-.3-1.528 0-2.702.476-3.526 1.43-.824.954-1.235 2.365-1.235 4.232v3.736h10.858v-6.959l7.321-2.229v9.188h7.381v5.965h-7.38v14.49c0 1.91.345 3.254 1.038 4.037.693.783 1.782 1.175 3.27 1.175.42 0 .927-.1 1.52-.3a7.178 7.178 0 001.552-.724v6.025c-.463.261-1.23.502-2.305.723a15.742 15.742 0 01-3.178.331c-3.073 0-5.378-.817-6.914-2.455-1.537-1.637-2.305-4.102-2.305-7.396zm-48.407 9.73c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.45-2.545-6.04-2.545-2.67 0-4.745.888-6.22 2.666-1.477 1.777-2.215 4.313-2.215 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.892-2.993 6.91-4.489 12.05-4.489 4.841 0 8.621 1.441 11.343 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.447 9.018-4.338 11.99-2.892 2.973-6.829 4.458-11.81 4.458-4.8 0-8.61-1.41-11.432-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-16.417-7.802c0 1.045.331 1.863.994 2.456.662.592 2.128 1.34 4.398 2.243 2.912 1.166 4.956 2.476 6.131 3.932 1.175 1.456 1.762 3.22 1.762 5.287 0 2.912-1.12 5.252-3.359 7.02-2.24 1.767-5.267 2.65-9.083 2.65-1.285 0-2.706-.155-4.263-.467-1.556-.31-2.877-.707-3.96-1.19v-7.169a17.945 17.945 0 004.277 2.198c1.526.543 2.911.814 4.157.814 1.647 0 2.862-.23 3.645-.693.784-.46 1.175-1.235 1.175-2.319 0-1.005-.406-1.853-1.22-2.546-.813-.693-2.355-1.492-4.624-2.395-2.69-1.125-4.599-2.39-5.724-3.796-1.125-1.406-1.687-3.193-1.687-5.362 0-2.792 1.11-5.086 3.33-6.884 2.217-1.797 5.095-2.696 8.63-2.696 1.084 0 2.3.12 3.645.361 1.346.242 2.47.553 3.374.934v6.93c-.964-.644-2.089-1.195-3.374-1.658-1.286-.462-2.56-.693-3.826-.693-1.386 0-2.465.271-3.238.813-.774.543-1.16 1.286-1.16 2.23m-35.066 7.562c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.449-2.545-6.039-2.545-2.672 0-4.745.888-6.222 2.666-1.476 1.777-2.214 4.313-2.214 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.893-2.993 6.91-4.489 12.051-4.489 4.84 0 8.621 1.441 11.342 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.446 9.018-4.338 11.99-2.892 2.973-6.828 4.458-11.809 4.458-4.8 0-8.61-1.41-11.433-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-3.136-16.448c.582 0 1.105.041 1.567.121.462.08.853.18 1.175.301v7.38c-.382-.28-.939-.546-1.672-.798-.733-.25-1.622-.376-2.666-.376-1.788 0-3.299.753-4.534 2.26-1.235 1.505-1.853 3.825-1.853 6.958v15.635h-7.29V98.624h7.29v4.88h.12c.663-1.687 1.667-3.007 3.013-3.96 1.346-.954 2.962-1.432 4.85-1.432m-27.956 26.18c1.084 0 2.28-.25 3.585-.754a15.06 15.06 0 003.615-1.988v6.778c-1.165.663-2.485 1.165-3.962 1.506-1.475.342-3.098.512-4.865.512-4.559 0-8.265-1.44-11.116-4.323-2.852-2.88-4.278-6.562-4.278-11.04 0-4.98 1.456-9.083 4.37-12.307 2.91-3.224 7.037-4.835 12.38-4.835 1.366 0 2.746.176 4.143.527 1.395.352 2.504.758 3.328 1.22v6.99c-1.125-.824-2.274-1.462-3.45-1.914a9.966 9.966 0 00-3.599-.678c-2.872 0-5.192.934-6.959 2.802-1.768 1.868-2.652 4.388-2.652 7.562 0 3.132.85 5.573 2.546 7.32 1.697 1.748 4.002 2.621 6.914 2.621m-22.112 5.302h-7.29V98.624h7.29zm-8.044-39.916c0-1.205.437-2.214 1.311-3.028.874-.813 1.913-1.22 3.118-1.22 1.285 0 2.35.417 3.193 1.25.844.834 1.266 1.833 1.266 2.998 0 1.185-.432 2.18-1.296 2.982-.864.804-1.918 1.205-3.163 1.205-1.246 0-2.295-.406-3.148-1.219-.854-.815-1.28-1.803-1.28-2.968m-6.274-3.284v43.2h-7.5v-33.86h-.12l-13.408 33.86h-4.97l-13.738-33.86h-.09v33.86h-6.929v-43.2h10.755l12.412 32.024h.18l13.105-32.024z"></path>
+							<path d="M106.214 106.214H71.996V71.996h34.218z" fill="#f25022"></path>
+							<path d="M143.993 106.214h-34.218V71.996h34.218z" fill="#7fba00"></path>
+							<path d="M106.214 143.993H71.996v-34.218h34.218z" fill="#00a4ef"></path>
+							<path d="M143.993 143.993h-34.218v-34.218h34.218z" fill="#ffb900"></path>
+						</g>
+					</g>
+				</svg>
+			</div>
+		</a>
+	</div> 
+			
+		<div class="nav-bar-item is-hidden-tablet">
+			<div class="nav-bar-menu">
+				<button class="nav-bar-button is-title" title="Global navigation" aria-expanded="false">
+					<span class="nav-bar-menu-title"><!---->Documentation<!----></span>
+					<div class="nav-bar-burger">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span class="nav-bar-burger-label"><!---->Global navigation<!----></span>
+					</div>
+				</button>
+			</div>
+		</div>
+	
+			
+		<nav class="nav-bar-nav" role="navigation" aria-label="Global">
+			<ul class="nav-bar-nav-list">
+				
+		<li class="nav-bar-item is-category">
+			<a class="nav-bar-button is-title has-hover-underline" itemprop="url" href="https://docs.microsoft.com/en-us/">
+				<span><!---->Docs<!----></span>
+			</a>
+		</li>
+	
+				<!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline is-active" href="https://docs.microsoft.com/en-us/">
+					<span><!---->Documentation<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/learn/">
+					<span><!---->Learn<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/answers/products/">
+					<span><!---->Q&amp;A<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/samples/browse/">
+					<span><!---->Code Samples<!----></span>
+				</a>
+		  </li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-30">
+			<span><!---->More<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-30" aria-label="More">
+			<!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/"><!---->Documentation<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/learn/"><!---->Learn<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/answers/products/"><!---->Q&amp;A<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/samples/browse/"><!---->Code Samples<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+			<span class="nav-bar-spacer"></span>
+			
+		<div class="nav-bar-search " id="ax-31" hidden="">
+			
+		<form class="nav-bar-search-form" method="GET" name="searchForm" role="search" id="searchForm" aria-label="Search" aria-expanded="false" action="https://docs.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-search-input" class="autocomplete-input input   is-small" type="search" name="search" aria-expanded="false" aria-owns="ax-32-listbox" aria-activedescendant="" aria-label="Search" placeholder="Search">
+
+				<span aria-hidden="true" class="icon is-small is-left" hidden="">
+					<span class="has-text-primary docon docon-undefined"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-32-listbox" aria-label="site-search-input-suggestions" hidden="">
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			
+			
+			
+		</form>
+	
+		</div>
+		
+					<div class="nav-bar-search">
+						<!-- hidden when the width drops to tablet -->
+						
+		<form class="nav-bar-search-form" method="GET" name="searchForm" role="search" id="searchFormDesktop" aria-label="Search" aria-expanded="false" action="https://docs.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-33" class="autocomplete-input input control has-icons-left  is-small" type="search" name="search" aria-expanded="false" aria-owns="ax-34-listbox" aria-activedescendant="" aria-label="Search" placeholder="Search">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-search"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-34-listbox" aria-label="ax-33-suggestions" hidden="">
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			
+			
+			
+		</form>
+	
+					</div>
+			  
+		<div class="nav-bar-search " hidden="">
+			<div class="nav-bar-search-form-expander">
+				<button id="form-expander" class="nav-bar-button has-hover-underline " title="Search" aria-expanded="false" aria-controls="ax-31">
+					
+		<span class="is-visually-hidden-mobile"><!---->Search<!----></span>
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-search"></span>
+		</span>
+	
+				</button>
+			</div>
+		</div>
+	
+			
+		<div class="nav-bar-profile">
+			
+		<a class="docs-sign-in auth-status-determined not-authenticated" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#">
+			Sign in
+		</a>
+	 
+		<div class="dropdown has-caret auth-status-determined authenticated">
+			<button class="dropdown-trigger button-reset" aria-controls="user-menu" aria-expanded="false" aria-label="Your Account">
+				<figure class="image is-36x36">
+					<img class="has-body-background-medium is-rounded" alt="" data-profile-property="avatarUrl">
+				</figure>
+			</button>
+			<div class="dropdown-menu box has-flex-justify-content-start has-body-background" id="user-menu" role="menu">
+				<div class="media is-user-dir">
+					<div class="media-left">
+						<figure class="image is-48x48" aria-hidden="true">
+							<img class="has-body-background-medium is-rounded" aria-labelledby="displayName" data-profile-property="avatarUrl">
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-size-large">
+							<span id="displayName" class="is-inline-truncated has-max-width-200" data-profile-property="displayName"></span>
+						</p>
+						<p class="subtitle is-size-small has-margin-bottom-none">
+							<span class="is-inline-truncated has-max-width-200" data-profile-property="upn"></span>
+						</p>
+					</div>
+				</div>
+				<ul class="has-padding-top-small has-padding-bottom-medium">
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="profileUrl"><!---->Profile<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="bookmarksUrl"><!---->Bookmarks<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="collectionsUrl"><!---->Collections<!----></a>
+					</li>
+				</ul>
+				<div class="has-border-top has-padding-top-medium">
+					<a class="docs-sign-out" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#"><!---->Sign out<!----></a>
+				</div>
+			</div>
+		</div>
+	
+		</div>
+	
+		 <!----></div>  <!----></header>	</div>
+
+				<div class="content-header uhf-container has-padding has-default-focus has-border-bottom-none" data-bi-name="content-header">
+				<nav class="has-padding-none has-padding-left-medium-tablet has-padding-right-medium-tablet has-padding-left-none-uhf-tablet has-padding-left-none-uhf-tablet has-padding-none-desktop has-flex-grow" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+					<ul id="page-breadcrumbs" class="breadcrumbs"><!---->
+			<!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									Docs
+								</span>
+						  </a>
+					<meta itemprop="position" content="1">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									.NET
+								</span>
+						  </a>
+					<meta itemprop="position" content="2">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/desktop/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									Desktop Guide
+								</span>
+						  </a>
+					<meta itemprop="position" content="3">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <span itemprop="name">
+								.NET Framework
+						  </span>
+					<meta itemprop="position" content="4">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									Windows Forms
+								</span>
+						  </a>
+					<meta itemprop="position" content="5">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									Controls
+								</span>
+						  </a>
+					<meta itemprop="position" content="6">
+				</li><!---->
+		<!----></ul>
+				</nav>
+			<div class="content-header-controls">
+				<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true">
+					<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+					<span class="contents-expand-title">Contents</span>
+				</button>
+				<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+					<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+					<span>Exit focus mode</span>
+				</button>
+			</div>
+			<div class="has-padding-none-tablet has-padding-medium is-size-small is-flex-touch has-flex-justify-content-space-between-touch has-flex-grow">
+				<ul class="is-hidden-mobile action-list has-flex-justify-content-start has-flex-justify-content-end-tablet is-flex is-flex-row has-flex-wrap has-flex-grow is-unstyled">
+					<li>
+						<button type="button" class="bookmark button is-text has-inner-focus is-small is-icon-only-touch" data-list-type="bookmarks" data-bi-name="bookmark" title="Add bookmark for Inherit from a Control - Windows Forms .NET Framework | Microsoft Docs" aria-pressed="false">
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-single-bookmark"></span>
+							</span>
+							<span class="bookmark-status is-visually-hidden-touch is-hidden-portrait">Bookmark</span>
+						</button>
+					</li>
+						<li id="feedback-section-link">
+							<a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#feedback" class="button is-text has-inner-focus is-small is-icon-only-touch" data-bi-name="comments" title="Send feedback about this page">
+								<span class="icon" aria-hidden="true">
+									<span class="docon docon-comment-lines"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">Feedback</span>
+							</a>
+						</li>
+							<li id="contenteditbtn">
+								<a href="https://github.com/dotnet/docs-desktop/blob/live/dotnet-desktop-guide/framework/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md" class="button is-text has-inner-focus is-icon-only-touch is-small" title="Edit This Document" data-bi-name="edit">
+								<span class="icon" aria-hidden="true">
+									<span class="docon docon-edit-outline"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">Edit</span>
+							</a>
+						</li>
+					<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small is-icon-only-touch" aria-controls="sharing-menu" aria-expanded="false" title="Share This Document" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Share</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-twitter" data-bi-name="twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Dtwitter&amp;text=Inherit%20from%20a%20Control%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Dtwitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-linkedin" data-bi-name="linkedin" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Dlinkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-facebook" data-bi-name="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Dfacebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-email" data-bi-name="email" href="mailto:?subject=%5BShared%20Article%5D%20Inherit%20from%20a%20Control%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs&amp;body=Inherit%20from%20a%20Control%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Demail">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Email</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>					</li>
+				</ul>
+				<button type="button" class="has-border contents-button button is-small is-text is-hidden-tablet has-inner-focus" aria-label="Contents" data-bi-name="contents-expand">
+					<span class="icon">
+						<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+					</span>
+					<span class="contents-expand-title">Table of contents</span>
+				</button>
+				<div class="is-invisible"></div>
+				<div class="is-hidden-tablet level-item is-flexible level-right">
+					<button type="button" class="page-actions-button button is-small is-text is-hidden-tablet has-inner-focus has-border is-full-height  has-margin-left-small" aria-label="Page Actions" data-bi-name="pageactions">
+						<span class="icon">
+							<span class="docon docon-more-vertical" aria-hidden="true"></span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+
+
+	<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus"></div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="is-fixed is-flex is-flex-column" role="navigation" aria-label="Primary" data-bi-name="left toc" style="width: 364px; top: 24px; bottom: 24px;"><div class="moniker-picker2" data-bi-name="moniker-picker"><!---->
+		<span class="label has-margin-bottom-extra-small"><!---->Version<!----></span>
+		<div class="dropdown has-margin-bottom-small">
+			<button class="dropdown-trigger has-flex-justify-content-start is-full-width button is-small has-border has-inner-focus" aria-expanded="false" aria-controls="ax-38">
+				<span class="visually-hidden"><!---->Select Version<!----></span>
+				<span class="has-text-overflow-ellipsis"><!---->.NET Framework 4.x<!----></span>
+				<span class="dropdown-button-chevron" aria-hidden="true">
+					<span class="icon docon docon-chevron-down-light expanded-indicator"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu is-full-width" id="ax-38" aria-label="Product">
+						
+						
+						<!---->
+		<li>
+					<a class="preserve-view button is-small has-border-none has-inner-focus has-flex-justify-content-start is-full-width has-text-wrap is-text-left" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netdesktop-5.0"><!---->.NET 5.0<!----></a>
+			  </li>
+	<!---->
+		<li>
+					<a class="preserve-view button is-small has-border-none has-inner-focus has-flex-justify-content-start is-full-width has-text-wrap is-text-left" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8"><!---->.NET Framework 4.x<!----></a>
+			  </li>
+	<!---->
+				  </ul>
+		</div>
+	<!----></div><form action="javascript:" role="search" aria-label="Search" class="has-margin-bottom-small"><label class="visually-hidden" for="ax-35">Search</label><div class="autocomplete is-block" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-35" class="autocomplete-input input control has-icons-left is-full-width is-small" type="text" aria-expanded="false" aria-owns="ax-36-listbox" aria-activedescendant="" placeholder="Filter by title">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-filter-settings"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-36-listbox" aria-label="ax-35-suggestions" hidden="">
+				
+			</ul><!----></div></form><ul class="tree is-vertically-scrollable has-flex-grow has-flex-shrink" role="tree" aria-label="Table of contents" data-bi-name="tree" data-is-collapsible="true"><li data-moniker="netframeworkdesktop-4.8" role="none"><a aria-setsize="8" aria-level="1" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/?view=netframeworkdesktop-4.8">Controls</a></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="2" role="treeitem" tabindex="-1" id="title-2-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Arrange controls on Windows Forms</span></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="3" role="treeitem" tabindex="-1" id="title-3-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Putting Controls on Windows Forms</span></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="4" role="treeitem" tabindex="-1" id="title-4-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Label controls and provide shortcuts</span></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="5" role="treeitem" tabindex="-1" id="title-5-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Controls to Use on Windows Forms</span></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="6" role="treeitem" tabindex="-1" id="title-6-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Developing Custom Windows Forms Controls with the .NET Framework</span></li><li role="none"><a aria-setsize="8" aria-level="1" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/windows-forms-controls-by-function?view=netframeworkdesktop-4.8">Windows Forms Controls in the .NET Framework by Function</a></li><li class="tree-item is-expanded" aria-setsize="8" aria-level="1" aria-posinset="8" role="treeitem" tabindex="-1" id="title-8-1" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Develop Controls at Design Time</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/developing-windows-forms-controls-at-design-time?view=netframeworkdesktop-4.8">Overview</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="2" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8">Walkthrough: Author a Composite Control</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="3" role="treeitem" tabindex="0" class="tree-item is-leaf is-selected" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8" aria-current="page">Walkthrough: Inherit from a Control</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="4" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/perform-common-tasks-design-actions?view=netframeworkdesktop-4.8">Walkthrough: Perform Common Tasks Using Design Actions</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="5" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/serializing-collections-designerserializationvisibilityattribute?view=netframeworkdesktop-4.8">Walkthrough: Serialize Collections of Standard Types</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="6" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-debugging-custom-windows-forms-controls-at-design-time?view=netframeworkdesktop-4.8">Walkthrough: Debug Custom Controls</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/creating-a-wf-control-design-time-features?view=netframeworkdesktop-4.8">Walkthrough: Create a Control That Takes Advantage of Design-Time Features</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="8" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-author-controls-for-windows-forms?view=netframeworkdesktop-4.8">How to: Author Controls</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="9" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-author-composite-controls?view=netframeworkdesktop-4.8">How to: Author Composite Controls</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="10" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-inherit-from-the-usercontrol-class?view=netframeworkdesktop-4.8">How to: Inherit from the UserControl Class</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="11" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-inherit-from-existing-windows-forms-controls?view=netframeworkdesktop-4.8">How to: Inherit from Existing Controls</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="12" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-inherit-from-the-control-class?view=netframeworkdesktop-4.8">How to: Inherit from the Control Class</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="13" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-align-a-control-to-the-edges-of-forms-at-design-time?view=netframeworkdesktop-4.8">How to: Align a Control to the Edges of Forms</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="14" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-display-a-control-in-the-choose-toolbox-items-dialog-box?view=netframeworkdesktop-4.8">How to: Display a Control in Choose Toolbox Items</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="15" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-provide-a-toolbox-bitmap-for-a-control?view=netframeworkdesktop-4.8">How to: Provide a Toolbox Bitmap for a Control</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="16" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-test-the-run-time-behavior-of-a-usercontrol?view=netframeworkdesktop-4.8">How to: Test the Run-Time Behavior of a UserControl</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="17" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/design-time-errors-in-the-windows-forms-designer?view=netframeworkdesktop-4.8">Design-Time Errors in the Windows Forms Designer</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="18" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/troubleshooting-control-and-component-authoring?view=netframeworkdesktop-4.8">Troubleshoot Control and Component Authoring</a></li></ul></li></ul><a class="button is-small is-text has-flex-justify-content-start has-inner-focus has-margin-top-small has-border-top has-border-bottom has-flex-shrink-none" href="https://docs.microsoft.com/en-us/dotnet/desktop/opbuildpdf/183959a5/winforms/controls/toc.pdf?branch=live&amp;view=netframeworkdesktop-4.8" data-bi-name="downloadPdf" rel="nofollow"><!----> <span class="icon is-size-extra-small has-text-subtle">
+				<span aria-hidden="true" class="docon docon-dictionary-download"></span>
+			</span>
+			<span><!---->Download PDF<!----></span><!----></a></nav>
+			</div>
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+				<div id="main-column" class="column  is-full is-four-fifths-desktop ">
+
+					<main id="main" role="main" class="content " data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+						<h1 id="walkthrough-inherit-from-a-windows-forms-control-with-c">Walkthrough: Inherit from a Windows Forms Control with C#</h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+							<li>
+								<time class="" data-article-date="" aria-label="Article review date" datetime="2017-03-30T00:00:00.000Z" data-article-date-source="ms.date">03/30/2017</time>
+							</li>
+								<li class="readingTime">4 minutes to read</li>
+								<li class="contributors-holder">
+										<a href="https://github.com/dotnet/docs-desktop/blob/live/dotnet-desktop-guide/framework/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md" title="2 Contributors" aria-label="2 Contributors">
+									<ul class="contributors" data-bi-name="contributors" aria-hidden="true">
+												<li><img src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/jillre.png" data-src="https://github.com/jillre.png?size=32" role="presentation"></li>
+												<li><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNMsAcAAQUAoVnxsV8AAAAASUVORK5CYII=" data-src="https://github.com/adegeo.png?size=32" role="presentation"></li>
+									</ul>
+										</a>
+								</li>
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+							<h3>In this article</h3>
+						<ol><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#create-the-project">Create the Project</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-a-property-to-your-inherited-control">Add a Property to Your Inherited Control</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#test-the-control">Test the control</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#see-also">See also</a></li></ol></nav>
+
+						<!-- <content> -->
+							<p>With C#, you can create powerful custom controls through <em>inheritance</em>. Through inheritance you are able to create controls that retain all of the inherent functionality of standard Windows Forms controls but also incorporate custom functionality. In this walkthrough, you will create a simple inherited control called <code>ValueButton</code>. This button will inherit functionality from the standard Windows Forms <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.button" data-linktype="absolute-path">Button</a> control, and will expose a custom property called <code>ButtonValue</code>.</p>
+<h2 id="create-the-project" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#create-the-project" aria-labelledby="create-the-project"></a>Create the Project</h2>
+<p>When you create a new project, you specify its name in order to set the root namespace, assembly name, and project name, and to ensure that the default component will be in the correct namespace.</p>
+<h3 id="to-create-the-valuebuttonlib-control-library-and-the-valuebutton-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-create-the-valuebuttonlib-control-library-and-the-valuebutton-control" aria-labelledby="to-create-the-valuebuttonlib-control-library-and-the-valuebutton-control"></a>To create the ValueButtonLib control library and the ValueButton control</h3>
+<ol>
+<li><p>In Visual Studio, create a new <strong>Windows Forms Control Library</strong> project, and name it <strong>ValueButtonLib</strong>.</p>
+<p>The project name, <code>ValueButtonLib</code>, is also assigned to the root namespace by default. The root namespace is used to qualify the names of components in the assembly. For example, if two assemblies provide components named <code>ValueButton</code>, you can specify your <code>ValueButton</code> component using <code>ValueButtonLib.ValueButton</code>. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/namespaces/index" data-linktype="absolute-path">Namespaces</a>.</p>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>UserControl1.cs</strong>, then choose <strong>Rename</strong> from the shortcut menu. Change the file name to <strong>ValueButton.cs</strong>. Click the <strong>Yes</strong> button when you are asked if you want to rename all references to the code element '<code>UserControl1</code>'.</p>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ValueButton.cs</strong> and select <strong>View Code</strong>.</p>
+</li>
+<li><p>Locate the <code>class</code> statement line, <code>public partial class ValueButton</code>, and change the type from which this control inherits from <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.usercontrol" data-linktype="absolute-path">UserControl</a> to <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.button" data-linktype="absolute-path">Button</a>. This allows your inherited control to inherit all the functionality of the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.button" data-linktype="absolute-path">Button</a> control.</p>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, open the <strong>ValueButton.cs</strong> node to display the designer-generated code file, <strong>ValueButton.Designer.cs</strong>. Open this file in the <strong>Code Editor</strong>.</p>
+</li>
+<li><p>Locate the <code>InitializeComponent</code> method and remove the line that assigns the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.containercontrol.autoscalemode" data-linktype="absolute-path">AutoScaleMode</a> property. This property does not exist in the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.button" data-linktype="absolute-path">Button</a> control.</p>
+</li>
+<li><p>From the <strong>File</strong> menu, choose <strong>Save All</strong> to save the project.</p>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Note</p>
+<p>A visual designer is no longer available. Because the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.button" data-linktype="absolute-path">Button</a> control does its own painting, you are unable to modify its appearance in the designer. Its visual representation will be exactly the same as that of the class it inherits from (that is, <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.button" data-linktype="absolute-path">Button</a>) unless modified in the code. You can still add components, which have no UI elements, to the design surface.</p>
+</div>
+</li>
+</ol>
+<h2 id="add-a-property-to-your-inherited-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-a-property-to-your-inherited-control" aria-labelledby="add-a-property-to-your-inherited-control"></a>Add a Property to Your Inherited Control</h2>
+<p>One possible use of inherited Windows Forms controls is the creation of controls that are identical in look and feel of standard Windows Forms controls, but expose custom properties. In this section, you will add a property called <code>ButtonValue</code> to your control.</p>
+<h3 id="to-add-the-value-property" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-add-the-value-property" aria-labelledby="to-add-the-value-property"></a>To add the Value property</h3>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ValueButton.cs</strong>, and then click <strong>View Code</strong> from the shortcut menu.</p>
+</li>
+<li><p>Locate the <code>class</code> statement. Immediately after the <code>{</code>, type the following code:</p>
+<div class="codeHeader" id="code-try-0" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="// Creates the private variable that will store the value of your
+// property.
+private int varValue;
+// Declares the property.
+public int ButtonValue
+{
+   // Sets the method for retrieving the value of your property.
+   get
+   {
+      return varValue;
+   }
+   // Sets the method for setting the value of your property.
+   set
+   {
+      varValue = value;
+   }
+}
+"><span><span class="hljs-comment">// Creates the private variable that will store the value of your</span>
+<span class="hljs-comment">// property.</span>
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> varValue;
+<span class="hljs-comment">// Declares the property.</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> ButtonValue
+{
+   <span class="hljs-comment">// Sets the method for retrieving the value of your property.</span>
+   <span class="hljs-keyword">get</span>
+   {
+      <span class="hljs-keyword">return</span> varValue;
+   }
+   <span class="hljs-comment">// Sets the method for setting the value of your property.</span>
+   <span class="hljs-keyword">set</span>
+   {
+      varValue = <span class="hljs-keyword">value</span>;
+   }
+}
+</span></code></pre>
+<p>This code sets the methods by which the <code>ButtonValue</code> property is stored and retrieved. The <code>get</code> statement sets the value returned to the value that is stored in the private variable <code>varValue</code>, and the <code>set</code> statement sets the value of the private variable by use of the <code>value</code> keyword.</p>
+</li>
+<li><p>From the <strong>File</strong> menu, choose <strong>Save All</strong> to save the project.</p>
+</li>
+</ol>
+<h2 id="test-the-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#test-the-control" aria-labelledby="test-the-control"></a>Test the control</h2>
+<p>Controls are not stand-alone projects; they must be hosted in a container. In order to test your control, you must provide a test project for it to run in. You must also make your control accessible to the test project by building (compiling) it. In this section, you will build your control and test it in a Windows Form.</p>
+<h3 id="to-build-your-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-build-your-control" aria-labelledby="to-build-your-control"></a>To build your control</h3>
+<p>On the <strong>Build</strong> menu, click <strong>Build Solution</strong>. The build should be successful with no compiler errors or warnings.</p>
+<h3 id="to-create-a-test-project" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-create-a-test-project" aria-labelledby="to-create-a-test-project"></a>To create a test project</h3>
+<ol>
+<li><p>On the <strong>File</strong> menu, point to <strong>Add</strong> and then click <strong>New Project</strong> to open the <strong>Add New Project</strong> dialog box.</p>
+</li>
+<li><p>Select the <strong>Windows</strong> node, beneath the <strong>Visual C#</strong> node, and click <strong>Windows Forms Application</strong>.</p>
+</li>
+<li><p>In the <strong>Name</strong> box, enter <strong>Test</strong>.</p>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, right-click the <strong>References</strong> node for your test project, then select <strong>Add Reference</strong> from the shortcut menu to display the <strong>Add Reference</strong> dialog box.</p>
+</li>
+<li><p>Click the tab labeled <strong>Projects</strong>. Your ValueButtonLib project will be listed under <strong>Project Name</strong>. Double-click the project to add the reference to the test project.</p>
+</li>
+<li><p>In <strong>Solution Explorer,</strong> right-click <strong>Test</strong> and select <strong>Build</strong>.</p>
+</li>
+</ol>
+<h3 id="to-add-your-control-to-the-form" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-add-your-control-to-the-form" aria-labelledby="to-add-your-control-to-the-form"></a>To add your control to the form</h3>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>Form1.cs</strong> and choose <strong>View Designer</strong> from the shortcut menu.</p>
+</li>
+<li><p>In the <strong>Toolbox</strong>, select <strong>ValueButtonLib Components</strong>. Double-click <strong>ValueButton</strong>.</p>
+<p>A <strong>ValueButton</strong> appears on the form.</p>
+</li>
+<li><p>Right-click the <strong>ValueButton</strong> and select <strong>Properties</strong> from the shortcut menu.</p>
+</li>
+<li><p>In the <strong>Properties</strong> window, examine the properties of this control. Note that they are identical to the properties exposed by a standard button, except that there is an additional property, ButtonValue.</p>
+</li>
+<li><p>Set the <strong>ButtonValue</strong> property to <strong>5</strong>.</p>
+</li>
+<li><p>In the <strong>All Windows Forms</strong> tab of the <strong>Toolbox</strong>, double-click <strong>Label</strong> to add a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.label" data-linktype="absolute-path">Label</a> control to your form.</p>
+</li>
+<li><p>Relocate the label to the center of the form.</p>
+</li>
+<li><p>Double-click <code>valueButton1</code>.</p>
+<p>The <strong>Code Editor</strong> opens to the <code>valueButton1_Click</code> event.</p>
+</li>
+<li><p>Insert the following line of code.</p>
+<div class="codeHeader" id="code-try-1" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="label1.Text = valueButton1.ButtonValue.ToString();
+"><span>label1.Text = valueButton1.ButtonValue.ToString();
+</span></code></pre>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>Test</strong>, and choose <strong>Set as Startup Project</strong> from the shortcut menu.</p>
+</li>
+<li><p>From the <strong>Debug</strong> menu, select <strong>Start Debugging</strong>.</p>
+<p><code>Form1</code> appears.</p>
+</li>
+<li><p>Click <code>valueButton1</code>.</p>
+<p>The numeral '5' is displayed in <code>label1</code>, demonstrating that the <code>ButtonValue</code> property of your inherited control has been passed to <code>label1</code> through the <code>valueButton1_Click</code> method. Thus your <code>ValueButton</code> control inherits all the functionality of the standard Windows Forms button, but exposes an additional, custom property.</p>
+</li>
+</ol>
+<h2 id="see-also" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#see-also" aria-labelledby="see-also"></a>See also</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-display-a-control-in-the-choose-toolbox-items-dialog-box?view=netframeworkdesktop-4.8" data-linktype="relative-path">How to: Display a Control in the Choose Toolbox Items Dialog Box</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8" data-linktype="relative-path">Walkthrough: Authoring a Composite Control with Visual C#</a></li>
+</ul>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+								<div class="is-hidden-desktop has-border-top has-margin-top-large has-padding-top-small">
+									
+									
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>Yes</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>No</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-mobile">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-extra-small">
+                <label for="rating-textarea-mobile" class="visually-hidden">Any additional feedback?</label>
+                <textarea id="rating-textarea-mobile" rows="4" maxlength="999" placeholder="Any additional feedback?" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-transparent has-text-primary is-small has-border-none" type="button">Skip</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>Thank you.</p>
+    </div>
+</div>								</div>
+						<!-- end page rating section -->
+
+
+						<!-- feedback section -->
+<section class="feedback-section is-relative" data-bi-name="feedback-section">
+
+    <h2 id="feedback" class="title is-3 has-margin-top-large">Feedback</h2>
+
+    <div class="alert choose-feedback-type">
+        <p aria-hidden="true" id="send-feedback-about">Submit and view feedback for</p>
+
+        <div class="choose-feedback-buttons has-margin-top-medium">
+                <a class="button feedback-type-product has-margin-bottom-small" aria-label="Send feedback about this product" href="https://developercommunity.visualstudio.com/spaces/61/index.html" data-bi-name="product-feedback">
+                    <span>This product</span>
+                    <span aria-hidden="true" class="icon docon docon-navigate-external is-size-h4 has-margin-left-none"></span>
+                </a>
+
+			<a class="button feedback-type-product has-margin-bottom-small github-link" aria-label="Send feedback about this page" data-bi-name="create-issue-on-github" href="https://github.com/dotnet/docs-desktop/issues/new?title=&amp;body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Document%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20is%20required%20for%20docs.microsoft.com%20%E2%9E%9F%20GitHub%20issue%20linking.*%0A%0A*%20ID%3A%20a9b75489-26a9-4e72-ed54-2545a414be16%0A*%20Version%20Independent%20ID%3A%204912568f-8f2c-45bd-50d3-f8e190c06f59%0A*%20Content%3A%20%5BInherit%20from%20a%20Control%20-%20Windows%20Forms%20.NET%20Framework%5D(https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8)%0A*%20Content%20Source%3A%20%5Bdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md%5D(https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Flive%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp.md)%0A*%20Product%3A%20**dotnet-framework**%0A*%20Technology%3A%20**dotnet-winforms**%0A*%20GitHub%20Login%3A%20%40jillre%0A*%20Microsoft%20Alias%3A%20**jillfra**">
+				<span aria-hidden="true" class="docon docon-brand-github has-padding-right-extra-small"></span>
+				<span>This page</span>
+			</a>
+        </div>
+    </div>
+
+    <div class="action-container is-flex has-flex-justify-content-end has-margin-top-small has-margin-bottom-small">
+        <a class="view-on-github" data-bi-name="view-on-github" href="https://github.com/dotnet/docs-desktop/issues?utf8=%E2%9C%93&amp;q=%224912568f-8f2c-45bd-50d3-f8e190c06f59%22&amp;in=body">
+            <span aria-hidden="true" class="docon docon-brand-github"></span>
+            <span>View all page feedback</span>
+            <span aria-hidden="true" class="icon docon docon-navigate-external is-size-h5"></span>
+        </a>
+    </div>
+</section>
+
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						<div class="footerContainer is-visible-interactive has-default-focus ">
+
+
+
+	<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8" data-bi-name="select-locale"><span class="icon docon docon-world is-size-large has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">English (United States)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+						</div>
+					</div>
+
+					<div class="is-size-small right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="Page Actions">
+						<div id="affixed-right-container" class="doc-outline is-fixed is-vertically-scrollable" style="width: 199.188px; top: 24px; bottom: 24px;">
+								
+								
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>Yes</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>No</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-desktop">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-extra-small">
+                <label for="rating-textarea-desktop" class="visually-hidden">Any additional feedback?</label>
+                <textarea id="rating-textarea-desktop" rows="4" maxlength="999" placeholder="Any additional feedback?" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-transparent has-text-primary is-small has-border-none" type="button">Skip</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>Thank you.</p>
+    </div>
+</div>							<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+								<h3>In this article</h3>
+							<ol><li class="selected"><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#create-the-project">Create the Project</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-a-property-to-your-inherited-control">Add a Property to Your Inherited Control</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#test-the-control">Test the control</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8#see-also">See also</a></li></ol></nav>
+						</div>
+					</div>
+
+					<!--end of div.columns -->
+				</div>
+
+			<!--end of .primary-holder -->
+			</section>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container"></div>
+
+	<div class="footerContainer has-default-focus is-hidden-interactive ">
+
+
+
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8" data-bi-name="select-locale"><span class="icon docon docon-world is-size-large has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">English (United States)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+	</div>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+	<span id="adobe-target-experiment-container" hidden=""></span>
+
+
+<div class="usabilla_live_button_container" role="button" tabindex="0" style="position: fixed; width: 0px; height: 0px; z-index: 99999990; right: 0px; top: 50%; margin-top: 0px; display: none;" aria-label="Usabilla Feedback Button"><iframe src="./Inherit from a Control - Windows Forms .NET Framework _ Microsoft Docs_files/saved_resource(1).html" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" data-tags="right" title="Usabilla Feedback Button" style="width: 0px; height: 0px; margin: 0px; padding: 0px; border: 0px; overflow: hidden; z-index: 9998; position: absolute; left: 0px; top: 0px; box-shadow: 0px 0px 0px; background-color: transparent;"></iframe></div></body></html>
