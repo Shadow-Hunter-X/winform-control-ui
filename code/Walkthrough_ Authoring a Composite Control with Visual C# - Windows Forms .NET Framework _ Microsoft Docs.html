@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<!-- saved from url=(0155)https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8 -->
+<html class="hasSidebar hasPageActions hasBreadcrumb conceptual has-default-focus js-focus-visible theme-light" lang="en-us" dir="ltr" data-css-variable-support="true" data-authenticated="false" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none" data-js-focus-visible=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Walkthrough: Authoring a Composite Control with Visual C# - Windows Forms .NET Framework">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@docsmsft">
+
+
+	<meta name="author" content="jillre">
+<meta name="breadcrumb_path" content="/dotnet/desktop/breadcrumb/toc.json">
+<meta name="depot_name" content="MSDN.dotnet-desktop-guide">
+<meta name="document_id" content="26821c28-6222-d5f2-b98a-1471dbf7522a">
+<meta name="document_version_independent_id" content="26fd54fd-ac0a-d52f-a754-ccff2fa36253">
+<meta name="gitcommit" content="https://github.com/dotnet/docs-desktop/blob/c0ba2844738c5694b52ce5dc2a0f7b6c43d97168/dotnet-desktop-guide/framework/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp.md">
+<meta name="locale" content="en-us">
+<meta name="manager" content="jillfra">
+<meta name="monikers" content="netframeworkdesktop-4.8">
+<meta name="ms.assetid" content="f88481a8-c746-4a36-9479-374ce5f2e91f">
+<meta name="ms.author" content="jillfra">
+<meta name="ms.date" content="03/30/2017">
+<meta name="ms.prod" content="dotnet-framework">
+<meta name="ms.technology" content="dotnet-winforms">
+<meta name="original_content_git_url" content="https://github.com/dotnet/docs-desktop/blob/live/dotnet-desktop-guide/framework/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp.md">
+<meta name="search.ms_docsetname" content="dotnet-desktop-guide">
+<meta name="search.ms_product" content="MSDN">
+<meta name="search.ms_sitename" content="Docs">
+<meta name="site_name" content="Docs">
+<meta name="updated_at" content="2020-09-01 11:51 PM">
+<meta name="page_type" content="conceptual">
+<meta name="toc_rel" content="toc.json">
+<meta name="pdf_url_template" content="https://docs.microsoft.com/pdfstore/en-us/MSDN.dotnet-desktop-guide/{branchName}{pdfName}">
+<meta name="search.mshattr.devlang" content="csharp">
+<meta name="word_count" content="2848">
+
+
+<link href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp" rel="canonical">
+	<title>Walkthrough: Authoring a Composite Control with Visual C# - Windows Forms .NET Framework | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/d6c593e3.site-ltr.css">
+
+	<link rel="stylesheet" href="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/2e5ce4ab.conceptual.css">
+
+
+	<script async="" defer="" crossorigin="anonymous" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/lux.js.下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/analytics.js.下载"></script><script>
+	var msDocs = {
+		data: {
+			timeOrigin: Date.now(),
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasBinaryRating: true,
+			hasGithubIssues: true,
+			showFeedbackReport: false,
+			enableTutorialFeedback: false,
+			feedbackSystem: 'GitHub',
+			feedbackGitHubRepo: 'dotnet/docs-desktop',
+			feedbackProductUrl: 'https://developercommunity.visualstudio.com/spaces/61/index.html',
+			contentGitUrl: 'https://github.com/dotnet/docs-desktop/blob/live/dotnet-desktop-guide/framework/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp.md',
+			extendBreadcrumb: false,
+			isEditDisplayable: true,
+			hideViewSource: false,
+			hasPageActions: true,
+			hasBookmark: true,
+			hasShare: true
+		},
+		functions:{}
+	};
+	</script>
+	<script nomodule="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/bluebird.min.js.下载" integrity="sha384-aD4BDeDGeLXLpPK4yKeqtZQa9dv4a/7mQ+4L5vwshIYH1Mc2BrXvHd32iHzYCQy5" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/fetch.umd.min.js.下载" integrity="sha384-EQIXrC5K2+7X8nGgLkB995I0/6jfAvvyG1ieZ+WYGxgJHFMD/alsG9fSDWvzb5Y1" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/template.min.js.下载" integrity="sha384-1zKzI6ldTVHMU7n0W2HpE/lhHI+UG4D9IIaxbj3kT2UhCWicdTuJkTtnKuu0CQzN" crossorigin="anonymous"></script>
+	<script nomodule="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/url.min.js.下载" integrity="sha384-vn7xBMtpSTfzaTRWxj0kVq0UcsbBrTOgZ/M1ISHqe1V358elYva+lfiEC+T8jLPc" crossorigin="anonymous"></script>
+	<script src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/7501e2bd.index-polyfills.js.下载"></script>
+		<script src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/b44ee89d.index-docs.js.下载"></script><style>
+		[data-moniker]:not([data-moniker~='netframeworkdesktop-4.8']) {
+			display: none !important;
+		}
+	</style><script src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/jsll-4.js.下载" async="" defer=""></script>
+<script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js.下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(1).下载"></script><style type="text/css" media="print">.usabilla_live_button_container { display: none; }</style><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(2).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(3).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(4).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(5).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(6).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(7).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(8).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(9).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(10).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(11).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(12).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(13).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(14).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(15).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(16).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(17).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(18).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(19).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(20).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(21).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(22).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(23).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(24).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(25).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(26).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(27).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(28).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(29).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(30).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(31).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(32).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(33).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(34).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(35).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(36).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(37).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(38).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(39).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(40).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(41).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(42).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(43).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(44).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(45).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(46).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(47).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(48).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(49).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(50).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(51).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(52).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(53).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(54).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(55).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(56).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(57).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(58).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(59).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(60).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(61).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(62).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(63).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(64).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(65).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(66).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(67).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(68).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(69).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(70).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(71).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(72).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(73).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(74).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(75).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(76).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(77).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(78).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(79).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(80).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(81).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(82).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(83).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(84).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(85).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(86).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(87).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(88).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(89).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(90).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(91).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(92).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(93).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(94).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(95).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(96).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(97).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(98).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(99).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(100).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(101).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(102).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(103).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(104).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(105).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(106).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(107).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(108).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(109).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(110).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(111).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(112).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(113).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(114).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(115).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(116).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(117).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(118).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(119).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(120).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(121).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(122).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(123).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(124).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(125).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(126).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(127).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(128).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(129).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(130).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(131).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(132).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(133).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(134).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(135).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(136).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(137).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(138).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(139).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(140).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(141).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(142).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(143).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(144).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(145).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(146).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(147).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(148).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(149).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(150).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(151).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(152).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(153).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(154).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(155).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(156).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(157).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(158).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(159).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(160).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(161).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(162).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(163).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(164).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(165).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(166).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(167).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(168).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(169).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(170).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(171).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(172).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(173).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(174).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(175).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(176).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(177).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(178).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(179).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(180).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(181).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(182).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(183).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(184).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(185).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(186).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(187).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(188).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(189).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(190).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(191).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(192).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(193).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(194).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(195).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(196).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(197).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(198).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(199).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(200).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(201).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(202).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(203).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(204).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(205).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(206).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(207).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(208).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(209).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(210).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(211).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(212).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(213).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(214).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(215).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(216).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(217).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(218).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(219).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(220).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(221).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(222).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(223).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(224).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(225).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(226).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(227).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(228).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(229).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(230).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(231).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(232).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(233).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(234).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(235).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(236).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(237).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(238).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(239).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(240).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(241).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(242).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(243).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(244).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(245).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(246).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(247).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(248).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(249).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(250).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(251).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(252).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(253).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(254).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(255).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(256).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(257).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(258).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(259).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(260).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(261).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(262).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(263).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(264).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(265).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(266).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(267).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(268).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(269).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(270).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(271).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(272).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(273).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(274).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(275).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(276).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(277).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(278).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(279).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(280).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(281).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(282).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(283).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(284).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(285).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(286).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(287).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(288).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(289).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(290).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(291).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(292).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(293).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(294).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(295).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(296).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(297).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(298).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(299).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(300).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(301).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(302).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(303).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(304).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(305).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(306).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(307).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(308).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(309).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(310).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(311).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(312).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(313).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(314).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(315).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(316).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(317).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(318).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(319).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(320).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(321).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(322).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(323).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(324).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(325).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(326).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(327).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(328).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(329).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(330).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(331).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(332).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(333).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(334).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(335).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(336).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(337).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(338).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(339).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(340).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(341).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(342).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(343).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(344).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(345).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(346).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(347).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(348).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(349).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(350).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(351).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(352).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(353).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(354).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(355).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(356).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(357).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(358).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(359).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(360).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(361).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(362).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(363).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(364).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(365).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(366).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(367).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(368).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(369).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(370).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(371).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(372).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(373).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(374).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(375).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(376).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(377).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(378).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(379).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(380).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(381).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(382).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(383).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(384).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(385).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(386).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(387).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(388).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(389).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(390).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(391).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(392).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(393).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(394).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(395).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(396).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(397).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(398).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(399).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(400).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(401).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(402).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(403).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(404).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(405).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(406).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(407).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(408).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(409).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(410).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(411).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(412).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(413).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(414).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(415).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(416).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(417).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(418).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(419).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(420).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(421).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(422).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(423).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(424).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(425).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(426).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(427).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(428).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(429).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(430).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(431).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(432).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(433).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(434).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(435).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(436).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(437).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(438).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(439).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(440).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(441).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(442).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(443).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(444).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(445).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(446).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(447).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(448).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(449).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(450).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(451).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(452).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(453).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(454).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(455).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(456).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(457).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(458).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(459).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(460).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(461).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(462).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(463).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(464).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(465).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(466).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(467).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(468).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(469).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(470).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(471).下载"></script><script async="" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/t.js(472).下载"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.ContentUpdate%27&amp;time=%272020-09-18T08%3A30%3A35.062Z%27&amp;os=%27Windows%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%27e5d1c69a-36cf-4471-8cf9-7224fbf8c1d4%27&amp;-pageName=%2726821c28-6222-d5f2-b98a-1471dbf7522a%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%27&amp;-market=%27en-us%27&amp;-pageTags=%27%7B%22author%22%3A%22jillre%22%2C%22depotname%22%3A%22MSDN.dotnet-desktop-guide%22%2C%22document_version_independent_id%22%3A%2226fd54fd-ac0a-d52f-a754-ccff2fa36253%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Fc0ba2844738c5694b52ce5dc2a0f7b6c43d97168%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp.md%22%2C%22manager%22%3A%22jillfra%22%2C%22asst%22%3A%22f88481a8-c746-4a36-9479-374ce5f2e91f%22%2C%22pgauth%22%3A%22jillfra%22%2C%22date%22%3A%2203%2F30%2F2017%22%2C%22product%22%3A%22dotnet-framework%22%2C%22technology%22%3A%22dotnet-winforms%22%2C%22giturl%22%3A%22https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Flive%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp.md%22%2C%22publishtime%22%3A%222020-09-01%2011%3A51%20PM%22%2C%22contentlocale%22%3A%22en-us%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-pageHeight=11696&amp;-vpHeight=944&amp;-vpWidth=2133&amp;-actionType=%27R%27&amp;-behavior=0&amp;-vScrollOffset=0&amp;-hScrollOffset=0&amp;-contentVer=%272.0%27&amp;-content=%27%5B%5D%27&amp;*baseType=%27Ms.Content.ContentUpdate%27&amp;*title=%27Walkthrough%3A%20Authoring%20a%20Composite%20Control%20with%20Visual%20C%23%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs%27&amp;*cookieEnabled=true&amp;*isJs=true&amp;*isDomComplete=false&amp;*isLoggedIn=false&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.2.14%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D13f1e1c9a4704e3f8b2f55889223dd97%26HASH%3D13f1%26LV%3D202006%26V%3D4%26LU%3D1591089184343%27&amp;ext-javascript-userConsent=false&amp;ext-user-localId=%27t%3A1168D781D90E6B741D75DB1ED8206AEF%27&amp;$mscomCookies=false"></script></head>
+
+<body lang="en-us" dir="ltr"><div style="display: none;" id="lightningjs-usabilla_live"><div><iframe frameborder="0" id="lightningjs-frame-usabilla_live" src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/saved_resource.html"></iframe></div></div>
+<div class="header-holder has-default-focus">
+	<a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#main" class="skip-to-main-link has-outline-color-text visually-hidden-until-focused is-fixed has-inner-focus focus-visible has-top-zero has-left-zero has-right-zero has-padding-medium has-text-centered has-body-background-medium" tabindex="1">Skip to main content</a>
+	
+	<div id="ignite-banner-holder" class="has-default-focus has-overflow-hidden"><!---->
+		<section id="ignite-banner" data-bi-name="ignite-banner" data-dismissable="disappearing" class="uhf-container ignite-banner has-padding has-padding-top-medium has-padding-bottom-medium is-banner">
+			<div class="columns is-relative is-gapless-mobile">
+				<div class="column is-4 is-3-desktop">
+					<span class="is-size-h3 has-text-weight-semibold is-block has-margin-bottom-extra-small">
+						Microsoft Ignite
+					</span>
+					<span class="is-size-small is-block">
+						September 22–24, 2020 | Free digital event
+					</span>
+				</div>
+				<div class="column is-3 is-hidden-touch is-flex has-flex-align-self-center">
+					<span class="is-size-h5 is-block has-margin-left-large has-margin-right-large">
+						Learn. Connect. Explore.
+					</span>
+				</div>
+				<div class="column is-flex has-flex-align-self-center">
+					<a id="ignite-banner-anchor" class="button is-small has-margin-top-small has-margin-none-tablet" data-bi-name="CTA" href="https://myignite.microsoft.com/?wt.mc_id=ignite_bn_oo_docs__home_">
+						<span>
+							Register now
+						</span>
+						<span class="icon">
+							<span class="docon docon-chevron-right-light" aria-hidden="true"></span>
+						</span>
+					</a>
+				</div>
+				<button type="button" data-dismiss="" data-bi-name="close" class="is-tertiary button has-inner-focus delete is-large is-absolute has-top-zero has-right-zero has-margin-small">
+					<span class="visually-hidden"><!---->Dismiss alert<!----></span>
+				</button>
+			</div>
+		</section>
+	<!----></div>
+
+	<div id="headerAreaHolder" data-bi-name="header">
+<header role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization"><!----> <div class="nav-bar"><!---->  <div class="nav-bar-brand">
+		<a class="nav-bar-button" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft">
+			<div class="nav-bar-logo" role="presentation" aria-hidden="true" itemprop="logo" itemscope="itemscope">
+				<svg xmlns="http://www.w3.org/2000/svg" width="108" height="23" viewBox="72 72 337 74" preserveAspectRatio="xMidYMin slice">
+					<g data-name="MS-symbol">
+						<clippath id="a">
+							<path transform="matrix(1 0 0 -1 0 216)" d="M0 216h482V0H0z"></path>
+						</clippath>
+						<g clip-path="url(#a)">
+							<path class="has-fill-current-color has-text-subtle" d="M394.942 104.59h-10.858v25.003h-7.38V104.59h-5.182v-5.965h5.182v-4.308c0-3.254 1.06-5.92 3.178-7.998 2.12-2.079 4.835-3.118 8.15-3.118.882 0 1.666.045 2.35.135a9.37 9.37 0 011.806.407v6.296c-.24-.14-.663-.31-1.265-.512-.603-.2-1.296-.3-2.078-.3-1.528 0-2.702.476-3.526 1.43-.824.954-1.235 2.365-1.235 4.232v3.736h10.858v-6.959l7.321-2.229v9.188h7.381v5.965h-7.38v14.49c0 1.91.345 3.254 1.038 4.037.693.783 1.782 1.175 3.27 1.175.42 0 .927-.1 1.52-.3a7.178 7.178 0 001.552-.724v6.025c-.463.261-1.23.502-2.305.723a15.742 15.742 0 01-3.178.331c-3.073 0-5.378-.817-6.914-2.455-1.537-1.637-2.305-4.102-2.305-7.396zm-48.407 9.73c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.45-2.545-6.04-2.545-2.67 0-4.745.888-6.22 2.666-1.477 1.777-2.215 4.313-2.215 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.892-2.993 6.91-4.489 12.05-4.489 4.841 0 8.621 1.441 11.343 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.447 9.018-4.338 11.99-2.892 2.973-6.829 4.458-11.81 4.458-4.8 0-8.61-1.41-11.432-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-16.417-7.802c0 1.045.331 1.863.994 2.456.662.592 2.128 1.34 4.398 2.243 2.912 1.166 4.956 2.476 6.131 3.932 1.175 1.456 1.762 3.22 1.762 5.287 0 2.912-1.12 5.252-3.359 7.02-2.24 1.767-5.267 2.65-9.083 2.65-1.285 0-2.706-.155-4.263-.467-1.556-.31-2.877-.707-3.96-1.19v-7.169a17.945 17.945 0 004.277 2.198c1.526.543 2.911.814 4.157.814 1.647 0 2.862-.23 3.645-.693.784-.46 1.175-1.235 1.175-2.319 0-1.005-.406-1.853-1.22-2.546-.813-.693-2.355-1.492-4.624-2.395-2.69-1.125-4.599-2.39-5.724-3.796-1.125-1.406-1.687-3.193-1.687-5.362 0-2.792 1.11-5.086 3.33-6.884 2.217-1.797 5.095-2.696 8.63-2.696 1.084 0 2.3.12 3.645.361 1.346.242 2.47.553 3.374.934v6.93c-.964-.644-2.089-1.195-3.374-1.658-1.286-.462-2.56-.693-3.826-.693-1.386 0-2.465.271-3.238.813-.774.543-1.16 1.286-1.16 2.23m-35.066 7.562c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.449-2.545-6.039-2.545-2.672 0-4.745.888-6.222 2.666-1.476 1.777-2.214 4.313-2.214 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.893-2.993 6.91-4.489 12.051-4.489 4.84 0 8.621 1.441 11.342 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.446 9.018-4.338 11.99-2.892 2.973-6.828 4.458-11.809 4.458-4.8 0-8.61-1.41-11.433-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-3.136-16.448c.582 0 1.105.041 1.567.121.462.08.853.18 1.175.301v7.38c-.382-.28-.939-.546-1.672-.798-.733-.25-1.622-.376-2.666-.376-1.788 0-3.299.753-4.534 2.26-1.235 1.505-1.853 3.825-1.853 6.958v15.635h-7.29V98.624h7.29v4.88h.12c.663-1.687 1.667-3.007 3.013-3.96 1.346-.954 2.962-1.432 4.85-1.432m-27.956 26.18c1.084 0 2.28-.25 3.585-.754a15.06 15.06 0 003.615-1.988v6.778c-1.165.663-2.485 1.165-3.962 1.506-1.475.342-3.098.512-4.865.512-4.559 0-8.265-1.44-11.116-4.323-2.852-2.88-4.278-6.562-4.278-11.04 0-4.98 1.456-9.083 4.37-12.307 2.91-3.224 7.037-4.835 12.38-4.835 1.366 0 2.746.176 4.143.527 1.395.352 2.504.758 3.328 1.22v6.99c-1.125-.824-2.274-1.462-3.45-1.914a9.966 9.966 0 00-3.599-.678c-2.872 0-5.192.934-6.959 2.802-1.768 1.868-2.652 4.388-2.652 7.562 0 3.132.85 5.573 2.546 7.32 1.697 1.748 4.002 2.621 6.914 2.621m-22.112 5.302h-7.29V98.624h7.29zm-8.044-39.916c0-1.205.437-2.214 1.311-3.028.874-.813 1.913-1.22 3.118-1.22 1.285 0 2.35.417 3.193 1.25.844.834 1.266 1.833 1.266 2.998 0 1.185-.432 2.18-1.296 2.982-.864.804-1.918 1.205-3.163 1.205-1.246 0-2.295-.406-3.148-1.219-.854-.815-1.28-1.803-1.28-2.968m-6.274-3.284v43.2h-7.5v-33.86h-.12l-13.408 33.86h-4.97l-13.738-33.86h-.09v33.86h-6.929v-43.2h10.755l12.412 32.024h.18l13.105-32.024z"></path>
+							<path d="M106.214 106.214H71.996V71.996h34.218z" fill="#f25022"></path>
+							<path d="M143.993 106.214h-34.218V71.996h34.218z" fill="#7fba00"></path>
+							<path d="M106.214 143.993H71.996v-34.218h34.218z" fill="#00a4ef"></path>
+							<path d="M143.993 143.993h-34.218v-34.218h34.218z" fill="#ffb900"></path>
+						</g>
+					</g>
+				</svg>
+			</div>
+		</a>
+	</div> 
+			
+		<div class="nav-bar-item is-hidden-tablet">
+			<div class="nav-bar-menu">
+				<button class="nav-bar-button is-title" title="Global navigation" aria-expanded="false">
+					<span class="nav-bar-menu-title"><!---->Documentation<!----></span>
+					<div class="nav-bar-burger">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span class="nav-bar-burger-label"><!---->Global navigation<!----></span>
+					</div>
+				</button>
+			</div>
+		</div>
+	
+			
+		<nav class="nav-bar-nav" role="navigation" aria-label="Global">
+			<ul class="nav-bar-nav-list">
+				
+		<li class="nav-bar-item is-category">
+			<a class="nav-bar-button is-title has-hover-underline" itemprop="url" href="https://docs.microsoft.com/en-us/">
+				<span><!---->Docs<!----></span>
+			</a>
+		</li>
+	
+				<!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline is-active" href="https://docs.microsoft.com/en-us/">
+					<span><!---->Documentation<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/learn/">
+					<span><!---->Learn<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/answers/products/">
+					<span><!---->Q&amp;A<!----></span>
+				</a>
+		  </li><!----> <li class="nav-bar-item">
+				<a class="nav-bar-button has-hover-underline " href="https://docs.microsoft.com/en-us/samples/browse/">
+					<span><!---->Code Samples<!----></span>
+				</a>
+		  </li><!----> <li class="dropdown nav-bar-item" hidden="">
+		<button aria-expanded="false" class="dropdown-trigger nav-bar-button  has-hover-underline" aria-controls="ax-51">
+			<span><!---->More<!----></span>
+			<span class="nav-bar-button-chevron" aria-hidden="true">
+				<span class="docon docon-chevron-down-light expanded-indicator"></span>
+			</span>
+		</button>
+		<ul class="dropdown-menu" id="ax-51" aria-label="More">
+			<!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/"><!---->Documentation<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/learn/"><!---->Learn<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/answers/products/"><!---->Q&amp;A<!----></a>
+				</li>
+		  <!---->
+				<li class="nav-bar-item" hidden="">
+					<a class="nav-bar-button " href="https://docs.microsoft.com/en-us/samples/browse/"><!---->Code Samples<!----></a>
+				</li>
+		  <!---->
+		</ul>
+	</li><!---->
+			</ul>
+		</nav>
+	
+			<span class="nav-bar-spacer"></span>
+			
+		<div class="nav-bar-search " id="ax-52" hidden="">
+			
+		<form class="nav-bar-search-form" method="GET" name="searchForm" role="search" id="searchForm" aria-label="Search" aria-expanded="false" action="https://docs.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control ">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-search-input" class="autocomplete-input input   is-small" type="search" name="search" aria-expanded="false" aria-owns="ax-53-listbox" aria-activedescendant="" aria-label="Search" placeholder="Search">
+
+				<span aria-hidden="true" class="icon is-small is-left" hidden="">
+					<span class="has-text-primary docon docon-undefined"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-53-listbox" aria-label="site-search-input-suggestions" hidden="">
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			
+			
+			
+		</form>
+	
+		</div>
+		
+					<div class="nav-bar-search">
+						<!-- hidden when the width drops to tablet -->
+						
+		<form class="nav-bar-search-form" method="GET" name="searchForm" role="search" id="searchFormDesktop" aria-label="Search" aria-expanded="false" action="https://docs.microsoft.com/en-us/search/">
+			<div class="autocomplete" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-54" class="autocomplete-input input control has-icons-left  is-small" type="search" name="search" aria-expanded="false" aria-owns="ax-55-listbox" aria-activedescendant="" aria-label="Search" placeholder="Search">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-search"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-55-listbox" aria-label="ax-54-suggestions" hidden="">
+				
+			</ul><!----></div>
+			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
+			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
+			<input name="category" hidden="" value="">
+			
+			
+			
+		</form>
+	
+					</div>
+			  
+		<div class="nav-bar-search " hidden="">
+			<div class="nav-bar-search-form-expander">
+				<button id="form-expander" class="nav-bar-button has-hover-underline " title="Search" aria-expanded="false" aria-controls="ax-52">
+					
+		<span class="is-visually-hidden-mobile"><!---->Search<!----></span>
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-search"></span>
+		</span>
+	
+				</button>
+			</div>
+		</div>
+	
+			
+		<div class="nav-bar-profile">
+			
+		<a class="docs-sign-in auth-status-determined not-authenticated" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#">
+			Sign in
+		</a>
+	 
+		<div class="dropdown has-caret auth-status-determined authenticated">
+			<button class="dropdown-trigger button-reset" aria-controls="user-menu" aria-expanded="false" aria-label="Your Account">
+				<figure class="image is-36x36">
+					<img class="has-body-background-medium is-rounded" alt="" data-profile-property="avatarUrl">
+				</figure>
+			</button>
+			<div class="dropdown-menu box has-flex-justify-content-start has-body-background" id="user-menu" role="menu">
+				<div class="media is-user-dir">
+					<div class="media-left">
+						<figure class="image is-48x48" aria-hidden="true">
+							<img class="has-body-background-medium is-rounded" aria-labelledby="displayName" data-profile-property="avatarUrl">
+						</figure>
+					</div>
+					<div class="media-content">
+						<p class="title is-size-large">
+							<span id="displayName" class="is-inline-truncated has-max-width-200" data-profile-property="displayName"></span>
+						</p>
+						<p class="subtitle is-size-small has-margin-bottom-none">
+							<span class="is-inline-truncated has-max-width-200" data-profile-property="upn"></span>
+						</p>
+					</div>
+				</div>
+				<ul class="has-padding-top-small has-padding-bottom-medium">
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="profileUrl"><!---->Profile<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small has-padding-bottom-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="bookmarksUrl"><!---->Bookmarks<!----></a>
+					</li>
+					<li class="has-padding-top-extra-small">
+						<a href="https://docs.microsoft.com/profile" data-profile-property="collectionsUrl"><!---->Collections<!----></a>
+					</li>
+				</ul>
+				<div class="has-border-top has-padding-top-medium">
+					<a class="docs-sign-out" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#"><!---->Sign out<!----></a>
+				</div>
+			</div>
+		</div>
+	
+		</div>
+	
+		 <!----></div>  <!----></header>	</div>
+
+				<div class="content-header uhf-container has-padding has-default-focus has-border-bottom-none" data-bi-name="content-header">
+				<nav class="has-padding-none has-padding-left-medium-tablet has-padding-right-medium-tablet has-padding-left-none-uhf-tablet has-padding-left-none-uhf-tablet has-padding-none-desktop has-flex-grow" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb">
+					<ul id="page-breadcrumbs" class="breadcrumbs"><!---->
+			<!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									Docs
+								</span>
+						  </a>
+					<meta itemprop="position" content="1">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									.NET
+								</span>
+						  </a>
+					<meta itemprop="position" content="2">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/desktop/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									Desktop Guide
+								</span>
+						  </a>
+					<meta itemprop="position" content="3">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <span itemprop="name">
+								.NET Framework
+						  </span>
+					<meta itemprop="position" content="4">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									Windows Forms
+								</span>
+						  </a>
+					<meta itemprop="position" content="5">
+				</li><!----> <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+					 <a itemprop="item" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/?view=netframeworkdesktop-4.8">
+								<span itemprop="name">
+									Controls
+								</span>
+						  </a>
+					<meta itemprop="position" content="6">
+				</li><!---->
+		<!----></ul>
+				</nav>
+			<div class="content-header-controls">
+				<button type="button" class="contents-button button" data-bi-name="contents-expand" aria-haspopup="true">
+					<span class="icon"><span class="docon docon-menu" aria-hidden="true"></span></span>
+					<span class="contents-expand-title">Contents</span>
+				</button>
+				<button type="button" class="ap-collapse-behavior ap-expanded button" data-bi-name="ap-collapse" aria-controls="action-panel">
+					<span class="icon"><span class="docon docon-exit-mode" aria-hidden="true"></span></span>
+					<span>Exit focus mode</span>
+				</button>
+			</div>
+			<div class="has-padding-none-tablet has-padding-medium is-size-small is-flex-touch has-flex-justify-content-space-between-touch has-flex-grow">
+				<ul class="is-hidden-mobile action-list has-flex-justify-content-start has-flex-justify-content-end-tablet is-flex is-flex-row has-flex-wrap has-flex-grow is-unstyled">
+					<li>
+						<button type="button" class="bookmark button is-text has-inner-focus is-small is-icon-only-touch" data-list-type="bookmarks" data-bi-name="bookmark" title="Add bookmark for Walkthrough: Authoring a Composite Control with Visual C# - Windows Forms .NET Framework | Microsoft Docs" aria-pressed="false">
+							<span class="icon" aria-hidden="true">
+								<span class="docon docon-single-bookmark"></span>
+							</span>
+							<span class="bookmark-status is-visually-hidden-touch is-hidden-portrait">Bookmark</span>
+						</button>
+					</li>
+						<li id="feedback-section-link">
+							<a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#feedback" class="button is-text has-inner-focus is-small is-icon-only-touch" data-bi-name="comments" title="Send feedback about this page">
+								<span class="icon" aria-hidden="true">
+									<span class="docon docon-comment-lines"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">Feedback</span>
+							</a>
+						</li>
+							<li id="contenteditbtn">
+								<a href="https://github.com/dotnet/docs-desktop/blob/live/dotnet-desktop-guide/framework/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp.md" class="button is-text has-inner-focus is-icon-only-touch is-small" title="Edit This Document" data-bi-name="edit">
+								<span class="icon" aria-hidden="true">
+									<span class="docon docon-edit-outline"></span>
+								</span>
+								<span class="is-visually-hidden-touch is-hidden-portrait">Edit</span>
+							</a>
+						</li>
+					<li>
+<div class="sharing dropdown has-caret">
+	<button class="dropdown-trigger button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small is-icon-only-touch" aria-controls="sharing-menu" aria-expanded="false" title="Share This Document" data-bi-name="share">
+		<span class="icon" aria-hidden="true">
+			<span class="docon docon-sharing"></span>
+		</span>
+		<span class="is-visually-hidden-touch is-hidden-portrait">Share</span>
+	</button>
+	<div class="dropdown-menu has-padding-small" id="sharing-menu">
+		<ul data-bi-name="share-links">
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-twitter" data-bi-name="twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Dtwitter&amp;text=Walkthrough%3A%20Authoring%20a%20Composite%20Control%20with%20Visual%20C%23%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Dtwitter">
+					<span class="icon">
+						<span class="docon docon-brand-twitter has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-linkedin" data-bi-name="linkedin" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Dlinkedin">
+					<span class="icon">
+						<span class="docon docon-brand-linkedin has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-facebook" data-bi-name="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Dfacebook">
+					<span class="icon">
+						<span class="docon docon-brand-facebook has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Facebook</span>
+				</a>
+			</li>
+			<li>
+				<a class="button is-text is-fullwidth has-flex-justify-content-start has-inner-focus is-small share-email" data-bi-name="email" href="mailto:?subject=%5BShared%20Article%5D%20Walkthrough%3A%20Authoring%20a%20Composite%20Control%20with%20Visual%20C%23%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs&amp;body=Walkthrough%3A%20Authoring%20a%20Composite%20Control%20with%20Visual%20C%23%20-%20Windows%20Forms%20.NET%20Framework%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8%26WT.mc_id%3Demail">
+					<span class="icon">
+						<span class="docon docon-mail-message-fill has-text-primary" aria-hidden="true"></span>
+					</span>
+					<span>Email</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>					</li>
+				</ul>
+				<button type="button" class="has-border contents-button button is-small is-text is-hidden-tablet has-inner-focus" aria-label="Contents" data-bi-name="contents-expand">
+					<span class="icon">
+						<span class="docon docon-editor-list-bullet" aria-hidden="true"></span>
+					</span>
+					<span class="contents-expand-title">Table of contents</span>
+				</button>
+				<div class="is-invisible"></div>
+				<div class="is-hidden-tablet level-item is-flexible level-right">
+					<button type="button" class="page-actions-button button is-small is-text is-hidden-tablet has-inner-focus has-border is-full-height  has-margin-left-small" aria-label="Page Actions" data-bi-name="pageactions">
+						<span class="icon">
+							<span class="docon docon-more-vertical" aria-hidden="true"></span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+
+
+	<div id="disclaimer-holder" class="has-overflow-hidden has-default-focus"></div>
+	</div>
+
+	<div class="mainContainer  uhf-container has-top-padding  has-default-focus" data-bi-name="body">
+
+		<div class="columns has-large-gaps is-gapless-mobile ">
+
+			<div id="left-container" class="left-container is-hidden-mobile column is-one-third-tablet is-one-quarter-desktop">
+				<nav id="affixed-left-container" class="is-fixed is-flex is-flex-column" role="navigation" aria-label="Primary" data-bi-name="left toc" style="width: 364px; top: 197.5px; bottom: 24px;"><div class="moniker-picker2" data-bi-name="moniker-picker"><!---->
+		<span class="label has-margin-bottom-extra-small"><!---->Version<!----></span>
+		<div class="dropdown has-margin-bottom-small">
+			<button class="dropdown-trigger has-flex-justify-content-start is-full-width button is-small has-border has-inner-focus" aria-expanded="false" aria-controls="ax-38">
+				<span class="visually-hidden"><!---->Select Version<!----></span>
+				<span class="has-text-overflow-ellipsis"><!---->.NET Framework 4.x<!----></span>
+				<span class="dropdown-button-chevron" aria-hidden="true">
+					<span class="icon docon docon-chevron-down-light expanded-indicator"></span>
+				</span>
+			</button>
+			<ul class="dropdown-menu is-full-width" id="ax-38" aria-label="Product">
+						
+						
+						<!---->
+		<li>
+					<a class="preserve-view button is-small has-border-none has-inner-focus has-flex-justify-content-start is-full-width has-text-wrap is-text-left" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netdesktop-5.0"><!---->.NET 5.0<!----></a>
+			  </li>
+	<!---->
+		<li>
+					<a class="preserve-view button is-small has-border-none has-inner-focus has-flex-justify-content-start is-full-width has-text-wrap is-text-left" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8"><!---->.NET Framework 4.x<!----></a>
+			  </li>
+	<!---->
+				  </ul>
+		</div>
+	<!----></div><form action="javascript:" role="search" aria-label="Search" class="has-margin-bottom-small"><label class="visually-hidden" for="ax-35">Search</label><div class="autocomplete is-block" data-bi-name="autocomplete"><!----> <div class="control has-icons-left">
+				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="ax-35" class="autocomplete-input input control has-icons-left is-full-width is-small" type="text" aria-expanded="false" aria-owns="ax-36-listbox" aria-activedescendant="" placeholder="Filter by title">
+
+				<span aria-hidden="true" class="icon is-small is-left">
+					<span class="has-text-primary docon docon-filter-settings"></span>
+				</span>
+
+				<span aria-hidden="true" class="autocomplete-loader loader has-text-primary " hidden=""></span>
+			</div>
+
+			<ul class="autocomplete-suggestions is-vertically-scrollable" role="listbox" id="ax-36-listbox" aria-label="ax-35-suggestions" hidden="">
+				
+			</ul><!----></div></form><ul class="tree is-vertically-scrollable has-flex-grow has-flex-shrink" role="tree" aria-label="Table of contents" data-bi-name="tree" data-is-collapsible="true"><li data-moniker="netframeworkdesktop-4.8" role="none"><a aria-setsize="8" aria-level="1" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/?view=netframeworkdesktop-4.8">Controls</a></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="2" role="treeitem" tabindex="-1" id="title-2-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Arrange controls on Windows Forms</span></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="3" role="treeitem" tabindex="-1" id="title-3-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Putting Controls on Windows Forms</span></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="4" role="treeitem" tabindex="-1" id="title-4-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Label controls and provide shortcuts</span></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="5" role="treeitem" tabindex="-1" id="title-5-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Controls to Use on Windows Forms</span></li><li class="tree-item" aria-setsize="8" aria-level="1" aria-posinset="6" role="treeitem" tabindex="-1" id="title-6-1" aria-expanded="false"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Developing Custom Windows Forms Controls with the .NET Framework</span></li><li role="none"><a aria-setsize="8" aria-level="1" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/windows-forms-controls-by-function?view=netframeworkdesktop-4.8">Windows Forms Controls in the .NET Framework by Function</a></li><li class="tree-item is-expanded" aria-setsize="8" aria-level="1" aria-posinset="8" role="treeitem" tabindex="-1" id="title-8-1" aria-expanded="true"><span data-bi-name="tree-expander" class="tree-expander"><span class="tree-expander-indicator docon docon-chevron-right-light" aria-hidden="true"></span>Develop Controls at Design Time</span><ul class="tree-group" role="group"><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="1" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/developing-windows-forms-controls-at-design-time?view=netframeworkdesktop-4.8">Overview</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="2" role="treeitem" tabindex="0" class="tree-item is-leaf is-selected" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8" aria-current="page">Walkthrough: Author a Composite Control</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="3" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8">Walkthrough: Inherit from a Control</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="4" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/perform-common-tasks-design-actions?view=netframeworkdesktop-4.8">Walkthrough: Perform Common Tasks Using Design Actions</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="5" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/serializing-collections-designerserializationvisibilityattribute?view=netframeworkdesktop-4.8">Walkthrough: Serialize Collections of Standard Types</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="6" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-debugging-custom-windows-forms-controls-at-design-time?view=netframeworkdesktop-4.8">Walkthrough: Debug Custom Controls</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="7" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/creating-a-wf-control-design-time-features?view=netframeworkdesktop-4.8">Walkthrough: Create a Control That Takes Advantage of Design-Time Features</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="8" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-author-controls-for-windows-forms?view=netframeworkdesktop-4.8">How to: Author Controls</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="9" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-author-composite-controls?view=netframeworkdesktop-4.8">How to: Author Composite Controls</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="10" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-inherit-from-the-usercontrol-class?view=netframeworkdesktop-4.8">How to: Inherit from the UserControl Class</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="11" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-inherit-from-existing-windows-forms-controls?view=netframeworkdesktop-4.8">How to: Inherit from Existing Controls</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="12" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-inherit-from-the-control-class?view=netframeworkdesktop-4.8">How to: Inherit from the Control Class</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="13" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-align-a-control-to-the-edges-of-forms-at-design-time?view=netframeworkdesktop-4.8">How to: Align a Control to the Edges of Forms</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="14" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-display-a-control-in-the-choose-toolbox-items-dialog-box?view=netframeworkdesktop-4.8">How to: Display a Control in Choose Toolbox Items</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="15" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-provide-a-toolbox-bitmap-for-a-control?view=netframeworkdesktop-4.8">How to: Provide a Toolbox Bitmap for a Control</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="16" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-test-the-run-time-behavior-of-a-usercontrol?view=netframeworkdesktop-4.8">How to: Test the Run-Time Behavior of a UserControl</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="17" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/design-time-errors-in-the-windows-forms-designer?view=netframeworkdesktop-4.8">Design-Time Errors in the Windows Forms Designer</a></li><li role="none"><a aria-setsize="18" aria-level="2" aria-posinset="18" role="treeitem" tabindex="-1" class="tree-item is-leaf" data-bi-name="tree-leaf" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/troubleshooting-control-and-component-authoring?view=netframeworkdesktop-4.8">Troubleshoot Control and Component Authoring</a></li></ul></li></ul><a class="button is-small is-text has-flex-justify-content-start has-inner-focus has-margin-top-small has-border-top has-border-bottom has-flex-shrink-none" href="https://docs.microsoft.com/en-us/dotnet/desktop/opbuildpdf/183959a5/winforms/controls/toc.pdf?branch=live&amp;view=netframeworkdesktop-4.8" data-bi-name="downloadPdf" rel="nofollow"><!----> <span class="icon is-size-extra-small has-text-subtle">
+				<span aria-hidden="true" class="docon docon-dictionary-download"></span>
+			</span>
+			<span><!---->Download PDF<!----></span><!----></a></nav>
+			</div>
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop">
+				<div class="columns is-gapless-mobile has-large-gaps ">
+
+
+				<div id="main-column" class="column  is-full is-four-fifths-desktop ">
+
+					<main id="main" role="main" class="content " data-bi-name="content" lang="en-us" dir="ltr">
+
+
+
+						<h1 id="walkthrough-author-a-composite-control-with-c">Walkthrough: Author a Composite Control with C#</h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+							<li>
+								<time class="" data-article-date="" aria-label="Article review date" datetime="2017-03-30T00:00:00.000Z" data-article-date-source="ms.date">03/30/2017</time>
+							</li>
+								<li class="readingTime">14 minutes to read</li>
+								<li class="contributors-holder">
+										<a href="https://github.com/dotnet/docs-desktop/blob/live/dotnet-desktop-guide/framework/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp.md" title="2 Contributors" aria-label="2 Contributors">
+									<ul class="contributors" data-bi-name="contributors" aria-hidden="true">
+												<li><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNMsAcAAQUAoVnxsV8AAAAASUVORK5CYII=" data-src="https://github.com/jillre.png?size=32" role="presentation"></li>
+												<li><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNMsAcAAQUAoVnxsV8AAAAASUVORK5CYII=" data-src="https://github.com/adegeo.png?size=32" role="presentation"></li>
+									</ul>
+										</a>
+								</li>
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+							<h3>In this article</h3>
+						<ol><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#create-the-project">Create the Project</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-windows-controls-and-components-to-the-composite-control">Add Windows Controls and Components to the Composite Control</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-properties-to-the-composite-control">Add Properties to the Composite Control</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#test-the-control">Test the Control</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#inherit-from-a-composite-control">Inherit from a Composite Control</a></li><li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#see-also">See also</a></li></ol></nav>
+
+						<!-- <content> -->
+							<p>Composite controls provide a means by which custom graphical interfaces can be created and reused. A composite control is essentially a component with a visual representation. As such, it might consist of one or more Windows Forms controls, components, or blocks of code that can extend functionality by validating user input, modifying display properties, or performing other tasks required by the author. Composite controls can be placed on Windows Forms in the same manner as other controls. In the first part of this walkthrough, you create a simple composite control called <code>ctlClock</code>. In the second part of the walkthrough, you extend the functionality of <code>ctlClock</code> through inheritance.</p>
+<h2 id="create-the-project" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#create-the-project" aria-labelledby="create-the-project"></a>Create the Project</h2>
+<p>When you create a new project, you specify its name to set the root namespace, assembly name, and project name, and ensure that the default component will be in the correct namespace.</p>
+<h3 id="to-create-the-ctlclocklib-control-library-and-the-ctlclock-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-create-the-ctlclocklib-control-library-and-the-ctlclock-control" aria-labelledby="to-create-the-ctlclocklib-control-library-and-the-ctlclock-control"></a>To create the ctlClockLib control library and the ctlClock control</h3>
+<ol>
+<li><p>In Visual Studio, create a new <strong>Windows Forms Control Library</strong> project, and name it <strong>ctlClockLib</strong>.</p>
+<p>The project name, <code>ctlClockLib</code>, is also assigned to the root namespace by default. The root namespace is used to qualify the names of components in the assembly. For example, if two assemblies provide components named <code>ctlClock</code>, you can specify your <code>ctlClock</code> component using <code>ctlClockLib.ctlClock.</code></p>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>UserControl1.cs</strong>, and then click <strong>Rename</strong>. Change the file name to <code>ctlClock.cs</code>. Click the <strong>Yes</strong> button when you are asked if you want to rename all references to the code element "UserControl1".</p>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Note</p>
+<p>By default, a composite control inherits from the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.usercontrol" data-linktype="absolute-path">UserControl</a> class provided by the system. The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.usercontrol" data-linktype="absolute-path">UserControl</a> class provides functionality required by all composite controls, and implements standard methods and properties.</p>
+</div>
+</li>
+<li><p>On the <strong>File</strong> menu, click <strong>Save All</strong> to save the project.</p>
+</li>
+</ol>
+<h2 id="add-windows-controls-and-components-to-the-composite-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-windows-controls-and-components-to-the-composite-control" aria-labelledby="add-windows-controls-and-components-to-the-composite-control"></a>Add Windows Controls and Components to the Composite Control</h2>
+<p>A visual interface is an essential part of your composite control. This visual interface is implemented by the addition of one or more Windows controls to the designer surface. In the following demonstration, you will incorporate Windows controls into your composite control and write code to implement functionality.</p>
+<h3 id="to-add-a-label-and-a-timer-to-your-composite-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-add-a-label-and-a-timer-to-your-composite-control" aria-labelledby="to-add-a-label-and-a-timer-to-your-composite-control"></a>To add a Label and a Timer to your composite control</h3>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ctlClock.cs</strong>, and then click <strong>View Designer</strong>.</p>
+</li>
+<li><p>In the <strong>Toolbox</strong>, expand the <strong>Common Controls</strong> node, and then double-click <strong>Label</strong>.</p>
+<p>A <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.label" data-linktype="absolute-path">Label</a> control named <code>label1</code> is added to your control on the designer surface.</p>
+</li>
+<li><p>In the designer, click <strong>label1</strong>. In the Properties window, set the following properties.</p>
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">Table 1</caption>
+<thead>
+<tr>
+<th>Property</th>
+<th>Change to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td><code>lblDisplay</code></td>
+</tr>
+<tr>
+<td><strong>Text</strong></td>
+<td><code>(blank space)</code></td>
+</tr>
+<tr>
+<td><strong>TextAlign</strong></td>
+<td><code>MiddleCenter</code></td>
+</tr>
+<tr>
+<td><strong>Font.Size</strong></td>
+<td><code>14</code></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li><p>In the <strong>Toolbox</strong>, expand the <strong>Components</strong> node, and then double-click <strong>Timer</strong>.</p>
+<p>Because a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.timer" data-linktype="absolute-path">Timer</a> is a component, it has no visual representation at run time. Therefore, it does not appear with the controls on the designer surface, but rather in the <strong>Component Designer</strong> (a tray at the bottom of the designer surface).</p>
+</li>
+<li><p>In the <strong>Component Designer</strong>, click <strong>timer1</strong>, and then set the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.timer.interval" data-linktype="absolute-path">Interval</a> property to <code>1000</code> and the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.timer.enabled" data-linktype="absolute-path">Enabled</a> property to <code>true</code>.</p>
+<p>The <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.timer.interval" data-linktype="absolute-path">Interval</a> property controls the frequency with which the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.timer" data-linktype="absolute-path">Timer</a> component ticks. Each time <code>timer1</code> ticks, it runs the code in the <code>timer1_Tick</code> event. The interval represents the number of milliseconds between ticks.</p>
+</li>
+<li><p>In the <strong>Component Designer</strong>, double-click <strong>timer1</strong> to go to the <code>timer1_Tick</code> event for <code>ctlClock</code>.</p>
+</li>
+<li><p>Modify the code so that it resembles the following code sample. Be sure to change the access modifier from <code>private</code> to <code>protected</code>.</p>
+<div class="codeHeader" id="code-try-0" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="protected void timer1_Tick(object sender, System.EventArgs e)
+{
+    // Causes the label to display the current time.
+    lblDisplay.Text = DateTime.Now.ToLongTimeString();
+}
+"><span><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">timer1_Tick</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, System.EventArgs e</span>)</span>
+{
+    <span class="hljs-comment">// Causes the label to display the current time.</span>
+    lblDisplay.Text = DateTime.Now.ToLongTimeString();
+}
+</span></code></pre>
+<p>This code will cause the current time to be shown in <code>lblDisplay</code>. Because the interval of <code>timer1</code> was set to <code>1000</code>, this event will occur every thousand milliseconds, thus updating the current time every second.</p>
+</li>
+<li><p>Modify the method to be overridable with the <code>virtual</code> keyword. For more information, see the  "Inheriting from a User Control" section below.</p>
+<div class="codeHeader" id="code-try-1" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="protected virtual void timer1_Tick(object sender, System.EventArgs e)
+"><span><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">timer1_Tick</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, System.EventArgs e</span>)
+</span></span></code></pre>
+</li>
+<li><p>On the <strong>File</strong> menu, click <strong>Save All</strong> to save the project.</p>
+</li>
+</ol>
+<h2 id="add-properties-to-the-composite-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-properties-to-the-composite-control" aria-labelledby="add-properties-to-the-composite-control"></a>Add Properties to the Composite Control</h2>
+<p>Your clock control now encapsulates a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.label" data-linktype="absolute-path">Label</a> control and a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.timer" data-linktype="absolute-path">Timer</a> component, each with its own set of inherent properties. While the individual properties of these controls will not be accessible to subsequent users of your control, you can create and expose custom properties by writing the appropriate blocks of code. In the following procedure, you will add properties to your control that enable the user to change the color of the background and text.</p>
+<h3 id="to-add-a-property-to-your-composite-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-add-a-property-to-your-composite-control" aria-labelledby="to-add-a-property-to-your-composite-control"></a>To add a property to your composite control</h3>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ctlClock.cs</strong>, and then click <strong>View Code</strong>.</p>
+<p>The <strong>Code Editor</strong> for your control opens.</p>
+</li>
+<li><p>Locate the <code>public partial class ctlClock</code> statement. Beneath the opening brace (<code>{)</code>, type the following code.</p>
+<div class="codeHeader" id="code-try-2" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="private Color colFColor;
+private Color colBColor;
+"><span><span class="hljs-keyword">private</span> Color colFColor;
+<span class="hljs-keyword">private</span> Color colBColor;
+</span></code></pre>
+<p>These statements create the private variables that you will use to store the values for the properties you are about to create.</p>
+</li>
+<li><p>Enter or paste the following code beneath the variable declarations from step 2.</p>
+<div class="codeHeader" id="code-try-3" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="// Declares the name and type of the property.
+public Color ClockBackColor
+{
+    // Retrieves the value of the private variable colBColor.
+    get
+    {
+        return colBColor;
+    }
+    // Stores the selected value in the private variable colBColor, and
+    // updates the background color of the label control lblDisplay.
+    set
+    {
+        colBColor = value;
+        lblDisplay.BackColor = colBColor;
+    }
+}
+// Provides a similar set of instructions for the foreground color.
+public Color ClockForeColor
+{
+    get
+    {
+        return colFColor;
+    }
+    set
+    {
+        colFColor = value;
+        lblDisplay.ForeColor = colFColor;
+    }
+}
+"><span><span class="hljs-comment">// Declares the name and type of the property.</span>
+<span class="hljs-keyword">public</span> Color ClockBackColor
+{
+    <span class="hljs-comment">// Retrieves the value of the private variable colBColor.</span>
+    <span class="hljs-keyword">get</span>
+    {
+        <span class="hljs-keyword">return</span> colBColor;
+    }
+    <span class="hljs-comment">// Stores the selected value in the private variable colBColor, and</span>
+    <span class="hljs-comment">// updates the background color of the label control lblDisplay.</span>
+    <span class="hljs-keyword">set</span>
+    {
+        colBColor = <span class="hljs-keyword">value</span>;
+        lblDisplay.BackColor = colBColor;
+    }
+}
+<span class="hljs-comment">// Provides a similar set of instructions for the foreground color.</span>
+<span class="hljs-keyword">public</span> Color ClockForeColor
+{
+    <span class="hljs-keyword">get</span>
+    {
+        <span class="hljs-keyword">return</span> colFColor;
+    }
+    <span class="hljs-keyword">set</span>
+    {
+        colFColor = <span class="hljs-keyword">value</span>;
+        lblDisplay.ForeColor = colFColor;
+    }
+}
+</span></code></pre>
+<p>The preceding code makes two custom properties, <code>ClockForeColor</code> and <code>ClockBackColor</code>, available to subsequent users of this control. The <code>get</code> and <code>set</code> statements provide for storage and retrieval of the property value, as well as code to implement functionality appropriate to the property.</p>
+</li>
+<li><p>On the <strong>File</strong> menu, click <strong>Save All</strong> to save the project.</p>
+</li>
+</ol>
+<h2 id="test-the-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#test-the-control" aria-labelledby="test-the-control"></a>Test the Control</h2>
+<p>Controls are not stand-alone applications; they must be hosted in a container. Test your control's run-time behavior and exercise its properties with the <strong>UserControl Test Container</strong>. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-test-the-run-time-behavior-of-a-usercontrol?view=netframeworkdesktop-4.8" data-linktype="relative-path">How to: Test the Run-Time Behavior of a UserControl</a>.</p>
+<h3 id="to-test-your-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-test-your-control" aria-labelledby="to-test-your-control"></a>To test your control</h3>
+<ol>
+<li><p>Press <strong>F5</strong> to build the project and run your control in the <strong>UserControl Test Container</strong>.</p>
+</li>
+<li><p>In the test container's property grid, locate the <code>ClockBackColor</code> property, and then select the property to display the color palette.</p>
+</li>
+<li><p>Choose a color by clicking it.</p>
+<p>The background color of your control changes to the color you selected.</p>
+</li>
+<li><p>Use a similar sequence of events to verify that the <code>ClockForeColor</code> property is functioning as expected.</p>
+<p>In this section and the preceding sections, you have seen how components and Windows controls can be combined with code and packaging to provide custom functionality in the form of a composite control. You have learned to expose properties in your composite control, and how to test your control after it is complete. In the next section you will learn how to construct an inherited composite control using <code>ctlClock</code> as a base.</p>
+</li>
+</ol>
+<h2 id="inherit-from-a-composite-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#inherit-from-a-composite-control" aria-labelledby="inherit-from-a-composite-control"></a>Inherit from a Composite Control</h2>
+<p>In the previous sections, you learned how to combine Windows controls, components, and code into reusable composite controls. Your composite control can now be used as a base upon which other controls can be built. The process of deriving a class from a base class is called <em>inheritance</em>. In this section, you will create a composite control called <code>ctlAlarmClock</code>. This control will be derived from its parent control, <code>ctlClock</code>. You will learn to extend the functionality of <code>ctlClock</code> by overriding parent methods and adding new methods and properties.</p>
+<p>The first step in creating an inherited control is to derive it from its parent. This action creates a new control that has all of the properties, methods, and graphical characteristics of the parent control, but can also act as a base for the addition of new or modified functionality.</p>
+<h3 id="to-create-the-inherited-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-create-the-inherited-control" aria-labelledby="to-create-the-inherited-control"></a>To create the inherited control</h3>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ctlClockLib</strong>, point to <strong>Add</strong>, and then click <strong>User Control</strong>.</p>
+<p>The <strong>Add New Item</strong> dialog box opens.</p>
+</li>
+<li><p>Select the <strong>Inherited User Control</strong> template.</p>
+</li>
+<li><p>In the <strong>Name</strong> box, type <code>ctlAlarmClock.cs</code>, and then click <strong>Add</strong>.</p>
+<p>The <strong>Inheritance Picker</strong> dialog box appears.</p>
+</li>
+<li><p>Under <strong>Component Name</strong>, double-click <strong>ctlClock</strong>.</p>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, browse through the current projects.</p>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Note</p>
+<p>A file called <strong>ctlAlarmClock.cs</strong> has been added to the current project.</p>
+</div>
+</li>
+</ol>
+<h3 id="add-the-alarm-properties" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-the-alarm-properties" aria-labelledby="add-the-alarm-properties"></a>Add the Alarm Properties</h3>
+<p>Properties are added to an inherited control in the same way they are added to a composite control. You will now use the property declaration syntax to add two properties to your control: <code>AlarmTime</code>, which will store the value of the date and time the alarm is to go off, and <code>AlarmSet</code>, which will indicate whether the alarm is set.</p>
+<h4 id="to-add-properties-to-your-composite-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-add-properties-to-your-composite-control" aria-labelledby="to-add-properties-to-your-composite-control"></a>To add properties to your composite control</h4>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ctlAlarmClock</strong>, and then click <strong>View Code</strong>.</p>
+</li>
+<li><p>Locate the <code>public class</code> statement. Note that your control inherits from <code>ctlClockLib.ctlClock</code>. Beneath the opening brace (<code>{)</code> statement, type the following code.</p>
+<div class="codeHeader" id="code-try-4" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="private DateTime dteAlarmTime;
+private bool blnAlarmSet;
+// These properties will be declared as public to allow future
+// developers to access them.
+public DateTime AlarmTime
+{
+    get
+    {
+        return dteAlarmTime;
+    }
+    set
+    {
+        dteAlarmTime = value;
+    }
+}
+public bool AlarmSet
+{
+    get
+    {
+        return blnAlarmSet;
+    }
+    set
+    {
+        blnAlarmSet = value;
+    }
+}
+"><span><span class="hljs-keyword">private</span> DateTime dteAlarmTime;
+<span class="hljs-keyword">private</span> <span class="hljs-keyword">bool</span> blnAlarmSet;
+<span class="hljs-comment">// These properties will be declared as public to allow future</span>
+<span class="hljs-comment">// developers to access them.</span>
+<span class="hljs-keyword">public</span> DateTime AlarmTime
+{
+    <span class="hljs-keyword">get</span>
+    {
+        <span class="hljs-keyword">return</span> dteAlarmTime;
+    }
+    <span class="hljs-keyword">set</span>
+    {
+        dteAlarmTime = <span class="hljs-keyword">value</span>;
+    }
+}
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> AlarmSet
+{
+    <span class="hljs-keyword">get</span>
+    {
+        <span class="hljs-keyword">return</span> blnAlarmSet;
+    }
+    <span class="hljs-keyword">set</span>
+    {
+        blnAlarmSet = <span class="hljs-keyword">value</span>;
+    }
+}
+</span></code></pre>
+</li>
+</ol>
+<h3 id="add-to-the-graphical-interface-of-the-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-to-the-graphical-interface-of-the-control" aria-labelledby="add-to-the-graphical-interface-of-the-control"></a>Add to the Graphical Interface of the Control</h3>
+<p>Your inherited control has a visual interface that is identical to the control it inherits from. It possesses the same constituent controls as its parent control, but the properties of the constituent controls will not be available unless they were specifically exposed. You may add to the graphical interface of an inherited composite control in the same manner as you would add to any composite control. To continue adding to your alarm clock's visual interface, you will add a label control that will flash when the alarm is sounding.</p>
+<h4 id="to-add-the-label-control" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-add-the-label-control" aria-labelledby="to-add-the-label-control"></a>To add the label control</h4>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ctlAlarmClock</strong>, and then click <strong>View Designer</strong>.</p>
+<p>The designer for <code>ctlAlarmClock</code> opens in the main window.</p>
+</li>
+<li><p>Click the display portion of the control, and view the Properties window.</p>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Note</p>
+<p>While all the properties are displayed, they are dimmed. This indicates that these properties are native to <code>lblDisplay</code> and cannot be modified or accessed in the Properties window. By default, controls contained in a composite control are <code>private</code>, and their properties are not accessible by any means.</p>
+</div>
+<div class="alert is-info">
+<p class="alert-title"><span class="docon docon-status-error-outline" aria-hidden="true"></span> Note</p>
+<p>If you want subsequent users of your composite control to have access to its internal controls, declare them as <code>public</code> or <code>protected</code>. This will allow you to set and modify properties of controls contained within your composite control by using the appropriate code.</p>
+</div>
+</li>
+<li><p>Add a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.label" data-linktype="absolute-path">Label</a> control to your composite control.</p>
+</li>
+<li><p>Using the mouse, drag the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.label" data-linktype="absolute-path">Label</a> control immediately beneath the display box. In the Properties window, set the following properties.</p>
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">Table 2</caption>
+<thead>
+<tr>
+<th>Property</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td><code>lblAlarm</code></td>
+</tr>
+<tr>
+<td><strong>Text</strong></td>
+<td><strong>Alarm!</strong></td>
+</tr>
+<tr>
+<td><strong>TextAlign</strong></td>
+<td><code>MiddleCenter</code></td>
+</tr>
+<tr>
+<td><strong>Visible</strong></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol>
+<h3 id="add-the-alarm-functionality" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-the-alarm-functionality" aria-labelledby="add-the-alarm-functionality"></a>Add the Alarm Functionality</h3>
+<p>In the previous procedures, you added properties and a control that will enable alarm functionality in your composite control. In this procedure, you will add code to compare the current time to the alarm time and, if they are the same, to flash an alarm. By overriding the <code>timer1_Tick</code> method of <code>ctlClock</code> and adding additional code to it, you will extend the capability of <code>ctlAlarmClock</code> while retaining all of the inherent functionality of <code>ctlClock</code>.</p>
+<h4 id="to-override-the-timer1_tick-method-of-ctlclock" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-override-the-timer1_tick-method-of-ctlclock" aria-labelledby="to-override-the-timer1_tick-method-of-ctlclock"></a>To override the timer1_Tick method of ctlClock</h4>
+<ol>
+<li><p>In the <strong>Code Editor</strong>, locate the <code>private bool blnAlarmSet;</code> statement. Immediately beneath it, add the following statement.</p>
+<div class="codeHeader" id="code-try-5" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="private bool blnColorTicker;
+"><span><span class="hljs-keyword">private</span> <span class="hljs-keyword">bool</span> blnColorTicker;
+</span></code></pre>
+</li>
+<li><p>In the <strong>Code Editor</strong>, locate the closing brace (<code>})</code> at the end of the class. Just before the brace, add the following code.</p>
+<div class="codeHeader" id="code-try-6" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="protected override void timer1_Tick(object sender, System.EventArgs e)
+{
+    // Calls the Timer1_Tick method of ctlClock.
+    base.timer1_Tick(sender, e);
+    // Checks to see if the alarm is set.
+    if (AlarmSet == false)
+        return;
+    else
+        // If the date, hour, and minute of the alarm time are the same as
+        // the current time, flash an alarm.
+    {
+        if (AlarmTime.Date == DateTime.Now.Date &amp;&amp; AlarmTime.Hour ==
+            DateTime.Now.Hour &amp;&amp; AlarmTime.Minute == DateTime.Now.Minute)
+        {
+            // Sets lblAlarmVisible to true, and changes the background color based on
+            // the value of blnColorTicker. The background color of the label
+            // will flash once per tick of the clock.
+            lblAlarm.Visible = true;
+            if (blnColorTicker == false)
+            {
+                lblAlarm.BackColor = Color.Red;
+                blnColorTicker = true;
+            }
+            else
+            {
+                lblAlarm.BackColor = Color.Blue;
+                blnColorTicker = false;
+            }
+        }
+        else
+        {
+            // Once the alarm has sounded for a minute, the label is made
+            // invisible again.
+            lblAlarm.Visible = false;
+        }
+    }
+}
+"><span><span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">timer1_Tick</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, System.EventArgs e</span>)</span>
+{
+    <span class="hljs-comment">// Calls the Timer1_Tick method of ctlClock.</span>
+    <span class="hljs-keyword">base</span>.timer1_Tick(sender, e);
+    <span class="hljs-comment">// Checks to see if the alarm is set.</span>
+    <span class="hljs-keyword">if</span> (AlarmSet == <span class="hljs-literal">false</span>)
+        <span class="hljs-keyword">return</span>;
+    <span class="hljs-keyword">else</span>
+        <span class="hljs-comment">// If the date, hour, and minute of the alarm time are the same as</span>
+        <span class="hljs-comment">// the current time, flash an alarm.</span>
+    {
+        <span class="hljs-keyword">if</span> (AlarmTime.Date == DateTime.Now.Date &amp;&amp; AlarmTime.Hour ==
+            DateTime.Now.Hour &amp;&amp; AlarmTime.Minute == DateTime.Now.Minute)
+        {
+            <span class="hljs-comment">// Sets lblAlarmVisible to true, and changes the background color based on</span>
+            <span class="hljs-comment">// the value of blnColorTicker. The background color of the label</span>
+            <span class="hljs-comment">// will flash once per tick of the clock.</span>
+            lblAlarm.Visible = <span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">if</span> (blnColorTicker == <span class="hljs-literal">false</span>)
+            {
+                lblAlarm.BackColor = Color.Red;
+                blnColorTicker = <span class="hljs-literal">true</span>;
+            }
+            <span class="hljs-keyword">else</span>
+            {
+                lblAlarm.BackColor = Color.Blue;
+                blnColorTicker = <span class="hljs-literal">false</span>;
+            }
+        }
+        <span class="hljs-keyword">else</span>
+        {
+            <span class="hljs-comment">// Once the alarm has sounded for a minute, the label is made</span>
+            <span class="hljs-comment">// invisible again.</span>
+            lblAlarm.Visible = <span class="hljs-literal">false</span>;
+        }
+    }
+}
+</span></code></pre>
+<p>The addition of this code accomplishes several tasks. The <code>override</code> statement directs the control to use this method in place of the method that was inherited from the base control. When this method is called, it calls the method it overrides by invoking the <code>base.timer1_Tick</code> statement, ensuring that all of the functionality incorporated in the original control is reproduced in this control. It then runs additional code to incorporate the alarm functionality. A flashing label control will appear when the alarm occurs.</p>
+<p>Your alarm clock control is almost complete. The only thing that remains is to implement a way to turn it off. To do this, you will add code to the <code>lblAlarm_Click</code> method.</p>
+</li>
+</ol>
+<h4 id="to-implement-the-shutoff-method" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-implement-the-shutoff-method" aria-labelledby="to-implement-the-shutoff-method"></a>To implement the shutoff method</h4>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ctlAlarmClock.cs</strong>, and then click <strong>View Designer</strong>.</p>
+<p>The designer opens.</p>
+</li>
+<li><p>Add a button to the control. Set the properties of the button as follows.</p>
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">Table 3</caption>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td><code>btnAlarmOff</code></td>
+</tr>
+<tr>
+<td><strong>Text</strong></td>
+<td><strong>Disable Alarm</strong></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li><p>In the designer, double-click <strong>btnAlarmOff</strong>.</p>
+<p>The <strong>Code Editor</strong> opens to the <code>private void btnAlarmOff_Click</code> line.</p>
+</li>
+<li><p>Modify this method so that it resembles the following code.</p>
+<div class="codeHeader" id="code-try-7" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="private void btnAlarmOff_Click(object sender, System.EventArgs e)
+{
+    // Turns off the alarm.
+    AlarmSet = false;
+    // Hides the flashing label.
+    lblAlarm.Visible = false;
+}
+"><span><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">btnAlarmOff_Click</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, System.EventArgs e</span>)</span>
+{
+    <span class="hljs-comment">// Turns off the alarm.</span>
+    AlarmSet = <span class="hljs-literal">false</span>;
+    <span class="hljs-comment">// Hides the flashing label.</span>
+    lblAlarm.Visible = <span class="hljs-literal">false</span>;
+}
+</span></code></pre>
+</li>
+<li><p>On the <strong>File</strong> menu, click <strong>Save All</strong> to save the project.</p>
+</li>
+</ol>
+<h3 id="use-the-inherited-control-on-a-form" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#use-the-inherited-control-on-a-form" aria-labelledby="use-the-inherited-control-on-a-form"></a>Use the Inherited Control on a Form</h3>
+<p>You can test your inherited control the same way you tested the base class control, <code>ctlClock</code>: Press <strong>F5</strong> to build the project and run your control in the <strong>UserControl Test Container</strong>. For more information, see <a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-test-the-run-time-behavior-of-a-usercontrol?view=netframeworkdesktop-4.8" data-linktype="relative-path">How to: Test the Run-Time Behavior of a UserControl</a>.</p>
+<p>To put your control to use, you will need to host it on a form. As with a standard composite control, an inherited composite control cannot stand alone and must be hosted in a form or other container. Since <code>ctlAlarmClock</code> has a greater depth of functionality, additional code is required to test it. In this procedure, you will write a simple program to test the functionality of <code>ctlAlarmClock</code>. You will write code to set and display the <code>AlarmTime</code> property of <code>ctlAlarmClock</code>, and will test its inherent functions.</p>
+<h4 id="to-build-and-add-your-control-to-a-test-form" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#to-build-and-add-your-control-to-a-test-form" aria-labelledby="to-build-and-add-your-control-to-a-test-form"></a>To build and add your control to a test form</h4>
+<ol>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>ctlClockLib</strong>, and then click <strong>Build</strong>.</p>
+</li>
+<li><p>Add a new <strong>Windows Forms Application</strong> project to the solution, and name it <strong>Test</strong>.</p>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, right-click the <strong>References</strong> node for your test project. Click <strong>Add Reference</strong> to display the <strong>Add Reference</strong> dialog box. Click the tab labeled <strong>Projects</strong>. Your <code>ctlClockLib</code> project will be listed under <strong>Project Name</strong>. Double-click the project to add the reference to the test project.</p>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>Test</strong>, and then click <strong>Build</strong>.</p>
+</li>
+<li><p>In the <strong>Toolbox</strong>, expand the <strong>ctlClockLib Components</strong> node.</p>
+</li>
+<li><p>Double-click <strong>ctlAlarmClock</strong> to add a copy of <code>ctlAlarmClock</code> to your form.</p>
+</li>
+<li><p>In the <strong>Toolbox</strong>, locate and double-click <strong>DateTimePicker</strong> to add a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.datetimepicker" data-linktype="absolute-path">DateTimePicker</a> control to your form, and then add a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.label" data-linktype="absolute-path">Label</a> control by double-clicking <strong>Label</strong>.</p>
+</li>
+<li><p>Use the mouse to position the controls in a convenient place on the form.</p>
+</li>
+<li><p>Set the properties of these controls in the following manner.</p>
+<div class="table-scroll-wrapper"><table class="table"><caption class="visually-hidden">Table 4</caption>
+<thead>
+<tr>
+<th>Control</th>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>label1</code></td>
+<td><strong>Text</strong></td>
+<td><code>(blank space)</code></td>
+</tr>
+<tr>
+<td aria-label="No value"></td>
+<td><strong>Name</strong></td>
+<td><code>lblTest</code></td>
+</tr>
+<tr>
+<td><code>dateTimePicker1</code></td>
+<td><strong>Name</strong></td>
+<td><code>dtpTest</code></td>
+</tr>
+<tr>
+<td aria-label="No value"></td>
+<td><strong>Format</strong></td>
+<td><a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.datetimepickerformat#System_Windows_Forms_DateTimePickerFormat_Time" data-linktype="absolute-path">Time</a></td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li><p>In the designer, double-click <strong>dtpTest</strong>.</p>
+<p>The <strong>Code Editor</strong> opens to <code>private void dtpTest_ValueChanged</code>.</p>
+</li>
+<li><p>Modify the code so that it resembles the following.</p>
+<div class="codeHeader" id="code-try-8" data-bi-name="code-header"><span class="language">C#</span><button type="button" class="action is-relative" data-bi-name="copy" aria-label="Copy code">
+				<span class="icon">
+					<span class="docon docon-edit-copy" role="presentation"></span>
+				</span>
+				<span>Copy</span>
+				<div class="successful-copy-alert is-absolute has-right-zero has-top-zero has-left-zero has-bottom-zero is-flex has-flex-align-items-center has-flex-justify-content-center has-text-success-invert has-background-success is-transparent" aria-hidden="true">
+					<span class="icon is-size-large">
+						<span class="docon docon-check-mark" role="presentation"></span>
+					</span>
+				</div>
+			</button></div><pre tabindex="0" class="has-inner-focus"><code class="lang-csharp" data-author-content="private void dtpTest_ValueChanged(object sender, System.EventArgs e)
+{
+    ctlAlarmClock1.AlarmTime = dtpTest.Value;
+    ctlAlarmClock1.AlarmSet = true;
+    lblTest.Text = &quot;Alarm Time is &quot; +
+        ctlAlarmClock1.AlarmTime.ToShortTimeString();
+}
+"><span><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dtpTest_ValueChanged</span>(<span class="hljs-params"><span class="hljs-keyword">object</span> sender, System.EventArgs e</span>)</span>
+{
+    ctlAlarmClock1.AlarmTime = dtpTest.Value;
+    ctlAlarmClock1.AlarmSet = <span class="hljs-literal">true</span>;
+    lblTest.Text = <span class="hljs-string">"Alarm Time is "</span> +
+        ctlAlarmClock1.AlarmTime.ToShortTimeString();
+}
+</span></code></pre>
+</li>
+<li><p>In <strong>Solution Explorer</strong>, right-click <strong>Test</strong>, and then click <strong>Set as StartUp Project</strong>.</p>
+</li>
+<li><p>On the <strong>Debug</strong> menu, click <strong>Start Debugging</strong>.</p>
+<p>The test program starts. Note that the current time is updated in the <code>ctlAlarmClock</code> control, and that the starting time is shown in the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.datetimepicker" data-linktype="absolute-path">DateTimePicker</a> control.</p>
+</li>
+<li><p>Click the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.datetimepicker" data-linktype="absolute-path">DateTimePicker</a> where the minutes of the hour are displayed.</p>
+</li>
+<li><p>Using the keyboard, set a value for minutes that is one minute greater than the current time shown by <code>ctlAlarmClock</code>.</p>
+<p>The time for the alarm setting is shown in <code>lblTest</code>. Wait for the displayed time to reach the alarm setting time. When the displayed time reaches the time to which the alarm is set, the <code>lblAlarm</code> will flash.</p>
+</li>
+<li><p>Turn off the alarm by clicking <code>btnAlarmOff</code>. You may now reset the alarm.</p>
+</li>
+</ol>
+<p>This article has covered a number of key concepts. You have learned to create a composite control by combining controls and components into a composite control container. You have learned to add properties to your control, and to write code to implement custom functionality. In the last section, you learned to extend the functionality of a given composite control through inheritance, and to alter the functionality of host methods by overriding those methods.</p>
+<h2 id="see-also" class="heading-anchor"><a class="anchor-link docon docon-link" href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#see-also" aria-labelledby="see-also"></a>See also</h2>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/varieties-of-custom-controls?view=netframeworkdesktop-4.8" data-linktype="relative-path">Varieties of Custom Controls</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/how-to-display-a-control-in-the-choose-toolbox-items-dialog-box?view=netframeworkdesktop-4.8" data-linktype="relative-path">How to: Display a Control in the Choose Toolbox Items Dialog Box</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-inheriting-from-a-windows-forms-control-with-visual-csharp?view=netframeworkdesktop-4.8" data-linktype="relative-path">Walkthrough: Inheriting from a Windows Forms Control with Visual C#</a></li>
+</ul>
+
+						<!-- </content> -->
+
+						</main>
+
+						<!-- page rating section -->
+								<div class="is-hidden-desktop has-border-top has-margin-top-large has-padding-top-small">
+									
+									
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>Yes</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-mobile">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>No</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-mobile">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-extra-small">
+                <label for="rating-textarea-mobile" class="visually-hidden">Any additional feedback?</label>
+                <textarea id="rating-textarea-mobile" rows="4" maxlength="999" placeholder="Any additional feedback?" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-transparent has-text-primary is-small has-border-none" type="button">Skip</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>Thank you.</p>
+    </div>
+</div>								</div>
+						<!-- end page rating section -->
+
+
+						<!-- feedback section -->
+<section class="feedback-section is-relative" data-bi-name="feedback-section">
+
+    <h2 id="feedback" class="title is-3 has-margin-top-large">Feedback</h2>
+
+    <div class="alert choose-feedback-type">
+        <p aria-hidden="true" id="send-feedback-about">Submit and view feedback for</p>
+
+        <div class="choose-feedback-buttons has-margin-top-medium">
+                <a class="button feedback-type-product has-margin-bottom-small" aria-label="Send feedback about this product" href="https://developercommunity.visualstudio.com/spaces/61/index.html" data-bi-name="product-feedback">
+                    <span>This product</span>
+                    <span aria-hidden="true" class="icon docon docon-navigate-external is-size-h4 has-margin-left-none"></span>
+                </a>
+
+			<a class="button feedback-type-product has-margin-bottom-small github-link" aria-label="Send feedback about this page" data-bi-name="create-issue-on-github" href="https://github.com/dotnet/docs-desktop/issues/new?title=&amp;body=%0A%0A%5BEnter%20feedback%20here%5D%0A%0A%0A---%0A%23%23%23%23%20Document%20Details%0A%0A%E2%9A%A0%20*Do%20not%20edit%20this%20section.%20It%20is%20required%20for%20docs.microsoft.com%20%E2%9E%9F%20GitHub%20issue%20linking.*%0A%0A*%20ID%3A%2026821c28-6222-d5f2-b98a-1471dbf7522a%0A*%20Version%20Independent%20ID%3A%2026fd54fd-ac0a-d52f-a754-ccff2fa36253%0A*%20Content%3A%20%5BWalkthrough%3A%20Authoring%20a%20Composite%20Control%20with%20Visual%20C%23%20-%20Windows%20Forms%20.NET%20Framework%5D(https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fdotnet%2Fdesktop%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp%3Fview%3Dnetframeworkdesktop-4.8)%0A*%20Content%20Source%3A%20%5Bdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp.md%5D(https%3A%2F%2Fgithub.com%2Fdotnet%2Fdocs-desktop%2Fblob%2Flive%2Fdotnet-desktop-guide%2Fframework%2Fwinforms%2Fcontrols%2Fwalkthrough-authoring-a-composite-control-with-visual-csharp.md)%0A*%20Product%3A%20**dotnet-framework**%0A*%20Technology%3A%20**dotnet-winforms**%0A*%20GitHub%20Login%3A%20%40jillre%0A*%20Microsoft%20Alias%3A%20**jillfra**">
+				<span aria-hidden="true" class="docon docon-brand-github has-padding-right-extra-small"></span>
+				<span>This page</span>
+			</a>
+        </div>
+    </div>
+
+    <div class="action-container is-flex has-flex-justify-content-end has-margin-top-small has-margin-bottom-small">
+        <a class="view-on-github" data-bi-name="view-on-github" href="https://github.com/dotnet/docs-desktop/issues?utf8=%E2%9C%93&amp;q=%2226fd54fd-ac0a-d52f-a754-ccff2fa36253%22&amp;in=body">
+            <span aria-hidden="true" class="docon docon-brand-github"></span>
+            <span>View all page feedback</span>
+            <span aria-hidden="true" class="icon docon docon-navigate-external is-size-h5"></span>
+        </a>
+    </div>
+</section>
+
+						<!-- end feedback section -->
+
+						<!-- feedback report section -->
+						<!-- end feedback report section -->
+
+						<div class="footerContainer is-visible-interactive has-default-focus ">
+
+
+
+	<footer id="footer-interactive" data-bi-name="footer" class="footer-layout">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8" data-bi-name="select-locale"><span class="icon docon docon-world is-size-large has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">English (United States)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu-interactive" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu-interactive" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+						</div>
+					</div>
+
+					<div class="is-size-small right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="Page Actions">
+						<div id="affixed-right-container" class="doc-outline is-fixed is-vertically-scrollable" style="width: 199.188px; top: 197.5px; bottom: 24px;">
+								
+								
+<div class="feedback-verbatim has-border-bottom has-padding-bottom-small has-margin-bottom-small" data-bi-name="rating">
+    <div class="binary-rating">
+        <div class="binary-rating-buttons">
+            <h3 class="has-text-weight-semibold has-margin-top-none has-margin-bottom-small">Is this page helpful?</h3>
+            <div>
+                <button class="thumb-rating like has-inner-focus has-padding-left-extra-small has-padding-right-extra-small" title="Yes" data-bi-name="rating-yes" aria-expanded="false" data-bi-sat="1" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-like"></span>
+                    <span>Yes</span>
+                </button>
+                <button class="thumb-rating dislike has-inner-focus has-padding-none has-padding-right-extra-small" title="No" data-bi-name="rating-no" data-bi-sat="0" aria-expanded="false" aria-controls="rating-container-desktop">
+                    <span aria-hidden="true" class="icon docon docon-dislike"></span>
+                    <span>No</span>
+                </button>
+            </div>
+        </div>
+        <form class="feedback-verbatim-form is-hidden" id="rating-container-desktop">
+            <div class="verbatim-textarea box is-relative has-box-shadow-none has-border has-margin-top-small has-padding-extra-small is-size-extra-small">
+                <label for="rating-textarea-desktop" class="visually-hidden">Any additional feedback?</label>
+                <textarea id="rating-textarea-desktop" rows="4" maxlength="999" placeholder="Any additional feedback?" required="" class="textarea has-border-none has-box-shadow-none has-inner-focus"></textarea>
+            </div>
+            <div class="buttons is-right has-margin-top-medium has-margin-right-extra-small">
+                <button class="skip-rating button is-transparent has-text-primary is-small has-border-none" type="button">Skip</button>
+                <button class="submit-rating button is-primary is-small" data-bi-name="rating-verbatim" disabled="" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="thankyou-rating is-hidden" tabindex="-1">
+        <p>Thank you.</p>
+    </div>
+</div>							<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+								<h3>In this article</h3>
+							<ol><li class="selected"><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#create-the-project">Create the Project</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-windows-controls-and-components-to-the-composite-control">Add Windows Controls and Components to the Composite Control</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#add-properties-to-the-composite-control">Add Properties to the Composite Control</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#test-the-control">Test the Control</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#inherit-from-a-composite-control">Inherit from a Composite Control</a></li><li class=""><a href="https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8#see-also">See also</a></li></ol></nav>
+						</div>
+					</div>
+
+					<!--end of div.columns -->
+				</div>
+
+			<!--end of .primary-holder -->
+			</section>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-body-background-dark ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container"></div>
+
+	<div class="footerContainer has-default-focus is-hidden-interactive ">
+
+
+
+	<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <div class="is-flex is-full-height has-padding-right-extra-large-desktop">
+			<a data-mscc-ic="false" class="locale-selector-link has-flex-shrink-none" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/walkthrough-authoring-a-composite-control-with-visual-csharp?view=netframeworkdesktop-4.8" data-bi-name="select-locale"><span class="icon docon docon-world is-size-large has-margin-right-small" aria-hidden="true"></span><span class="local-selector-link-text">English (United States)</span></a>
+		<div class="has-margin-left-medium has-margin-right-medium has-flex-shrink-none">
+<div class="dropdown has-caret-up">
+	<button class="dropdown-trigger button is-transparent is-small is-icon-only-touch has-inner-focus theme-dropdown-trigger" aria-controls="theme-menu" aria-expanded="false" title="Theme" data-bi-name="theme">
+		<span class="icon">
+			<span class="docon docon-sun" aria-hidden="true"></span>
+		</span>
+		<span>Theme</span>
+	</button>
+	<div class="dropdown-menu" id="theme-menu" role="menu">
+		<ul class="theme-selector has-padding-small">
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start is-selected" data-theme-to="light" aria-pressed="true">
+					<span class="theme-light has-margin-right-small">
+						<span class="theme-selector-icon css-variable-support has-border is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Light					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="dark" aria-pressed="false">
+					<span class="theme-dark has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+Dark					</span>
+				</button>
+			</li>
+			<li class="theme is-block">
+				<button class="button is-text is-small theme-control is-fullwidth has-flex-justify-content-start" data-theme-to="high-contrast" aria-pressed="false">
+					<span class="theme-high-contrast has-margin-right-small">
+						<span class="has-border theme-selector-icon css-variable-support is-inline-block has-body-background" aria-hidden="true">
+							<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
+								<rect width="22" height="14" class="has-fill-body-background"></rect>
+								<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
+								<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
+								<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
+								<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
+								<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
+								<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
+							</svg>
+						</span>
+					</span>
+					<span role="menuitem">
+High contrast					</span>
+				</button>
+			</li>
+		</ul>
+	</div>
+</div>		</div>
+	</div>
+    <ul class="links" data-bi-name="footerlinks">
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/teamblog" data-bi-name="bloglink">Blog</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+				<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+			<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+				<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+			<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+		<li>© Microsoft 2020</li>
+    </ul>
+</footer>
+	</div>
+
+	<div id="action-panel" role="region" aria-label="Action Panel" class="action-panel has-default-focus" tabindex="-1"></div>
+	<span id="adobe-target-experiment-container" hidden=""></span>
+
+
+<div class="usabilla_live_button_container" role="button" tabindex="0" style="position: fixed; width: 0px; height: 0px; z-index: 99999990; right: 0px; top: 50%; margin-top: 0px; display: none;" aria-label="Usabilla Feedback Button"><iframe src="./Walkthrough_ Authoring a Composite Control with Visual C# - Windows Forms .NET Framework _ Microsoft Docs_files/saved_resource(1).html" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" data-tags="right" title="Usabilla Feedback Button" style="width: 0px; height: 0px; margin: 0px; padding: 0px; border: 0px; overflow: hidden; z-index: 9998; position: absolute; left: 0px; top: 0px; box-shadow: 0px 0px 0px; background-color: transparent;"></iframe></div></body></html>

@@ -1,0 +1,7 @@
+E:\winform-ui-control\ValueButtonLib\ValueButtonLib\bin\Debug\ValueButtonLib.dll
+E:\winform-ui-control\ValueButtonLib\ValueButtonLib\bin\Debug\ValueButtonLib.pdb
+E:\winform-ui-control\ValueButtonLib\ValueButtonLib\obj\Debug\ValueButtonLib.csprojResolveAssemblyReference.cache
+E:\winform-ui-control\ValueButtonLib\ValueButtonLib\obj\Debug\ValueButtonLib.dll
+E:\winform-ui-control\ValueButtonLib\ValueButtonLib\obj\Debug\ValueButtonLib.pdb
+E:\winform-ui-control\ValueButtonLib\ValueButtonLib\obj\Debug\ValueButtonLib.ValueButton.resources
+E:\winform-ui-control\ValueButtonLib\ValueButtonLib\obj\Debug\ValueButtonLib.csproj.GenerateResource.Cache

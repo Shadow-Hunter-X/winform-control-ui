@@ -1,0 +1,8 @@
+E:\winform-ui-control\ctlClockLib\ctlClockLib\bin\Debug\ctlClockLib.dll
+E:\winform-ui-control\ctlClockLib\ctlClockLib\bin\Debug\ctlClockLib.pdb
+E:\winform-ui-control\ctlClockLib\ctlClockLib\obj\Debug\ctlClockLib.csprojResolveAssemblyReference.cache
+E:\winform-ui-control\ctlClockLib\ctlClockLib\obj\Debug\ctlClockLib.ctlClock.resources
+E:\winform-ui-control\ctlClockLib\ctlClockLib\obj\Debug\ctlClockLib.csproj.GenerateResource.Cache
+E:\winform-ui-control\ctlClockLib\ctlClockLib\obj\Debug\ctlClockLib.dll
+E:\winform-ui-control\ctlClockLib\ctlClockLib\obj\Debug\ctlClockLib.pdb
+E:\winform-ui-control\ctlClockLib\ctlClockLib\obj\Debug\ctlClockLib.ctlAlarmClock.resources
